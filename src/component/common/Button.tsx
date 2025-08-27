@@ -57,7 +57,7 @@ const Button: FC<ButtonProps> = (props) => {
 
   return (
     <button {...(rest as ButtonOnlyProps)} className={combinedClass}>
-      {children}
+      <span>{children}</span>
     </button>
   );
 };
