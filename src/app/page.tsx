@@ -1,4 +1,5 @@
 import Hero from "@/component/home/Hero";
+import WhyChooseUs from "@/component/home/WhyChooseUs";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       />
       <>
         <Hero />
+        <WhyChooseUs />
       </>
     </>
   );
