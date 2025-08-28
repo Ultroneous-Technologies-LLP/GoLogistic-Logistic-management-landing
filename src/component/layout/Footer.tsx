@@ -2,7 +2,7 @@ import Link from "next/link";
 import Container from "../common/Container";
 import clsx from "clsx";
 import { Facebook, LinkedIn, Logo, Mail, Phone, Twitter } from "../icon";
-import { footerLinks } from "@/utils/constans";
+import { footerLinks } from "@/utils/constant";
 
 const Footer = () => {
   return (
