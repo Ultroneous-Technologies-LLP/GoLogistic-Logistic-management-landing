@@ -1,3 +1,10 @@
+import {
+  CustomerCentric,
+  GlobalReach,
+  Innovation,
+  Reliability,
+} from "@/component/icon";
+
 const footerLinks = [
   {
     title: "Our company",
@@ -50,4 +57,28 @@ const footerLinks = [
   },
 ];
 
-export { footerLinks };
+const whyChooseUsfeaturesData = [
+  {
+    Icon: Reliability,
+    title: "Reliability",
+    description:
+      "Our dedication to safe transportation and deliveries on schedule.",
+  },
+  {
+    Icon: GlobalReach,
+    title: "Global Reach",
+    description: "Use our global network to broaden your business horizons.",
+  },
+  {
+    Icon: CustomerCentric,
+    title: "Customer-Centric",
+    description: "Dedicated team support to address challenges.",
+  },
+  {
+    Icon: Innovation,
+    title: "Innovation",
+    description: "Devoted assistance guaranteeing your contentment.",
+  },
+];
+
+export { footerLinks, whyChooseUsfeaturesData };
