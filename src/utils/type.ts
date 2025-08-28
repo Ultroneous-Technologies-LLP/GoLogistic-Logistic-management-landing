@@ -1,0 +1,80 @@
+export type heroSection = {
+  id: number;
+  heading: string;
+  description: string;
+  heroButtons: {
+    id: number;
+    label: string;
+    href: string;
+    variant: "contained" | "outlined";
+    ariaLabel: string;
+  }[];
+  backgroundImage: {
+    src: string;
+    alt: string;
+  };
+};
+
+export type shipingService = {
+  id: number;
+  title: string;
+  description: string;
+  shipingServiceImage: {
+    src: string;
+    alt: string;
+  };
+};
+
+export type whyChooseUsSection = {
+  id: number;
+  title: string;
+  longTitle: string;
+  description: {
+    id: number;
+    description: string;
+  }[];
+  whyChooseUsfeaturesData: {
+    id: number;
+    icon: "Reliability" | "GlobalReach" | "CustomerCentric" | "Innovation";
+    title: string;
+    description: string;
+  }[];
+};
+
+export type ourServicesAndFacilitesSection = {
+  title: string;
+  longTitle: string;
+  transportLogistics: {
+    title: string;
+    button: {
+      variant: "contained" | "outlined";
+      label: string;
+      ariaLabel: string;
+    };
+    image: {
+      alt: string;
+      src: string;
+    };
+  };
+  cargoTerminal: {
+    title: string;
+  };
+  services: {
+    id: string;
+    title: string;
+  }[];
+  backgroundImage: {
+    alt: string;
+    src: string;
+  };
+};
+
+export type HomePageData = {
+  heroSection: heroSection;
+
+  shipingService: shipingService;
+
+  whyChooseUsSection: whyChooseUsSection;
+
+  ourServicesAndFacilitesSection: ourServicesAndFacilitesSection;
+};
