@@ -1,5 +1,4 @@
 import Hero from "@/component/home/Hero";
-import OurServicesAndFacilites from "@/component/home/OurServicesAndFacilites";
 import WhyChooseUs from "@/component/home/WhyChooseUs";
 
 export default function Home() {
@@ -27,7 +26,6 @@ export default function Home() {
       <>
         <Hero />
         <WhyChooseUs />
-        <OurServicesAndFacilites />
       </>
     </>
   );

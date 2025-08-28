@@ -1,8 +1,8 @@
 import { whyChooseUsfeaturesData } from "@/utils/constans";
 import Container from "../common/Container";
-import { FC } from "react";
+import clsx from "clsx";
 
-const WhyChooseUs: FC = () => {
+const WhyChooseUs = () => {
   return (
     <Container as="section" className="px-17.5 py-37">
       <p className="inline-block py-1 pl-1 pr-2 mb-6 text-sm font-medium text-black border-l-4 border-black bg-[#E8E8E880]">

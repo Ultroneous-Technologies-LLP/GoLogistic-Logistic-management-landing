@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Container from "../common/Container";
 import Button from "../common/Button";
-import { FC } from "react";
 
-const Hero: FC = () => {
+const Hero = () => {
   return (
     <Container className="relative" backgroundClassName="pt-20">
       <Image
