@@ -176,5 +176,30 @@
         "subText": "on meditation’s positive effect on family life"
       }
     ]
+  },
+  "contactSection": {
+    "id": 5,
+    "title": "Contact",
+    "longTitle": "Reach out to us",
+    "description": "Discover agile logistics solutions that redefine strategies and enhance overall value.",
+    "contactDetails": [
+      {
+        "id": 1,
+        "title": "Email",
+        "link": "mailto:contact@logistics.com",
+        "ariaLabel": "Send email to contact@logistics.com"
+      },
+      {
+        "id": 2,
+        "title": "Call Us",
+        "link": "tel:(00)112365489",
+        "ariaLabel": "Call us at (00) 112 365 489"
+      }
+    ],
+    "formButton": {
+      "variant": "contained",
+      "label": "Submit",
+      "ariaLabel": "Submit contact form"
+    }
   }
 }

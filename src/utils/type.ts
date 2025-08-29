@@ -80,6 +80,24 @@ export type testimonialSection = {
   }[];
 };
 
+export type contactSection = {
+  id: number;
+  title: string;
+  longTitle: string;
+  description: string;
+  contactDetails: {
+    id: number;
+    title: string;
+    link: string;
+    ariaLabel: string;
+  }[];
+  formButton: {
+    variant: "contained" | "outlined";
+    label: string;
+    ariaLabel: string;
+  };
+};
+
 export type HomePageData = {
   heroSection: heroSection;
 
@@ -90,4 +108,6 @@ export type HomePageData = {
   ourServicesAndFacilitesSection: ourServicesAndFacilitesSection;
 
   testimonialSection: testimonialSection;
+
+  contactSection: contactSection;
 };

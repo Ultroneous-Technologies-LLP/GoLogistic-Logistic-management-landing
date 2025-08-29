@@ -7,8 +7,6 @@ interface testimonialSectionData {
 }
 
 const Testimonial: FC<testimonialSectionData> = ({ data }) => {
-  console.log({ data });
-
   return (
     <section className="py-36.5">
       <div className="max-w-360 w-full mx-auto pl-17.5 pr-22.5">
