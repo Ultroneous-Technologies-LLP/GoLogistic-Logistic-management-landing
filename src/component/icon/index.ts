@@ -8,6 +8,8 @@ import CustomerCentric from "./CustomerCentric";
 import GlobalReach from "./GlobalReach";
 import Innovation from "./Innovation";
 import Reliability from "./Reliability";
+import LeftArrow from "./LeftArrow";
+import DoubleQuotes from "./DoubleQuotes";
 
 export {
   Logo,
@@ -20,4 +22,6 @@ export {
   GlobalReach,
   Innovation,
   Reliability,
+  LeftArrow,
+  DoubleQuotes,
 };
