@@ -1,8 +1,16 @@
-import Hero from "@/component/home/Hero";
-import OurServicesAndFacilites from "@/component/home/OurServicesAndFacilites";
-import WhyChooseUs from "@/component/home/WhyChooseUs";
+import {
+  Hero,
+  OurServicesAndFacilites,
+  ShipingService,
+  WhyChooseUs,
+} from "@/component/home";
+import data from "@/data.json";
+import { HomePageData } from "@/utils/type";
+import { FC } from "react";
 
-export default function Home() {
+const Home: FC = () => {
+  const pageData = data as HomePageData;
+
   return (
     <>
       <script
@@ -24,11 +32,12 @@ export default function Home() {
           }),
         }}
       />
-      <>
-        <Hero />
-        <WhyChooseUs />
-        <OurServicesAndFacilites />
-      </>
+      <Hero data={pageData.heroSection} />
+      <ShipingService data={pageData.shipingService} />
+      <WhyChooseUs data={pageData.whyChooseUsSection} />
+      <OurServicesAndFacilites data={pageData.ourServicesAndFacilitesSection} />
     </>
   );
-}
+};
+
+export default Home;

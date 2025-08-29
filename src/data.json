@@ -1,0 +1,126 @@
+{
+  "heroSection": {
+    "id": 1,
+    "heading": "Elevate your business with reliable shipping services",
+    "description": "Drive robust business development by expanding top-tier transport services to reach diverse market sectors",
+    "heroButtons": [
+      {
+        "id": 1,
+        "label": "Start Now",
+        "href": "/",
+        "variant": "contained",
+        "ariaLabel": "Get started with shipping services"
+      },
+      {
+        "id": 2,
+        "label": "Learn More",
+        "href": "/",
+        "variant": "outlined",
+        "ariaLabel": "Learn more about logistics services"
+      }
+    ],
+    "backgroundImage": {
+      "src": "/assets/home/hero-background.avif",
+      "alt": "Abstract logistics background"
+    }
+  },
+  "shipingService": {
+    "id": 2,
+    "title": "Shiping Service",
+    "description": "Effective warehousing options for a smooth supply chain and seamless operations.",
+    "shipingServiceImage": {
+      "src": "/assets/home/industrial-container-yard.avif",
+      "alt": "Industrial container yard with shipping containers"
+    }
+  },
+  "whyChooseUsSection": {
+    "id": 3,
+    "title": "Why Choose Us",
+    "longTitle": "We offer comprehensive worldwide logistics solutions.",
+    "description": [
+      {
+        "id": 1,
+        "description": "With a presence in key strategic locations worldwide, we combine global reach with local expertise, ensuring a deep understanding of regional nuances and regulations."
+      },
+      {
+        "id": 2,
+        "description": "Embrace the future of logistics with us. We continuously invest in innovation to bring you cutting-edge solutions that keep your business agile and ready for the challenges of tomorrow."
+      }
+    ],
+    "whyChooseUsfeaturesData": [
+      {
+        "id": 1,
+        "icon": "Reliability",
+        "title": "Reliability",
+        "description": "Our dedication to safe transportation and deliveries on schedule."
+      },
+      {
+        "id": 2,
+        "icon": "GlobalReach",
+        "title": "Global Reach",
+        "description": "Use our global network to broaden your business horizons."
+      },
+      {
+        "id": 3,
+        "icon": "CustomerCentric",
+        "title": "Customer-Centric",
+        "description": "Dedicated team support to address challenges."
+      },
+      {
+        "id": 4,
+        "icon": "Innovation",
+        "title": "Innovation",
+        "description": "Devoted assistance guaranteeing your contentment."
+      }
+    ]
+  },
+  "ourServicesAndFacilitesSection": {
+    "title": "Our Services & Facilities",
+    "longTitle": "Highlight the advantages of opting for our logistics services.",
+    "transportLogistics": {
+      "title": "01 Transport Logistics",
+      "button": {
+        "variant": "outlined",
+        "label": "Consult",
+        "ariaLabel": "Consult about Transport Logistics"
+      },
+      "image": {
+        "alt": "Transport logistics route line illustration",
+        "src": "/assets/home/road-line.avif"
+      }
+    },
+    "cargoTerminal": {
+      "title": "02 Cargo Terminal"
+    },
+    "services": [
+      {
+        "id": "01",
+        "title": "Temporary storage warehouse"
+      },
+      {
+        "id": "02",
+        "title": "Industrial Park Sale and lease of land"
+      },
+      {
+        "id": "03",
+        "title": "Cargo Customs Clearance"
+      },
+      {
+        "id": "04",
+        "title": "Manipulation"
+      },
+      {
+        "id": "05",
+        "title": "Warehouse"
+      },
+      {
+        "id": "06",
+        "title": ""
+      }
+    ],
+    "backgroundImage": {
+      "alt": "Global logistics routes background map",
+      "src": "/assets/home/bg-map.avif"
+    }
+  }
+}
