@@ -2,6 +2,7 @@ import {
   Hero,
   OurServicesAndFacilites,
   ShipingService,
+  Testimonial,
   WhyChooseUs,
 } from "@/component/home";
 import data from "@/data.json";
@@ -32,10 +33,15 @@ const Home: FC = () => {
           }),
         }}
       />
-      <Hero data={pageData.heroSection} />
-      <ShipingService data={pageData.shipingService} />
-      <WhyChooseUs data={pageData.whyChooseUsSection} />
-      <OurServicesAndFacilites data={pageData.ourServicesAndFacilitesSection} />
+      <>
+        <Hero data={pageData.heroSection} />
+        <ShipingService data={pageData.shipingService} />
+        <WhyChooseUs data={pageData.whyChooseUsSection} />
+        <OurServicesAndFacilites
+          data={pageData.ourServicesAndFacilitesSection}
+        />
+        <Testimonial data={pageData.testimonialSection} />
+      </>
     </>
   );
 };
