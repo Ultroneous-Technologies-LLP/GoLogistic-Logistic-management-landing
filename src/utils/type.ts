@@ -69,6 +69,17 @@ export type ourServicesAndFacilitesSection = {
   };
 };
 
+export type testimonialSection = {
+  title: string;
+  longTitle: string;
+  sliderData: {
+    id: number;
+    quote: string;
+    author: string;
+    subText: string;
+  }[];
+};
+
 export type HomePageData = {
   heroSection: heroSection;
 
@@ -77,4 +88,6 @@ export type HomePageData = {
   whyChooseUsSection: whyChooseUsSection;
 
   ourServicesAndFacilitesSection: ourServicesAndFacilitesSection;
+
+  testimonialSection: testimonialSection;
 };

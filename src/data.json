@@ -122,5 +122,59 @@
       "alt": "Global logistics routes background map",
       "src": "/assets/home/bg-map.avif"
     }
+  },
+  "testimonialSection": {
+    "title": "Testimonial",
+    "longTitle": "What Our Customer Say",
+    "sliderData": [
+      {
+        "id": 1,
+        "quote": "Seamless transportation to on-time deliveries, they've proven to be a trusted partner.",
+        "author": "Peter, Belgium",
+        "subText": "on what he learned when sitting with himself"
+      },
+      {
+        "id": 2,
+        "quote": "Their logistics solutions have seamlessly integrated into our operations, making them an invaluable partner.",
+        "author": "Keri, UK",
+        "subText": "on finding her happy place"
+      },
+      {
+        "id": 3,
+        "quote": "Go Logistic have streamlined our supply chain, ensuring timely deliveries and boosting overall operational efficiency.",
+        "author": "Davide, London",
+        "subText": "on using meditation to turn his life around"
+      },
+      {
+        "id": 4,
+        "quote": "Their commitment to precision and reliability in logistics has significantly improved our supply chain operations.",
+        "author": "Rachael, UK",
+        "subText": "on meditation’s positive effect on family life"
+      },
+      {
+        "id": 5,
+        "quote": "Seamless transportation to on-time deliveries, they've proven to be a trusted partner. 5",
+        "author": "Peter, Belgium",
+        "subText": "on what he learned when sitting with himself"
+      },
+      {
+        "id": 6,
+        "quote": "Their logistics solutions have seamlessly integrated into our operations, making them an invaluable partner. 6",
+        "author": "Keri, UK",
+        "subText": "on finding her happy place"
+      },
+      {
+        "id": 7,
+        "quote": "Go Logistic have streamlined our supply chain, ensuring timely deliveries and boosting overall operational efficiency. 7",
+        "author": "Davide, London",
+        "subText": "on using meditation to turn his life around"
+      },
+      {
+        "id": 8,
+        "quote": "Their commitment to precision and reliability in logistics has significantly improved our supply chain operations. 8",
+        "author": "Rachael, UK",
+        "subText": "on meditation’s positive effect on family life"
+      }
+    ]
   }
 }
