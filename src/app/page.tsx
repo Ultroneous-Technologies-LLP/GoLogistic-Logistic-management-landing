@@ -42,7 +42,7 @@ const Home: FC = () => {
           data={pageData.ourServicesAndFacilitesSection}
         />
         <Testimonial data={pageData.testimonialSection} />
-        <Contact />
+        <Contact data={pageData.contactSection} />
       </>
     </>
   );
