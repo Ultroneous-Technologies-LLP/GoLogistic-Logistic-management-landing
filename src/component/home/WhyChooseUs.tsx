@@ -1,7 +1,12 @@
 import Container from "../common/Container";
 import { FC } from "react";
 import whyChooseUsData from "@/data.json";
-import { CustomerCentric, GlobalReach, Innovation, Reliability } from "../icon";
+import {
+  CustomerCentric,
+  GlobalReach,
+  Innovation,
+  Reliability,
+} from "@/component/icon";
 import { whyChooseUsSection } from "@/utils/type";
 
 const iconsMap = {

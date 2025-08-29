@@ -3,6 +3,7 @@ import OurServicesAndFacilites from "./OurServicesAndFacilites";
 import ShipingService from "./ShipingService";
 import WhyChooseUs from "./WhyChooseUs";
 import Testimonial from "./Testimonial";
+import Contact from "./Contact";
 
 export {
   Hero,
@@ -10,4 +11,5 @@ export {
   ShipingService,
   WhyChooseUs,
   Testimonial,
+  Contact,
 };
