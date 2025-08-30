@@ -72,6 +72,10 @@ export type ourServicesAndFacilitesSection = {
 export type testimonialSection = {
   title: string;
   longTitle: string;
+  backgroundImage: {
+    alt: string;
+    src: string;
+  };
   sliderData: {
     id: number;
     quote: string;
@@ -97,6 +101,33 @@ export type contactSection = {
     ariaLabel: string;
   };
 };
+export type blogSection = {
+  title: string;
+  longTitle: string;
+  blogData: {
+    id: number;
+    src: string;
+    alt: string;
+    date: string;
+    title: string;
+    description: string;
+  }[];
+  blogCard: {
+    src: string;
+    alt: string;
+    title: string;
+    description: string;
+    button: {
+      variant: "contained" | "outlined";
+      label: string;
+      ariaLabel: string;
+    };
+  };
+  backgroundImage: {
+    src: string;
+    alt: string;
+  };
+};
 
 export type HomePageData = {
   heroSection: heroSection;
@@ -110,4 +141,6 @@ export type HomePageData = {
   testimonialSection: testimonialSection;
 
   contactSection: contactSection;
+
+  blogSection: blogSection;
 };
