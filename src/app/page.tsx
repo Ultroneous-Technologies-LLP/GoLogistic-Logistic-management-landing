@@ -1,4 +1,5 @@
 import {
+  Contact,
   Hero,
   OurServicesAndFacilites,
   ShipingService,
@@ -41,6 +42,7 @@ const Home: FC = () => {
           data={pageData.ourServicesAndFacilitesSection}
         />
         <Testimonial data={pageData.testimonialSection} />
+        <Contact data={pageData.contactSection} />
       </>
     </>
   );
