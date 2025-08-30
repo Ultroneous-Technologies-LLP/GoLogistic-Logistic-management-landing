@@ -21,7 +21,7 @@
     ],
     "backgroundImage": {
       "src": "/assets/home/hero-background.avif",
-      "alt": "Abstract logistics background"
+      "alt": "Global logistics routes background map"
     }
   },
   "shipingService": {
@@ -120,12 +120,16 @@
     ],
     "backgroundImage": {
       "alt": "Global logistics routes background map",
-      "src": "/assets/home/bg-map.avif"
+      "src": "/assets/home/hero-background.avif"
     }
   },
   "testimonialSection": {
     "title": "Testimonial",
     "longTitle": "What Our Customer Say",
+    "backgroundImage": {
+      "alt": "Abstract logistics background",
+      "src": "/assets/home/hero-background.avif"
+    },
     "sliderData": [
       {
         "id": 1,
@@ -200,6 +204,75 @@
       "variant": "contained",
       "label": "Submit Message",
       "ariaLabel": "Submit contact form"
+    }
+  },
+  "blogSection": {
+    "title": "Our Blog",
+    "longTitle": "Our Latest News",
+    "blogData": [
+      {
+        "id": 1,
+        "src": "/assets/home/ship.avif",
+        "alt": "3D illustration of shipping and logistics",
+        "date": "9 Dec, 2023",
+        "title": "Five items you ought to prepare for your broker",
+        "description": "Comprehensive documentation, detailed product information, compliance details, complete shipping information, and accurate value declarations."
+      },
+      {
+        "id": 2,
+        "src": "/assets/home/port.avif",
+        "alt": "3D illustration of shipping and logistics",
+        "date": "6 Dec, 2023",
+        "title": "GoLogistic launches 10 charter flights",
+        "description": "We are dedicated in creating added value for our customers by implementing modern technology in our work."
+      },
+      {
+        "id": 3,
+        "src": "/assets/home/flight.avif",
+        "alt": "3D illustration of shipping and logistics",
+        "date": "2 Dec, 2023",
+        "title": "Is inland freight a viable option for your company?broker",
+        "description": "Your business's efficient and cost-effective solution for timely and seamless transportation. Choose reliability and flexibility."
+      },
+      {
+        "id": 4,
+        "src": "/assets/home/port.avif",
+        "alt": "3D illustration of shipping and logistics",
+        "date": "6 Dec, 2023",
+        "title": "GoLogistic launches 10 charter flights",
+        "description": "We are dedicated in creating added value for our customers by implementing modern technology in our work."
+      },
+      {
+        "id": 5,
+        "src": "/assets/home/ship.avif",
+        "alt": "3D illustration of shipping and logistics",
+        "date": "9 Dec, 2023",
+        "title": "Five items you ought to prepare for your broker",
+        "description": "Comprehensive documentation, detailed product information, compliance details, complete shipping information, and accurate value declarations."
+      },
+      {
+        "id": 6,
+        "src": "/assets/home/flight.avif",
+        "alt": "3D illustration of shipping and logistics",
+        "date": "2 Dec, 2023",
+        "title": "Is inland freight a viable option for your company?broker",
+        "description": "Your business's efficient and cost-effective solution for timely and seamless transportation. Choose reliability and flexibility."
+      }
+    ],
+    "blogCard": {
+      "src": "/assets/home/shipping-logistics-3d.avif",
+      "alt": "shipping-logistics-3d",
+      "title": "Ready to join the future?",
+      "description": "Leverage agile frameworks to support collaborative thinking and offer a strong strategy summary that advances the overall value proposition.",
+      "button": {
+        "variant": "contained",
+        "label": "Submit Message",
+        "ariaLabel": "Submit Message"
+      }
+    },
+    "backgroundImage": {
+      "alt": "Global logistics routes background map",
+      "src": "/assets/home/hero-background.avif"
     }
   }
 }
