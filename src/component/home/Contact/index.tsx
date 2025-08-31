@@ -27,13 +27,13 @@ const Contact: FC<ContactProps> = ({ data }) => {
       className="py-12.5 px-4 xl:pl-17.5 xl:pr-22.5 xl:py-29 grid grid-cols-1 xl:grid-rows-2 xl:grid-cols-2 gap-x-24"
     >
       <div className="w-full h-fit xl:max-w-132 xl:col-start-1 xl:col-end-2 row-start-1 row-end-2 xl:row-start-1 xl:row-end-2">
-        <h2 className="inline-block py-1 pl-1 pr-2 mb-4 xl:mb-5 text-sm font-medium text-black border-l-4 border-black bg-[#E8E8E880]">
+        <h2 className="inline-block py-1 pl-1 pr-2 mb-4 xl:mb-5 text-sm font-medium text-black border-l-4 border-black bg-platinum/80">
           <span>{data.title}</span>
         </h2>
         <h3 className="pb-2.5 xl:pb-3.5 text-xl/7.5 xl:text-4xl/12.5 font-bold text-black">
           <span>{data.longTitle}</span>
         </h3>
-        <p className="text-sm/4.5 xl:text-[22px]/10 text-[#949494]">
+        <p className="text-sm/4.5 xl:text-22/10 text-spanish-gray">
           <span>{data.description}</span>
         </p>
       </div>
