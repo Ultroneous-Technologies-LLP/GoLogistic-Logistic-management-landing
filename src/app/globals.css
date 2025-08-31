@@ -4,6 +4,9 @@
   --color-black: #000000;
   --color-white: #ffffff;
   --color-light-silver: #d9d9d9;
+  --color-spanish-gray: #949494;
+  --color-platinum: #e8e8e8;
+  --text-22: 22px;
   --font-montserrat: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
