@@ -1,7 +1,14 @@
 import Link from "next/link";
-import Container from "../common/Container";
+import Container from "@/component/common/Container";
 import clsx from "clsx";
-import { Facebook, LinkedIn, Logo, Mail, Phone, Twitter } from "../icon";
+import {
+  Facebook,
+  LinkedIn,
+  Logo,
+  Mail,
+  Phone,
+  Twitter,
+} from "@/component/icon";
 import { footer } from "@/types/layout";
 import { FC } from "react";
 

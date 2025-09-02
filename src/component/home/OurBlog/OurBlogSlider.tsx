@@ -83,10 +83,10 @@ const OurBlogSlider: FC<OurBlogSliderProps> = ({ data }) => {
                   <h4 className="text-base/6 font-semibold">
                     <span>{value.title}</span>
                   </h4>
-                  <p className="text-sm/4.5 text-[#949494] pt-1 pb-4 font-medium">
+                  <p className="text-sm/4.5 text-spanish-gray pt-1 pb-4 font-medium">
                     <span>{value.description}</span>
                   </p>
-                  <span className="text-[10px]/3.5 text-[#949494] block">
+                  <span className="text-10/3.5 text-spanish-gray block">
                     {value.date}
                   </span>
                 </div>
@@ -121,13 +121,13 @@ const OurBlogSlider: FC<OurBlogSliderProps> = ({ data }) => {
                     alt={value.alt}
                     title={value.alt}
                   />
-                  <span className="text-[10px]/3.5 xl:text-sm text-[#949494] block py-4 xl:pt-10.5 xl:pb-5">
+                  <span className="text-10/3.5 xl:text-sm text-spanish-gray block py-4 xl:pt-10.5 xl:pb-5">
                     {value.date}
                   </span>
                   <h4 className="text-base/6 xl:text-2xl/8.5 font-semibold md:line-clamp-2 text-ellipsis xl:line-clamp-none">
                     <span>{value.title}</span>
                   </h4>
-                  <p className="text-sm/4.5 xl:text-base/normal text-[#949494] pt-4 xl:pt-2.5 font-medium md:line-clamp-2 text-ellipsis xl:line-clamp-none">
+                  <p className="text-sm/4.5 xl:text-base/normal text-spanish-gray pt-4 xl:pt-2.5 font-medium md:line-clamp-2 text-ellipsis xl:line-clamp-none">
                     <span>{value.description}</span>
                   </p>
                 </div>

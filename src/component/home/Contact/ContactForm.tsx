@@ -142,7 +142,7 @@ const ContactForm: FC<ContactFormProps> = ({ formButton }) => {
             {label}
           </label>
           <input
-            className="placeholder:text-black w-full py-3 px-6 xl:py-4.5 xl:px-6.5 border border-[#949494] text-lg text-[#949494] focus:outline-0"
+            className="placeholder:text-black w-full py-3 px-6 xl:py-4.5 xl:px-6.5 border border-spanish-gray text-lg text-spanish-gray focus:outline-0"
             placeholder={placeholder}
             id={id}
             name={id}
@@ -162,7 +162,7 @@ const ContactForm: FC<ContactFormProps> = ({ formButton }) => {
           Your Message
         </label>
         <textarea
-          className="placeholder:text-black py-4.5 px-5 border border-[#949494] text-lg text-[#949494] focus:outline-0 w-full"
+          className="placeholder:text-black py-4.5 px-5 border border-spanish-gray text-lg text-spanish-gray focus:outline-0 w-full"
           placeholder="Your Message"
           id="message"
           name="message"
