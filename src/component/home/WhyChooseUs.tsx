@@ -1,4 +1,3 @@
-import Container from "../common/Container";
 import { FC } from "react";
 import whyChooseUsData from "@/data.json";
 import {
@@ -8,6 +7,7 @@ import {
   Reliability,
 } from "@/component/icon";
 import { whyChooseUsSection } from "@/utils/type";
+import { Container, SectionHeading } from "@/component/common";
 
 const iconsMap = {
   Reliability,
@@ -24,9 +24,7 @@ type IconKey = keyof typeof iconsMap;
 const WhyChooseUs: FC<whyChooseUsData> = ({ data }) => {
   return (
     <Container as="section" className="px-4 md:px-6 xl:px-17.5 py-20 xl:py-37">
-      <h2 className="inline-block py-1 pl-1 pr-2 mb-4 xl:mb-6 text-sm font-medium text-black border-l-4 border-black bg-platinum/80">
-        <span>{data.title}</span>
-      </h2>
+      <SectionHeading title={data.title} />
       <div className="flex flex-col md:flex-row justify-between gap-8 md:gap-6 xl:gap-12">
         <div className="max-w-146 w-full">
           <h3 className="pb-2.5 xl:pb-3.5 text-xl/7.5 xl:text-4xl/12.5 font-bold text-black">

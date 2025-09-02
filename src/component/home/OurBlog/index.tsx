@@ -1,9 +1,8 @@
-import Container from "@/component/common/Container";
 import { FC } from "react";
 import OurBlogSlider from "./OurBlogSlider";
 import Image from "next/image";
-import Button from "@/component/common/Button";
 import { blogSection } from "@/utils/type";
+import { Button, Container, SectionHeading } from "@/component/common";
 
 interface OurBlogData {
   data: blogSection;
@@ -13,16 +12,14 @@ const OurBlog: FC<OurBlogData> = ({ data }) => {
   return (
     <Container className="relative pt-20 xl:pt-36.5">
       <div className="px-4 md:px-6 xl:pl-17.5 xl:pr-22.5">
-        <h2 className="inline-block py-1 pl-1 pr-2 mb-4 md:mb-5 text-sm font-medium text-black border-l-4 border-black bg-[#E8E8E880]">
-          <span>{data.title}</span>
-        </h2>
+        <SectionHeading title={data.title} />
       </div>
       <div>
         <OurBlogSlider data={data} />
       </div>
       <div
         className="bg-white p-6 md:p-0 absolute -bottom-8 md:-bottom-21 xl:-bottom-22 left-1/2 -translate-x-1/2 h-fit max-w-78 md:max-w-153.5 xl:max-w-287 w-full mx-auto flex gap-4 xl:gap-17.5 items-center 
-      rounded-[20px] shadow-[0_0_20px_0_#0000001A]"
+      rounded-20 shadow-[0_0_20px_0_#0000001A]"
       >
         <div className="max-w-57.5 xl:max-w-127.5 w-full hidden md:block">
           <Image
@@ -38,7 +35,7 @@ const OurBlog: FC<OurBlogData> = ({ data }) => {
           <h5 className="text-xl/7.5 xl:text-4xl/12.5 font-bold">
             <span>{data.blogCard.title}</span>
           </h5>
-          <p className="text-sm/4.5 xl:text-xl/10 text-[#949494] pt-2.5 pb-4 xl:pt-3.5 xl:pb-10.5">
+          <p className="text-sm/4.5 xl:text-xl/10 text-spanish-gray pt-2.5 pb-4 xl:pt-3.5 xl:pb-10.5">
             <span>{data.blogCard.description}</span>
           </p>
           <div>

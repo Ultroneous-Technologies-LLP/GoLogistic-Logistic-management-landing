@@ -1,9 +1,8 @@
 import { FC } from "react";
-import Container from "../common/Container";
 import Image from "next/image";
-import Button from "../common/Button";
 import clsx from "clsx";
 import { ourServicesAndFacilitiesSection } from "@/utils/type";
+import { Button, Container, SectionHeading } from "@/component/common";
 
 interface OurServicesAndFacilitiesProps {
   data: ourServicesAndFacilitiesSection;
@@ -28,18 +27,13 @@ const OurServicesAndFacilities: FC<OurServicesAndFacilitiesProps> = ({
       <div className="px-4 md:px-6 xl:px-20 xl:pl-20 xl:pr-42 py-12.5 xl:py-42 z-10 relative">
         <div className="flex flex-col xl:flex-row">
           <div className="xl:max-w-133.5 w-full xl:mr-8">
-            <h2
-              id="services-heading"
-              className="inline-block py-1 pl-1 pr-2 mb-4 xl:mb-5 text-sm font-medium border-l-4 border-platinum/80 bg-white"
-            >
-              <span>{data.title}</span>
-            </h2>
+            <SectionHeading title={data.title} variant="white" />
             <p className="pb-8 xl:pb-3.5 text-xl/7.5 xl:text-4xl/12.5 font-bold text-white">
               <span>{data.longTitle}</span>
             </p>
           </div>
           <div className="md:flex md:gap-8">
-            <div className="bg-white rounded-[20px] max-w-91 w-full max-h-86 h-full flex justify-between xl:mr-32">
+            <div className="bg-white rounded-20 max-w-91 w-full max-h-86 h-full flex justify-between xl:mr-32">
               <div className="max-w-43.5 w-full pl-8 py-8 xl:pt-12 xl:pl-9.5 xl:pb-7.5 flex flex-col justify-between">
                 <h3 className="text-2xl/9 xl:text-4xl/12.5 font-semibold text-wrap">
                   <span>{data.transportLogistics.title}</span>

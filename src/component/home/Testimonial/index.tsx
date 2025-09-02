@@ -2,6 +2,7 @@ import { FC } from "react";
 import TestimonialSlider from "./TestimonialSlider";
 import { testimonialSection } from "@/utils/type";
 import Image from "next/image";
+import { SectionHeading } from "@/component/common";
 
 interface testimonialSectionData {
   data: testimonialSection;
@@ -20,9 +21,7 @@ const Testimonial: FC<testimonialSectionData> = ({ data }) => {
         title={data.backgroundImage.alt}
       />
       <div className="max-w-360 w-full mx-auto px-4 md:px-6 xl:pl-17.5 xl:pr-22.5">
-        <h2 className="inline-block py-1 pl-1 pr-2 mb-4 xl:mb-5 text-sm font-medium text-black border-l-4 border-black bg-platinum/80">
-          <span>{data.title}</span>
-        </h2>
+        <SectionHeading title={data.title} />
       </div>
       <TestimonialSlider data={data} />
     </section>
