@@ -3,6 +3,8 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Header from "@/component/layout/Header";
 import Footer from "@/component/layout/Footer";
+import data from "@/content/LayoutData.json";
+import { layoutData } from "@/types/layout";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -66,12 +68,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const layoutData = data as layoutData;
   return (
     <html lang="en">
       <body className={`${montserrat.variable} antialiased`}>
-        <Header />
+        <Header data={layoutData.header} />
         <main>{children}</main>
-        <Footer />
+        <Footer data={layoutData.footer} />
       </body>
     </html>
   );
