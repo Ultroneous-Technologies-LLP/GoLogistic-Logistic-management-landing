@@ -1,0 +1,121 @@
+{
+  "header": {
+    "links": [
+      {
+        "id": 1,
+        "href": "/",
+        "label": "Services",
+        "title": "Explore our Services"
+      },
+      {
+        "id": 2,
+        "href": "/",
+        "label": "Company",
+        "title": "Learn more about our Company"
+      },
+      {
+        "id": 3,
+        "href": "/",
+        "label": "Feature",
+        "title": "Discover our Features"
+      },
+      {
+        "id": 4,
+        "href": "/",
+        "label": "News",
+        "title": "Read our Latest News"
+      },
+      {
+        "id": 5,
+        "href": "/",
+        "title": "Get in touch with us",
+        "label": "Contact"
+      }
+    ],
+    "button": {
+      "href": "/",
+      "variant": "contained",
+      "label": "Get a Quote",
+      "title": "Get in touch with us"
+    }
+  },
+  "footer": {
+    "contact": [
+      {
+        "id": 1,
+        "label": "Email",
+        "href": "mailto:contact@logistics.com",
+        "text": "contact@logistics.com",
+        "Icon": "Mail",
+        "ariaLabel": "Send email to contact@logistics.com",
+        "title": "Send email to contact@logistics.com"
+      },
+      {
+        "id": 2,
+        "label": "Call Us",
+        "href": "tel:(00)112365489",
+        "text": "(00) 112 365 489",
+        "Icon": "Phone",
+        "ariaLabel": "Call us at (00) 112 365 489",
+        "title": "Call us at (00) 112 365 489"
+      }
+    ],
+    "links": [
+      {
+        "id": 1,
+        "title": "Our company",
+        "links": [
+          { "id": 1, "href": "/", "label": "Integration" },
+          { "id": 2, "href": "/", "label": "Shipping Track" },
+          { "id": 3, "href": "/", "label": "International Package" },
+          { "id": 4, "href": "/", "label": "Visualization" },
+          { "id": 5, "href": "/", "label": "Export Product" }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "By Industry",
+        "links": [
+          { "id": 1, "href": "/", "label": "B2B Saas" },
+          { "id": 2, "href": "/", "label": "Marketing agencies" },
+          { "id": 3, "href": "/", "label": "Mobile app" },
+          { "id": 4, "href": "/", "label": "E-commerce" }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Resource",
+        "links": [
+          { "id": 1, "href": "/", "label": "Guide" },
+          { "id": 2, "href": "/", "label": "News" },
+          { "id": 3, "href": "/", "label": "Customer stories" },
+          { "id": 4, "href": "/", "label": "Help center" },
+          { "id": 5, "href": "/", "label": "Contact Us" }
+        ]
+      }
+    ],
+    "footerLegal": {
+      "title": "Copyright © GoLogistc, Inc. All Rights Reserved",
+      "socialsMedia": [
+        {
+          "id": 1,
+          "href": "https://linkedin.com",
+          "Icon": "LinkedIn",
+          "label": "Go to LinkedIn"
+        },
+        {
+          "id": 2,
+          "href": "https://twitter.com",
+          "Icon": "Twitter",
+          "label": "Go to Twitter"
+        },
+        {
+          "id": 3,
+          "href": "https://facebook.com",
+          "Icon": "Facebook",
+          "label": "Go to Facebook"
+        }
+      ]
+    }
+  }
+}
