@@ -41,7 +41,7 @@ export type whyChooseUsSection = {
   }[];
 };
 
-export type ourServicesAndFacilitesSection = {
+export type ourServicesAndFacilitiesSection = {
   title: string;
   longTitle: string;
   transportLogistics: {
@@ -57,6 +57,7 @@ export type ourServicesAndFacilitesSection = {
     };
   };
   cargoTerminal: {
+    number: string;
     title: string;
   };
   services: {
@@ -101,6 +102,7 @@ export type contactSection = {
     ariaLabel: string;
   };
 };
+
 export type blogSection = {
   title: string;
   longTitle: string;
@@ -136,7 +138,7 @@ export type HomePageData = {
 
   whyChooseUsSection: whyChooseUsSection;
 
-  ourServicesAndFacilitesSection: ourServicesAndFacilitesSection;
+  ourServicesAndFacilitiesSection: ourServicesAndFacilitiesSection;
 
   testimonialSection: testimonialSection;
 

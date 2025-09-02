@@ -74,7 +74,7 @@
       }
     ]
   },
-  "ourServicesAndFacilitesSection": {
+  "ourServicesAndFacilitiesSection": {
     "title": "Our Services & Facilities",
     "longTitle": "Highlight the advantages of opting for our logistics services.",
     "transportLogistics": {
@@ -90,7 +90,8 @@
       }
     },
     "cargoTerminal": {
-      "title": "02 Cargo Terminal"
+      "number": "02",
+      "title": "Cargo Terminal"
     },
     "services": [
       {

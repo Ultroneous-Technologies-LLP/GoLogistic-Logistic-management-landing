@@ -1,5 +1,5 @@
 import Hero from "./Hero";
-import OurServicesAndFacilites from "./OurServicesAndFacilites";
+import OurServicesAndFacilities from "./OurServicesAndFacilities";
 import ShipingService from "./ShipingService";
 import WhyChooseUs from "./WhyChooseUs";
 import Testimonial from "./Testimonial";
@@ -8,7 +8,7 @@ import OurBlog from "./OurBlog";
 
 export {
   Hero,
-  OurServicesAndFacilites,
+  OurServicesAndFacilities,
   ShipingService,
   WhyChooseUs,
   Testimonial,
