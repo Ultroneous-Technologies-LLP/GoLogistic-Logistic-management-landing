@@ -24,14 +24,33 @@
       "alt": "Global logistics routes background map"
     }
   },
-  "shipingService": {
+  "shippingService": {
     "id": 2,
     "title": "Shiping Service",
     "description": "Effective warehousing options for a smooth supply chain and seamless operations.",
-    "shipingServiceImage": {
-      "src": "/assets/home/industrial-container-yard.avif",
-      "alt": "Industrial container yard with shipping containers"
-    }
+    "shippingServiceImage": [
+      {
+        "id": 1,
+        "alt": "Global logistics with cargo ship, airplane, and container yard at sunset ",
+        "desktopSrc": "/assets/home/international-logistics-air-sea-cargo.avif",
+        "tabletSrc": "/assets/home/international-logistics-air-sea-cargo-tab.avif",
+        "mobileSrc": "/assets/home/international-logistics-air-sea-cargo-mobile.avif"
+      },
+      {
+        "id": 2,
+        "alt": "erial view of cargo ships, containers, and cranes at an international shipping port",
+        "desktopSrc": "/assets/home/global-shipping-aerial-container-port.avif",
+        "tabletSrc": "/assets/home/global-shipping-aerial-container-port-tab.avif",
+        "mobileSrc": "/assets/home/global-shipping-aerial-container-port-mobile.avif"
+      },
+      {
+        "id": 3,
+        "alt": "A Cargo trucks and shipping containers at a logistics port",
+        "desktopSrc": "/assets/home/industrial-container-yard.avif",
+        "tabletSrc": "/assets/home/industrial-container-yard-tab.avif",
+        "mobileSrc": "/assets/home/industrial-container-yard-mobile.avif"
+      }
+    ]
   },
   "whyChooseUsSection": {
     "id": 3,

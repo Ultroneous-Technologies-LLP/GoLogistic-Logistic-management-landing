@@ -3,7 +3,7 @@ import {
   Hero,
   OurBlog,
   OurServicesAndFacilities,
-  ShipingService,
+  ShippingService,
   Testimonial,
   WhyChooseUs,
 } from "@/component/home";
@@ -37,7 +37,7 @@ const Home: FC = () => {
       />
       <>
         <Hero data={pageData.heroSection} />
-        <ShipingService data={pageData.shipingService} />
+        <ShippingService data={pageData.shippingService} />
         <WhyChooseUs data={pageData.whyChooseUsSection} />
         <OurServicesAndFacilities
           data={pageData.ourServicesAndFacilitiesSection}
