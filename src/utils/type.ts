@@ -15,14 +15,17 @@ export type heroSection = {
   };
 };
 
-export type shipingService = {
+export type shippingService = {
   id: number;
   title: string;
   description: string;
-  shipingServiceImage: {
-    src: string;
+  shippingServiceImage: {
+    id: number;
     alt: string;
-  };
+    desktopSrc: string;
+    tabletSrc: string;
+    mobileSrc: string;
+  }[];
 };
 
 export type whyChooseUsSection = {
@@ -134,7 +137,7 @@ export type blogSection = {
 export type HomePageData = {
   heroSection: heroSection;
 
-  shipingService: shipingService;
+  shippingService: shippingService;
 
   whyChooseUsSection: whyChooseUsSection;
 
