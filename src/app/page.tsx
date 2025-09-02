@@ -2,7 +2,7 @@ import {
   Contact,
   Hero,
   OurBlog,
-  OurServicesAndFacilites,
+  OurServicesAndFacilities,
   ShipingService,
   Testimonial,
   WhyChooseUs,
@@ -39,8 +39,8 @@ const Home: FC = () => {
         <Hero data={pageData.heroSection} />
         <ShipingService data={pageData.shipingService} />
         <WhyChooseUs data={pageData.whyChooseUsSection} />
-        <OurServicesAndFacilites
-          data={pageData.ourServicesAndFacilitesSection}
+        <OurServicesAndFacilities
+          data={pageData.ourServicesAndFacilitiesSection}
         />
         <Testimonial data={pageData.testimonialSection} />
         <Contact data={pageData.contactSection} />
