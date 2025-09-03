@@ -47,7 +47,7 @@ const Contact: FC<ContactProps> = ({ data }) => {
             <div className="size-14 xl:size-16 bg-[#DEDEDE] rounded-full flex justify-center items-center">
               {getIcon(title)}
             </div>
-            <div className="font-bold text-base/snug text-black">
+            <div className="font-medium text-base/snug text-black">
               <p>
                 <span>{title}</span>
               </p>
