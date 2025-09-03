@@ -32,8 +32,8 @@ const OurServicesAndFacilities: FC<OurServicesAndFacilitiesProps> = ({
               <span>{data.longTitle}</span>
             </p>
           </div>
-          <div className="md:flex md:gap-8">
-            <div className="bg-white rounded-20 max-w-91 w-full max-h-86 h-full flex justify-between xl:mr-32">
+          <div className="md:flex md:gap-8 xl:gap-0">
+            <div className="bg-white rounded-20 max-w-91 w-full max-h-86 h-full flex justify-between xl:mr-28">
               <div className="max-w-43.5 w-full pl-8 py-8 xl:pt-12 xl:pl-9.5 xl:pb-7.5 flex flex-col justify-between">
                 <h3 className="text-2xl/9 xl:text-4xl/12.5 font-semibold text-wrap">
                   <span>{data.transportLogistics.title}</span>

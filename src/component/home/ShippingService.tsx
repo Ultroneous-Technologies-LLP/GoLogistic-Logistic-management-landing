@@ -8,11 +8,13 @@ const settings = {
   dots: true,
   arrows: false,
   infinite: true,
-  speed: 500,
+  speed: 800,
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 3000,
+  autoplaySpeed: 5000,
+  fade: true, // 👈 enables fade animation
+  cssEase: "linear",
   customPaging: () => (
     <div className="w-5 xl:w-7 h-2 rounded-full bg-white opacity-50 transition-all duration-300 cursor-pointer" />
   ),
