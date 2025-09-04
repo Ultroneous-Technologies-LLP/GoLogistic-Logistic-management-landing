@@ -1,8 +1,8 @@
 import { FC } from "react";
 import TestimonialSlider from "./TestimonialSlider";
-import { testimonialSection } from "@/utils/type";
+import { testimonialSection } from "@/types/home-page-types";
 import Image from "next/image";
-import { SectionHeading } from "@/component/common";
+import { Container, SectionHeading } from "@/component/common";
 
 interface testimonialSectionData {
   data: testimonialSection;
@@ -10,7 +10,10 @@ interface testimonialSectionData {
 
 const Testimonial: FC<testimonialSectionData> = ({ data }) => {
   return (
-    <section className="py-20 md:pb-35.5 xl:py-36.5 relative">
+    <Container
+      id="testimonial"
+      className="py-20 md:pb-35.5 xl:py-36.5 relative"
+    >
       <Image
         src={data.backgroundImage.src}
         alt={data.backgroundImage.alt}
@@ -24,7 +27,7 @@ const Testimonial: FC<testimonialSectionData> = ({ data }) => {
         <SectionHeading title={data.title} />
       </div>
       <TestimonialSlider data={data} />
-    </section>
+    </Container>
   );
 };
 

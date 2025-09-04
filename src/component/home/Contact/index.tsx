@@ -2,7 +2,7 @@ import { Mail, Phone } from "@/component/icon";
 import Link from "next/link";
 import ContactForm from "./ContactForm";
 import { FC } from "react";
-import { contactSection } from "@/utils/type";
+import { contactSection } from "@/types/home-page-types";
 import { Container, SectionHeading } from "@/component/common";
 
 interface ContactProps {
@@ -23,8 +23,9 @@ const getIcon = (title: string) => {
 const Contact: FC<ContactProps> = ({ data }) => {
   return (
     <Container
-      backgroundClassName="bg-[#f5f5f5] md:mx-6 xl:mx-0"
-      className="py-12.5 px-4 xl:pl-17.5 xl:pr-22.5 xl:py-29 grid grid-cols-1 xl:grid-rows-2 xl:grid-cols-2 gap-x-24"
+      id="contact"
+      backgroundClassName="bg-[#f5f5f5] md:mx-6 xl:mx-0 scroll-mt-20"
+      className="py-12.5 px-4 xl:px-17.5 xl:py-29 grid grid-cols-1 xl:grid-rows-2 xl:grid-cols-2 gap-x-24"
     >
       <div className="w-full h-fit xl:max-w-132 xl:col-start-1 xl:col-end-2 row-start-1 row-end-2 xl:row-start-1 xl:row-end-2">
         <SectionHeading title={data.title} />

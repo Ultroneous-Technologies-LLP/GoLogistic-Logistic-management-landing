@@ -2,7 +2,7 @@
 import useIsMobile from "@/app/hooks/useIsMobile";
 import Button from "@/component/common/Button";
 import { LeftArrow } from "@/component/icon";
-import { blogSection } from "@/utils/type";
+import { blogSection } from "@/types/home-page-types";
 import Image from "next/image";
 import { FC, useRef, useState } from "react";
 import Slider from "react-slick";
@@ -69,7 +69,7 @@ const OurBlogSlider: FC<OurBlogSliderProps> = ({ data }) => {
           <div className="px-4 space-y-8">
             {visibleBlogs.map((value) => (
               <div key={value.id} className="flex gap-4">
-                <div className="max-w-[30%] w-full">
+                <div className="max-w-[30%] w-full bg-black/40 hover:bg-transparent">
                   <Image
                     src={value.src}
                     width={411}
@@ -114,13 +114,17 @@ const OurBlogSlider: FC<OurBlogSliderProps> = ({ data }) => {
             <Slider {...settings} ref={sliderRef}>
               {visibleBlogs.map((value) => (
                 <div key={value.id}>
-                  <Image
-                    src={value.src}
-                    width={411}
-                    height={447}
-                    alt={value.alt}
-                    title={value.alt}
-                  />
+                  <div className="relative group">
+                    <Image
+                      src={value.src}
+                      width={411}
+                      height={447}
+                      alt={value.alt}
+                      title={value.alt}
+                      className="relative -z-10"
+                    />
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-opacity duration-300 z-10 rounded-20" />
+                  </div>
                   <span className="text-10/3.5 xl:text-sm text-spanish-gray block py-4 xl:pt-10.5 xl:pb-5">
                     {value.date}
                   </span>

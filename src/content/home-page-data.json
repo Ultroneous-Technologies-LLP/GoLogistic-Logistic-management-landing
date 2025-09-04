@@ -7,7 +7,7 @@
       {
         "id": 1,
         "label": "Start Now",
-        "href": "/",
+        "href": "/#contact",
         "variant": "contained",
         "ariaLabel": "Get started with shipping services"
       },
@@ -96,46 +96,54 @@
   "ourServicesAndFacilitiesSection": {
     "title": "Our Services & Facilities",
     "longTitle": "Highlight the advantages of opting for our logistics services.",
-    "transportLogistics": {
-      "title": "01 Transport Logistics",
-      "button": {
-        "variant": "outlined",
-        "label": "Consult",
-        "ariaLabel": "Consult about Transport Logistics"
-      },
-      "image": {
-        "alt": "Transport logistics route line illustration",
-        "src": "/assets/home/road-line.avif"
-      }
-    },
-    "cargoTerminal": {
-      "number": "02",
-      "title": "Cargo Terminal"
+    "button": {
+      "variant": "outlined",
+      "label": "Consult",
+      "ariaLabel": "Consult about Transport Logistics",
+      "href": "/#contact"
     },
     "services": [
       {
         "id": "01",
-        "title": "Temporary storage warehouse"
+        "title": "Transport Logistics",
+        "alt": "Transport logistics route line illustration",
+        "src": "/assets/home/road-line.avif"
       },
       {
         "id": "02",
-        "title": "Industrial Park Sale and lease of land"
+        "title": "Cargo Terminal",
+        "alt": "Cargo Terminal illustration",
+        "src": "/assets/home/cargo-terminal.svg"
       },
       {
         "id": "03",
-        "title": "Cargo Customs Clearance"
+        "title": "Temporary storage warehouse",
+        "src": "/assets/home/temporary-storage-warehouse.svg",
+        "alt": "temporary-storage-warehouse"
       },
       {
         "id": "04",
-        "title": "Manipulation"
+        "title": "Industrial Park Sale and lease of land",
+        "src": "/assets/home/industrial-park-sale.svg",
+        "alt": "industrial-park-sale"
       },
       {
         "id": "05",
-        "title": "Warehouse"
+        "title": "Cargo Customs Clearance",
+        "src": "/assets/home/cargo-customs.svg",
+        "alt": "cargo-customs"
       },
       {
         "id": "06",
-        "title": ""
+        "title": "Manipulation",
+        "src": "/assets/home/manipulation.svg",
+        "alt": "manipulation"
+      },
+      {
+        "id": "07",
+        "title": "Warehouse",
+        "src": "/assets/home/warehouse.svg",
+        "alt": "warehouse"
       }
     ],
     "backgroundImage": {
@@ -153,49 +161,49 @@
     "sliderData": [
       {
         "id": 1,
-        "quote": "Seamless transportation to on-time deliveries, they've proven to be a trusted partner.",
+        "quote": "Seamless transportation and reliable on-time deliveries have consistently proven them to be a truly trusted partner.",
         "author": "Peter, Belgium",
         "subText": "on what he learned when sitting with himself"
       },
       {
         "id": 2,
-        "quote": "Their logistics solutions have seamlessly integrated into our operations, making them an invaluable partner.",
+        "quote": "Their logistics solutions integrate seamlessly into our operations, making them not just helpful but an invaluable partner.",
         "author": "Keri, UK",
         "subText": "on finding her happy place"
       },
       {
         "id": 3,
-        "quote": "Go Logistic have streamlined our supply chain, ensuring timely deliveries and boosting overall operational efficiency.",
+        "quote": "Go Logistic streamlined our supply chain, ensured every delivery arrived on time, and boosted efficiency across operations.",
         "author": "Davide, London",
         "subText": "on using meditation to turn his life around"
       },
       {
         "id": 4,
-        "quote": "Their commitment to precision and reliability in logistics has significantly improved our supply chain operations.",
+        "quote": "Their commitment to precision and reliability in logistics has strengthened our supply chain and improved overall efficiency",
         "author": "Rachael, UK",
         "subText": "on meditation’s positive effect on family life"
       },
       {
         "id": 5,
-        "quote": "Seamless transportation to on-time deliveries, they've proven to be a trusted partner. 5",
+        "quote": "Seamless transportation and reliable on-time deliveries have consistently proven them to be a truly trusted partner.",
         "author": "Peter, Belgium",
         "subText": "on what he learned when sitting with himself"
       },
       {
         "id": 6,
-        "quote": "Their logistics solutions have seamlessly integrated into our operations, making them an invaluable partner. 6",
+        "quote": "Their logistics solutions integrate seamlessly into our operations, making them not just helpful but an invaluable partner.",
         "author": "Keri, UK",
         "subText": "on finding her happy place"
       },
       {
         "id": 7,
-        "quote": "Go Logistic have streamlined our supply chain, ensuring timely deliveries and boosting overall operational efficiency. 7",
+        "quote": "Go Logistic streamlined our supply chain, ensured every delivery arrived on time, and boosted efficiency across operations.",
         "author": "Davide, London",
         "subText": "on using meditation to turn his life around"
       },
       {
         "id": 8,
-        "quote": "Their commitment to precision and reliability in logistics has significantly improved our supply chain operations. 8",
+        "quote": "Their precision and commitment to reliability in logistics have greatly strengthened and improved our entire supply chain.",
         "author": "Rachael, UK",
         "subText": "on meditation’s positive effect on family life"
       }

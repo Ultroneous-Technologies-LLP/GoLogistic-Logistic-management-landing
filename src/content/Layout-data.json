@@ -3,40 +3,40 @@
     "links": [
       {
         "id": 1,
-        "href": "/",
-        "label": "Services",
-        "title": "Explore our Services"
+        "href": "/#why-choose-us",
+        "label": "Why Choose Us",
+        "title": "Learn why clients choose us"
       },
       {
         "id": 2,
-        "href": "/",
-        "label": "Company",
-        "title": "Learn more about our Company"
+        "href": "/#services",
+        "label": "Services",
+        "title": "Explore our Services and Facilities"
       },
       {
         "id": 3,
-        "href": "/",
-        "label": "Feature",
-        "title": "Discover our Features"
+        "href": "/#testimonial",
+        "label": "Reviews",
+        "title": "See what our clients say"
       },
       {
         "id": 4,
-        "href": "/",
-        "label": "News",
-        "title": "Read our Latest News"
+        "href": "/#blog",
+        "label": "Blog",
+        "title": "Read our Latest Blog"
       },
       {
         "id": 5,
-        "href": "/",
-        "title": "Get in touch with us",
-        "label": "Contact"
+        "href": "/#contact",
+        "label": "Contact",
+        "title": "Get in touch with us"
       }
     ],
     "button": {
-      "href": "/",
+      "href": "/#contact",
       "variant": "contained",
       "label": "Get a Quote",
-      "title": "Get in touch with us"
+      "title": "Get a personalized quote"
     }
   },
   "footer": {

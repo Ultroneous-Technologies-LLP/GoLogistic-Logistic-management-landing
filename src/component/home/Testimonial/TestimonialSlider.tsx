@@ -82,7 +82,7 @@ const TestimonialSlider: FC<TestimonialSliderData> = ({ data }) => {
           </button>
         </div>
       </div>
-      <div className="max-w-480 mx-auto w-full overflow-x-hidden [&_.slick-track]:flex [&_.slick-track]:gap-6 [&_.slick-slide]:w-84 [&_.slick-slide]:!inline-flex [&_.slick-slide]:h-auto [&_.slick-slide]:min-h-px [&_.slick-slide]:opacity-40 [&_.slick-slide]:transition-opacity [&_.slick-current]:!opacity-100 [&_.slick-current]:!mt-5">
+      <div className="max-w-480 mx-auto w-full overflow-x-hidden [&_.slick-track]:flex [&_.slick-track]:gap-6 [&_.slick-slide]:w-84 [&_.slick-slide]:!inline-flex [&_.slick-slide]:h-auto [&_.slick-slide]:min-h-px [&_.slick-slide]:opacity-40 [&_.slick-slide]:transition-opacity [&_.slick-current]:!opacity-100">
         <Slider {...settings} ref={sliderRef}>
           {data.sliderData.map((item) => (
             <div

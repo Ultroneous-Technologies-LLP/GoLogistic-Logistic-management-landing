@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FC } from "react";
-import { heroSection } from "@/utils/type";
+import { heroSection } from "@/types/home-page-types";
 import { Button, Container } from "@/component/common";
 
 interface heroSectionData {
@@ -19,7 +19,7 @@ const Hero: FC<heroSectionData> = ({ data }) => {
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1440px"
         title={data.backgroundImage.alt}
       />
-      <div className="flex flex-col md:flex-row md:items-center xl:items-start px-4 md:px-6 xl:px-17.5 gap-2 md:gap-4 xl:gap-11.5 xl:pt-37.5 pb-35 md:pb-19 xl:pb-31.5">
+      <div className="flex flex-col md:flex-row md:items-center xl:items-start px-4 md:px-6 xl:px-17.5 gap-2 md:gap-4 xl:gap-11.5 xl:pt-37.5 pb-20 md:pb-19 xl:pb-31.5">
         <h1 className="text-2xl/9 md:text-4xl/13.5 xl:text-5xl xl:leading-16 font-semibold max-w-102.5 xl:max-w-143.5 w-full">
           <span>{data.heading}</span>
         </h1>

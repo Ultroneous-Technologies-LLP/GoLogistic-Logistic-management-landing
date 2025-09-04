@@ -1,7 +1,7 @@
 "use client";
 import React, { FC } from "react";
 import Container from "@/component/common/Container";
-import { shippingService } from "@/utils/type";
+import { shippingService } from "@/types/home-page-types";
 import Slider from "react-slick";
 
 const settings = {

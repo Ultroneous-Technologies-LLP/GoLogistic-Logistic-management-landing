@@ -47,25 +47,17 @@ export type whyChooseUsSection = {
 export type ourServicesAndFacilitiesSection = {
   title: string;
   longTitle: string;
-  transportLogistics: {
-    title: string;
-    button: {
-      variant: "contained" | "outlined";
-      label: string;
-      ariaLabel: string;
-    };
-    image: {
-      alt: string;
-      src: string;
-    };
-  };
-  cargoTerminal: {
-    number: string;
-    title: string;
+  button: {
+    variant: "contained" | "outlined";
+    label: string;
+    ariaLabel: string;
+    href: string;
   };
   services: {
     id: string;
     title: string;
+    alt: string;
+    src: string;
   }[];
   backgroundImage: {
     alt: string;
