@@ -40,7 +40,7 @@ const Footer: FC<FooterProps> = ({ data }) => {
             const Icon = iconMap[value.Icon];
             return (
               <div
-                className="pb-6.5 md:pb-0 xl:pb-8 md:max-w-60 md:w-full"
+                className="pb-6.5 md:pb-0 xl:pb-8 last:pb-0 md:max-w-60 md:w-full"
                 key={value.id}
               >
                 <address className="flex justify-center md:justify-start items-center gap-8 not-italic text-center md:text-start">
@@ -100,7 +100,7 @@ const Footer: FC<FooterProps> = ({ data }) => {
           ))}
         </div>
       </div>
-      <div className="pt-8 xl:pt-3.5 xl:pr-17.5 flex flex-col md:flex-row gap-4 justify-between xl:items-center">
+      <div className="pt-8 xl:pt-3.5 xl:pr-11.5 flex flex-col md:flex-row gap-4 justify-between xl:items-center">
         <p className="text-center xl:text-start text-white text-10/3.5 md:text-sm/4.5 xl:text-base xl:leading-[2.5] inline-block">
           <span lang="en">{data.footerLegal.title}</span>
         </p>

@@ -3,7 +3,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Header from "@/component/layout/Header";
 import Footer from "@/component/layout/Footer";
-import data from "@/content/LayoutData.json";
+import data from "@/content/Layout-data.json";
 import { layoutData } from "@/types/layout";
 
 const montserrat = Montserrat({
@@ -58,8 +58,34 @@ export const metadata: Metadata = {
       { url: "/favicon.ico", sizes: "any" },
       { url: "/favicon.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon.png", sizes: "16x16", type: "image/png" },
+
+      // Dark mode versions
+      {
+        url: "/favicon-dark.ico",
+        sizes: "any",
+        media: "(prefers-color-scheme: dark)",
+      },
+      {
+        url: "/favicon-dark.png",
+        sizes: "32x32",
+        type: "image/png",
+        media: "(prefers-color-scheme: dark)",
+      },
+      {
+        url: "/favicon-dark.png",
+        sizes: "16x16",
+        type: "image/png",
+        media: "(prefers-color-scheme: dark)",
+      },
     ],
-    apple: [{ url: "/favicon.png", sizes: "180x180" }],
+    apple: [
+      { url: "/favicon.png", sizes: "180x180" },
+      {
+        url: "/favicon-dark.png",
+        sizes: "180x180",
+        media: "(prefers-color-scheme: dark)",
+      },
+    ],
   },
 };
 
@@ -70,7 +96,7 @@ export default function RootLayout({
 }>) {
   const layoutData = data as layoutData;
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className={`${montserrat.variable} antialiased`}>
         <Header data={layoutData.header} />
         <main>{children}</main>

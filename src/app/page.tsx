@@ -7,8 +7,8 @@ import {
   Testimonial,
   WhyChooseUs,
 } from "@/component/home";
-import data from "@/data.json";
-import { HomePageData } from "@/utils/type";
+import data from "@/content/home-page-data.json";
+import { HomePageData } from "@/types/home-page-types";
 import { FC } from "react";
 
 const Home: FC = () => {

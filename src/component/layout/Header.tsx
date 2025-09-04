@@ -5,6 +5,7 @@ import { header } from "@/types/layout";
 import { FC, useEffect, useState } from "react";
 import { Logo } from "@/component/icon";
 import { Button, Container } from "@/component/common";
+import useIsMobile from "@/app/hooks/useIsMobile";
 
 interface HeaderProps {
   data: header;
@@ -12,6 +13,8 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleResize = () => {
@@ -24,8 +27,11 @@ const Header: FC<HeaderProps> = ({ data }) => {
   }, []);
 
   return (
-    <nav className="w-full pt-8.5 pb-4 px-6 xl:px-17.5 fixed top-0 left-0 z-50 bg-white">
-      <Container as="header" className="relative z-50">
+    <nav className="w-full fixed top-0 left-0 z-50 bg-white">
+      <Container
+        as="header"
+        className="relative z-50 pt-8.5 pb-4 px-6 xl:px-17.5"
+      >
         <section className="flex items-center justify-between w-full">
           <Logo
             className="fill-black max-w-28 max-h-6 md:max-w-33 md:max-h-7.5 xl:max-w-39 xl:max-h-8.5 w-full"
@@ -82,33 +88,35 @@ const Header: FC<HeaderProps> = ({ data }) => {
           </button>
         </section>
       </Container>
-      <div
-        className={`fixed top-18.5 inset-0 bg-white z-40 flex flex-col items-center justify-center gap-8 text-lg font-medium transform transition-transform duration-500 ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        {data.links.map((value) => (
-          <Link
-            href={value.href}
-            title={value.title}
-            rel="nofollow"
-            key={value.id}
+      {isMobile && (
+        <div
+          className={`fixed top-18.5 inset-0 bg-white z-40 flex flex-col items-center justify-center gap-8 text-lg font-medium transform transition-transform duration-500 ${
+            isOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          {data.links.map((value) => (
+            <Link
+              href={value.href}
+              title={value.title}
+              rel="nofollow"
+              key={value.id}
+              onClick={() => setIsOpen(false)}
+            >
+              <span>{value.label}</span>
+            </Link>
+          ))}
+          <Button
+            as="link"
+            href={data.button.href}
+            variant={data.button.variant}
+            className="py-3 px-6 rounded-lg !w-fit"
+            title={data.button.title}
             onClick={() => setIsOpen(false)}
           >
-            <span>{value.label}</span>
-          </Link>
-        ))}
-        <Button
-          as="link"
-          href={data.button.href}
-          variant={data.button.variant}
-          className="py-3 px-6 rounded-lg !w-fit"
-          title={data.button.title}
-          onClick={() => setIsOpen(false)}
-        >
-          {data.button.label}
-        </Button>
-      </div>
+            {data.button.label}
+          </Button>
+        </div>
+      )}
     </nav>
   );
 };

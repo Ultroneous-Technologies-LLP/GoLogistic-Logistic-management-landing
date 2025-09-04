@@ -6,7 +6,7 @@ import {
   Innovation,
   Reliability,
 } from "@/component/icon";
-import { whyChooseUsSection } from "@/utils/type";
+import { whyChooseUsSection } from "@/types/home-page-types";
 import { Container, SectionHeading } from "@/component/common";
 
 const iconsMap = {
@@ -23,7 +23,10 @@ type IconKey = keyof typeof iconsMap;
 
 const WhyChooseUs: FC<whyChooseUsData> = ({ data }) => {
   return (
-    <Container as="section" className="px-4 md:px-6 xl:px-17.5 py-20 xl:py-37">
+    <Container
+      id="why-choose-us"
+      className="px-4 md:px-6 xl:px-17.5 py-20 xl:py-37"
+    >
       <SectionHeading title={data.title} />
       <div className="flex flex-col md:flex-row justify-between gap-8 md:gap-6 xl:gap-12">
         <div className="max-w-146 w-full">

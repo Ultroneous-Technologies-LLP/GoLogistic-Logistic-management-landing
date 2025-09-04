@@ -1,7 +1,7 @@
 import { FC } from "react";
 import OurBlogSlider from "./OurBlogSlider";
 import Image from "next/image";
-import { blogSection } from "@/utils/type";
+import { blogSection } from "@/types/home-page-types";
 import { Button, Container, SectionHeading } from "@/component/common";
 
 interface OurBlogData {
@@ -10,7 +10,7 @@ interface OurBlogData {
 
 const OurBlog: FC<OurBlogData> = ({ data }) => {
   return (
-    <Container className="relative pt-20 xl:pt-36.5">
+    <Container id="blog" className="relative pt-20 xl:pt-36.5">
       <div className="px-4 md:px-6 xl:pl-17.5 xl:pr-22.5">
         <SectionHeading title={data.title} />
       </div>
