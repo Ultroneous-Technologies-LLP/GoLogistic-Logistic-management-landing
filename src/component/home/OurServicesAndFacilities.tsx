@@ -17,7 +17,7 @@ const OurServicesAndFacilities: FC<OurServicesAndFacilitiesProps> = ({
 
   const handleActivate = (index: number) => {
     if (isMobile) {
-      setActiveIndex(index); // mobile → onClick
+      setActiveIndex(index);
     }
   };
   return (
@@ -48,29 +48,32 @@ const OurServicesAndFacilities: FC<OurServicesAndFacilitiesProps> = ({
               return (
                 <div
                   className={clsx(
-                    "rounded-20 w-full h-85 flex gap-5 justify-between max-w-91 mx-auto xl:ml-0 xl:mr-auto overflow-hidden",
-                    "transition-colors duration-500", // background fade
+                    "rounded-20 w-full flex gap-5 justify-between max-w-91 mx-auto xl:ml-0 xl:mr-auto overflow-hidden",
+                    "transition-all duration-700 ease-in-out",
                     isActive
-                      ? "bg-white text-black"
-                      : "bg-transparent text-white"
+                      ? "bg-white text-black h-85"
+                      : "bg-transparent text-white h-50"
                   )}
                   key={value.id}
                   onMouseEnter={
                     !isMobile ? () => setActiveIndex(index) : undefined
+                  }
+                  onMouseLeave={
+                    !isMobile ? () => setActiveIndex(-1) : undefined
                   }
                   onClick={isMobile ? () => handleActivate(index) : undefined}
                 >
                   <div className="max-w-55 w-full pl-8 py-8 xl:pt-10 xl:pl-9.5 xl:pb-7.5 flex flex-col justify-between break-words">
                     <h3 className="text-2xl/9 font-semibold flex flex-col">
                       {index + 1} <br />
-                      <span className="line-clamp-2">{value.title}</span>
+                      <span>{value.title}</span>
                     </h3>
                     <div
                       className={clsx(
-                        "transition-all duration-500 delay-200", // appear slightly after bg
+                        "transition-all duration-700",
                         isActive
-                          ? "opacity-100 translate-y-0"
-                          : "opacity-0 translate-y-2"
+                          ? "opacity-100 translate-y-0 delay-200"
+                          : "opacity-0 translate-y-2 delay-0 pointer-events-none"
                       )}
                     >
                       <Button
@@ -86,10 +89,10 @@ const OurServicesAndFacilities: FC<OurServicesAndFacilitiesProps> = ({
                   </div>
                   <div
                     className={clsx(
-                      "max-w-27 -mr-2.5 transition-all duration-500 delay-300", // appear after button
+                      "max-w-27 -mr-2.5 transition-all duration-700",
                       isActive
-                        ? "opacity-100 translate-x-0"
-                        : "opacity-0 translate-x-2"
+                        ? "opacity-100 translate-x-0 delay-300"
+                        : "opacity-0 translate-x-2 delay-0 pointer-events-none"
                     )}
                   >
                     <Image

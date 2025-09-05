@@ -9,7 +9,7 @@ interface heroSectionData {
 
 const Hero: FC<heroSectionData> = ({ data }) => {
   return (
-    <Container className="relative" backgroundClassName="pt-20">
+    <Container className="relative" backgroundClassName="pt-20" id="home">
       <Image
         src={data.backgroundImage.src}
         alt={data.backgroundImage.alt}

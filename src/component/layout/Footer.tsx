@@ -28,9 +28,10 @@ const Footer: FC<FooterProps> = ({ data }) => {
   return (
     <Container
       backgroundClassName="bg-black"
-      className="pt-19 pb-12.5 px-4 md:pt-37 md:px-6 xl:pt-48.5 xl:pb-5 xl:pl-17.5"
+      className="pt-19 pb-12.5 px-4 md:pt-37 md:px-6 xl:pt-48.5 xl:pb-5 xl:pl-17.5 relative"
       as="footer"
     >
+      <div className="bg-white/10 max-w-12 h-29 w-full absolute -left-2.5 xl:block hidden" />
       <div className="w-full pb-12 border-b border-white grid grid-cols-1 auto-rows-auto xl:grid-rows-1 justify-between">
         <div className="row-start-1 row-end-2 col-start-1 col-end-2 xl:pt-11 flex justify-center md:justify-start">
           <Logo className="text-white" />

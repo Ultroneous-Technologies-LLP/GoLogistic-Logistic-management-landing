@@ -6,36 +6,55 @@ import Footer from "@/component/layout/Footer";
 import data from "@/content/Layout-data.json";
 import { layoutData } from "@/types/layout";
 
-const montserrat = Montserrat({
+export const montserrat400 = Montserrat({
+  variable: "--font-montserrat-400",
+  subsets: ["latin"],
+  weight: ["400"], 
+  preload: true,
+});
+
+export const montserrat600 = Montserrat({
+  variable: "--font-montserrat-600",
+  subsets: ["latin"],
+  weight: ["600"],
+  preload: true,
+});
+
+export const montserratRest = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "700"], 
+  preload: false,
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.gologistic.example"),
   title: {
-    default: "GoLogistic – Logistics Management & Shipping Services",
+    default:
+      "Logistics & Transport Website Landing Page – Shipping, Delivery & Supply Chain UI",
     template: "%s | GoLogistic",
   },
   description:
-    "Reliable logistics management platform offering shipping, warehousing, and supply chain solutions.",
+    "Professional logistics and transport landing page UI design. Ideal for delivery companies, freight businesses, and supply chain platforms to showcase services online.",
   applicationName: "GoLogistic",
   keywords: [
-    "logistics",
-    "shipping",
-    "freight",
-    "supply chain",
-    "warehousing",
-    "transportation",
+    "logistics website design",
+    "transport landing page",
+    "delivery UI",
+    "shipping company website",
+    "supply chain web design",
+    "freight and cargo website",
+    "courier service landing page",
+    "logistics platform UI",
   ],
   authors: [{ name: "GoLogistic" }],
   openGraph: {
     type: "website",
     siteName: "GoLogistic",
-    title: "GoLogistic – Logistics Management & Shipping Services",
+    title:
+      "Logistics & Transport Website Landing Page – Shipping, Delivery & Supply Chain UI",
     description:
-      "Reliable logistics management platform offering shipping, warehousing, and supply chain solutions.",
+      "Professional logistics and transport landing page UI design. Ideal for delivery companies, freight businesses, and supply chain platforms to showcase services online. #LogisticsUI #TransportDesign #DeliveryWebsite #UIDesign #WebDesign #SupplyChain #ShippingUI #CourierDesign",
     url: "/",
     images: [
       { url: "/favicon.png", width: 512, height: 512, alt: "GoLogistic logo" },
@@ -44,9 +63,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "GoLogistic – Logistics Management & Shipping Services",
+    title:
+      "Logistics & Transport Website Landing Page – Shipping, Delivery & Supply Chain UI",
     description:
-      "Reliable logistics management platform offering shipping, warehousing, and supply chain solutions.",
+      "Professional logistics and transport landing page UI design. Ideal for delivery companies, freight businesses, and supply chain platforms to showcase services online. #LogisticsUI #TransportDesign #DeliveryWebsite #UIDesign #WebDesign #SupplyChain #ShippingUI #CourierDesign",
     images: ["/favicon.png"],
     creator: "@gologistic",
   },
@@ -97,7 +117,7 @@ export default function RootLayout({
   const layoutData = data as layoutData;
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${montserrat.variable} antialiased`}>
+      <body className={`${montserrat400.variable} ${montserrat600.variable} ${montserratRest.variable} antialiased`}>
         <Header data={layoutData.header} />
         <main>{children}</main>
         <Footer data={layoutData.footer} />
