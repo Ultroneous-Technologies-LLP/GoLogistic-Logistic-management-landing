@@ -33,11 +33,13 @@ const Header: FC<HeaderProps> = ({ data }) => {
         className="relative z-50 pt-8.5 pb-4 px-6 xl:px-17.5"
       >
         <section className="flex items-center justify-between w-full">
-          <Logo
-            className="fill-black max-w-28 max-h-6 md:max-w-33 md:max-h-7.5 xl:max-w-39 xl:max-h-8.5 w-full"
-            width={156}
-            height={34}
-          />
+          <Link href="/#home">
+            <Logo
+              className="fill-black max-w-28 max-h-6 md:max-w-33 md:max-h-7.5 xl:max-w-39 xl:max-h-8.5 w-full"
+              width={156}
+              height={34}
+            />
+          </Link>
           <div className="items-center gap-5 xl:gap-10 text-sm xl:text-base hidden md:flex">
             {data.links.map((value) => (
               <Link
