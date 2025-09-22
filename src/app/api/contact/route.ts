@@ -1,3 +1,4 @@
+import { ContactEmail } from "@/enums/contact";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
@@ -22,7 +23,7 @@ export async function POST(req: Request) {
     });
 
     const htmlContent = `
-      <h2>New Contact Form Submission</h2>
+      <h2>${ContactEmail.TITLE}</h2>
       <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
         <tr><td><strong>Name</strong></td><td>${data.yourName}</td></tr>
         <tr><td><strong>Email</strong></td><td>${data.email}</td></tr>
@@ -35,18 +36,18 @@ export async function POST(req: Request) {
     await transporter.sendMail({
       from: `"Contact Form" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_TO,
-      subject: "New Contact Form Submission",
+      subject: ContactEmail.SUBJECT,
       html: htmlContent,
     });
 
     return NextResponse.json({
       success: true,
-      message: "Email sent successfully",
+      message: ContactEmail.SUCCESS_MESSAGE,
     });
   } catch (error) {
     console.error("Email error:", error);
     return NextResponse.json(
-      { success: false, message: "Error sending email" },
+      { success: false, message: ContactEmail.ERROR_MESSAGE },
       { status: 500 }
     );
   }
