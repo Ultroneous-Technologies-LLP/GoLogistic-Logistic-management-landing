@@ -3,7 +3,7 @@ import { FC } from "react";
 import Link from "next/link";
 
 import { Logo } from "@/component/icon";
-import Container from "@/component/common/Container";
+import { Container } from "@/component/common";
 
 import { iconMap } from "./constant";
 import { FooterProps } from "./types";

@@ -7,7 +7,7 @@ interface Link {
 
 interface Button {
   href: string;
-  variant: string;
+  variant: "contained" | "outlined"
   label: string;
   title: string;
 }
