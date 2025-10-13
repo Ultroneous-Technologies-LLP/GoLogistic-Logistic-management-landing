@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
-import { layoutData } from "@/types/layout";
 import data from "@/content/Layout-data.json";
-import Header from "@/component/layout/Header";
-import Footer from "@/component/layout/Footer";
+
+import { Footer, Header } from "@/component/layout";
 import { montserrat400, montserrat600, montserratRest } from "@/constant";
 
 import "../../styles/globals.css";
+import { LayoutDataType } from "./types";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.gologistic.example"),
@@ -95,15 +95,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const layoutData = data as layoutData;
+  const { header, footer }: LayoutDataType = data;
   return (
     <html lang="en" className="scroll-smooth">
       <body
         className={`${montserrat400.variable} ${montserrat600.variable} ${montserratRest.variable} antialiased`}
       >
-        <Header data={layoutData.header} />
+        <Header {...header} />
         <main>{children}</main>
-        <Footer data={layoutData.footer} />
+        <Footer {...footer} />
       </body>
     </html>
   );

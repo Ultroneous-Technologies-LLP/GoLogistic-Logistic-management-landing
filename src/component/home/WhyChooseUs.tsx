@@ -1,5 +1,4 @@
 import { FC } from "react";
-import whyChooseUsData from "@/data.json";
 import {
   CustomerCentric,
   GlobalReach,
