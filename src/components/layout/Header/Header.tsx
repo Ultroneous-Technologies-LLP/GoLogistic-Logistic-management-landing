@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 
-import { Logo } from "@/components/icon";
+import { Logo } from "@/components/icons";
 import { useIsMobile, useWindowResize } from "@/hooks";
 import { Button, Container } from "@/components/common";
 

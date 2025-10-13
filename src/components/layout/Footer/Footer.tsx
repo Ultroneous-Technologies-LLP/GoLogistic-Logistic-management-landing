@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { FC } from "react";
 import Link from "next/link";
 
-import { Logo } from "@/components/icon";
+import { Logo } from "@/components/icons";
 
 import { footerProps } from "./types";
 import { iconMap } from "./constant";

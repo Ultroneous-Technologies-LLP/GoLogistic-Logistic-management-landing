@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/common";
-import { LeftArrow } from "@/components/icon";
+import { LeftArrow } from "@/components/icons";
 import { useIsMobile } from "@/hooks";
 import { blogSection } from "@/types/home-page-types";
 import Image from "next/image";

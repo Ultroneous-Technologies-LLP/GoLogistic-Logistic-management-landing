@@ -1,4 +1,4 @@
-import { Mail, Phone } from "@/components/icon";
+import { Mail, Phone } from "@/components/icons";
 import Link from "next/link";
 import ContactForm from "./ContactForm";
 import { FC } from "react";
