@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { FC } from "react";
 import { heroSection } from "@/types/home-page-types";
-import { Button, Container } from "@/component/common";
+import { Button, Container } from "@/components/common";
 
 interface heroSectionData {
   data: heroSection;

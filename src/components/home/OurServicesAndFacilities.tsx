@@ -1,7 +1,7 @@
 "use client";
 import { FC, useState } from "react";
 import Image from "next/image";
-import { Button, Container, Title } from "@/component/common";
+import { Button, Container, Title } from "@/components/common";
 import { ourServicesAndFacilitiesSection } from "@/types/home-page-types";
 import clsx from "clsx";
 

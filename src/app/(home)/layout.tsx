@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import data from "@/content/Layout-data.json";
 
 import { montserrat400, montserrat600, montserratRest } from "@/constant";
-import { Footer, Header } from "@/component/layout";
+import { Footer, Header } from "@/components/layout";
 
 import "../../styles/globals.css";
 import { LayoutDataType } from "./types";

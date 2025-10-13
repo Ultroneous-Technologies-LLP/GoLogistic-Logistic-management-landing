@@ -4,9 +4,9 @@ import clsx from "clsx";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 
-import { Logo } from "@/component/icon";
+import { Logo } from "@/components/icon";
 import { useIsMobile, useWindowResize } from "@/hooks";
-import { Button, Container } from "@/component/common";
+import { Button, Container } from "@/components/common";
 
 import { HeaderProps } from "./types";
 

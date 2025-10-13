@@ -2,7 +2,7 @@ import { FC } from "react";
 import OurBlogSlider from "./OurBlogSlider";
 import Image from "next/image";
 import { blogSection } from "@/types/home-page-types";
-import { Button, Container, Title } from "@/component/common";
+import { Button, Container, Title } from "@/components/common";
 
 interface OurBlogData {
   data: blogSection;
