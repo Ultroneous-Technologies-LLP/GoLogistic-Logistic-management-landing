@@ -6,7 +6,7 @@ import Header from "@/component/layout/Header";
 import Footer from "@/component/layout/Footer";
 import { montserrat400, montserrat600, montserratRest } from "@/constant";
 
-import "../styles/globals.css";
+import "../../styles/globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.gologistic.example"),

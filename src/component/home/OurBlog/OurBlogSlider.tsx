@@ -1,5 +1,5 @@
 "use client";
-import useIsMobile from "@/app/hooks/useIsMobile";
+import useIsMobile from "@/hooks/useIsMobile";
 import Button from "@/component/common/Button";
 import { LeftArrow } from "@/component/icon";
 import { blogSection } from "@/types/home-page-types";
