@@ -5,7 +5,7 @@ import { header } from "@/types/layout";
 import { FC, useEffect, useState } from "react";
 import { Logo } from "@/component/icon";
 import { Button, Container } from "@/component/common";
-import useIsMobile from "@/app/hooks/useIsMobile";
+import { useIsMobile } from "@/hooks";
 
 interface HeaderProps {
   data: header;
