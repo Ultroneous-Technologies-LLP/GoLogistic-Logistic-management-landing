@@ -1,7 +1,7 @@
 "use client";
 import { FC, useState } from "react";
 import Image from "next/image";
-import { Button, Container, Title } from "@/component/common";
+import { Container, Link, Title } from "@/components/common";
 import { ourServicesAndFacilitiesSection } from "@/types/home-page-types";
 import clsx from "clsx";
 
@@ -76,15 +76,13 @@ const OurServicesAndFacilities: FC<OurServicesAndFacilitiesProps> = ({
                           : "opacity-0 translate-y-2 delay-0 pointer-events-none"
                       )}
                     >
-                      <Button
+                      <Link
                         variant={data.button.variant}
-                        as="link"
                         href={data.button.href}
                         className="w-fit !font-medium hover:!font-medium rounded-md text-center inline-block"
                         aria-label={data.button.ariaLabel}
-                      >
-                        {data.button.label}
-                      </Button>
+                        label={data.button.label}
+                      />
                     </div>
                   </div>
                   <div

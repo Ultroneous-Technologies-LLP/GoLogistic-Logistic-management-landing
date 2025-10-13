@@ -2,7 +2,6 @@
 "use client";
 import { useState, ChangeEvent, FormEvent, FC } from "react";
 import { CONTACT } from "@/utils/api-routes";
-import { Button } from "@/component/common";
 
 interface FormData {
   yourName: string;
@@ -177,15 +176,14 @@ const ContactForm: FC<ContactFormProps> = ({ formButton }) => {
         )}
       </div>
       <div className="col-span-1 xl:col-span-2">
-        <Button
+        <button
           type="submit"
-          variant={formButton.variant}
           disabled={loading}
-          className="max-w-45.5 !w-full py-3 px-6 xl:py-4 xl:px-7.5 rounded-lg text-sm/snug"
+          className="max-w-47.5 w-full py-3 px-6 xl:py-4 xl:px-7.5 rounded-lg text-sm/snug font-semibold transition-all duration-500 ease-out hover:ease-in cursor-pointer bg-black text-white border border-transparent hover:bg-white hover:text-black hover:border-light-silver"
           aria-label={formButton.ariaLabel}
         >
           {loading ? "Sending..." : formButton.label}
-        </Button>
+        </button>
         {success && <p className="text-green-600 mt-2">{success}</p>}
       </div>
     </form>

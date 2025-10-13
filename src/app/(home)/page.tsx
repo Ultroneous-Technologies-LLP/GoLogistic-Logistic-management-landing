@@ -6,7 +6,7 @@ import {
   ShippingService,
   Testimonial,
   WhyChooseUs,
-} from "@/component/home";
+} from "@/components/home";
 import data from "@/content/home-page-data.json";
 import { HomePageData } from "@/types/home-page-types";
 import { FC } from "react";

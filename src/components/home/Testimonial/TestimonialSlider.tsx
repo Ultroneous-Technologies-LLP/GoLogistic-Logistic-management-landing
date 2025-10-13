@@ -1,6 +1,6 @@
 "use client";
 
-import { DoubleQuotes, LeftArrow } from "@/component/icon";
+import { DoubleQuotes, LeftArrow } from "@/components/icon";
 import { FC, useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 

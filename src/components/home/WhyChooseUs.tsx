@@ -4,9 +4,9 @@ import {
   GlobalReach,
   Innovation,
   Reliability,
-} from "@/component/icon";
+} from "@/components/icon";
 import { whyChooseUsSection } from "@/types/home-page-types";
-import { Container, Title } from "@/component/common";
+import { Container, Title } from "@/components/common";
 
 const iconsMap = {
   Reliability,

@@ -295,7 +295,8 @@
       "button": {
         "variant": "contained",
         "label": "Submit Message",
-        "ariaLabel": "Submit Message"
+        "ariaLabel": "Submit Message",
+        "link": "/#contact"
       }
     },
     "backgroundImage": {

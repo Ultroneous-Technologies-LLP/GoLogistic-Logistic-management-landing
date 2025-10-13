@@ -2,7 +2,7 @@ import { FC } from "react";
 import OurBlogSlider from "./OurBlogSlider";
 import Image from "next/image";
 import { blogSection } from "@/types/home-page-types";
-import { Button, Container, Title } from "@/component/common";
+import { Container, Link, Title } from "@/components/common";
 
 interface OurBlogData {
   data: blogSection;
@@ -39,13 +39,13 @@ const OurBlog: FC<OurBlogData> = ({ data }) => {
             <span>{data.blogCard.description}</span>
           </p>
           <div>
-            <Button
-              variant={data.blogCard.button.variant}
-              className="!text-base/6 !w-fit py-3 px-6 xl:px-7.5 xl:py-4 rounded-lg"
+            <Link
+              className="!text-base/6 xl:!text-sm/snug w-fit py-3 px-6 xl:px-7.5 xl:py-4 rounded-xl xl:rounded-lg"
               aria-label={data.blogCard.button.ariaLabel}
-            >
-              {data.blogCard.button.label}
-            </Button>
+              href={data.blogCard.button.link}
+              label={data.blogCard.button.label}
+              variant={data.blogCard.button.variant}
+            />
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { FooterProps, HeaderProps } from "@/component/layout";
+import { FooterProps, HeaderProps } from "@/components/layout";
 
 export interface LayoutDataType  {
   header: HeaderProps;

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { FC } from "react";
 import { heroSection } from "@/types/home-page-types";
-import { Button, Container } from "@/component/common";
+import { Container, Link } from "@/components/common";
 
 interface heroSectionData {
   data: heroSection;
@@ -30,15 +30,13 @@ const Hero: FC<heroSectionData> = ({ data }) => {
           <div className="flex gap-2 xl:gap-6 w-full">
             {data.heroButtons.map((value) => (
               <div key={value.id}>
-                <Button
-                  as="link"
+                <Link
                   variant={value.variant}
                   href={value.href}
                   className="!text-base/6 py-3 px-7.5 xl:py-1.5 xl:px-16 rounded-xl inline-block xl:!text-xl/9"
                   aria-label={value.ariaLabel}
-                >
-                  {value.label}
-                </Button>
+                  label={value.label}
+                />
               </div>
             ))}
           </div>
