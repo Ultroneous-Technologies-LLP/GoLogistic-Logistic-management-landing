@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import { FC, useEffect, useState } from "react";
 
-import { Logo } from "@/components/icon";
+import { Logo } from "@/components/icons";
 import { BREAKPOINT_MD } from "@/constant";
 import { useIsMobile, useWindowResize } from "@/hooks";
 import { Container, Link } from "@/components/common";
