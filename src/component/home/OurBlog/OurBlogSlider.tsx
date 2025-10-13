@@ -1,7 +1,7 @@
 "use client";
-import useIsMobile from "@/hooks/useIsMobile";
 import Button from "@/component/common/Button";
 import { LeftArrow } from "@/component/icon";
+import { useIsMobile } from "@/hooks";
 import { blogSection } from "@/types/home-page-types";
 import Image from "next/image";
 import { FC, useRef, useState } from "react";
