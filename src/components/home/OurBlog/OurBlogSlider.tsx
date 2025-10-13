@@ -1,6 +1,5 @@
 "use client";
-import { Button } from "@/component/common";
-import { LeftArrow } from "@/component/icon";
+import { LeftArrow } from "@/components/icon";
 import { useIsMobile } from "@/hooks";
 import { blogSection } from "@/types/home-page-types";
 import Image from "next/image";
@@ -96,14 +95,14 @@ const OurBlogSlider: FC<OurBlogSliderProps> = ({ data }) => {
             {/* Button only if there are more than 3 blogs */}
             {data.blogData.length > 3 && !showAll && (
               <div className="flex justify-center">
-                <Button
-                  variant="outlined"
-                  className="py-3 px-6 rounded-xl !w-fit"
+                <button
+                  className="py-3 px-6 rounded-xl w-fit text-black border border-light-silver"
                   aria-label="View all blogs"
                   onClick={() => setShowAll(true)}
+                  type="button"
                 >
                   View All
-                </Button>
+                </button>
               </div>
             )}
           </div>

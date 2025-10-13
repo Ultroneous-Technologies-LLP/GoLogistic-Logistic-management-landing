@@ -2,7 +2,7 @@ import { FC } from "react";
 import TestimonialSlider from "./TestimonialSlider";
 import { testimonialSection } from "@/types/home-page-types";
 import Image from "next/image";
-import { Container, Title } from "@/component/common";
+import { Container, Title } from "@/components/common";
 
 interface testimonialSectionData {
   data: testimonialSection;

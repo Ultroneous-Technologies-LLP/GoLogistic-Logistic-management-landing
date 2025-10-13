@@ -118,6 +118,7 @@ export type blogSection = {
       variant: "contained" | "outlined";
       label: string;
       ariaLabel: string;
+      link:string
     };
   };
   backgroundImage: {

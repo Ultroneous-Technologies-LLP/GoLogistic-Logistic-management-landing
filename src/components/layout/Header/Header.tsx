@@ -1,13 +1,12 @@
 "use client";
 
 import clsx from "clsx";
-import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 
-import { Logo } from "@/component/icon";
+import { Logo } from "@/components/icon";
 import { BREAKPOINT_MD } from "@/constant";
 import { useIsMobile, useWindowResize } from "@/hooks";
-import { Button, Container } from "@/component/common";
+import { Container, Link } from "@/components/common";
 
 import { HeaderProps } from "./types";
 
@@ -32,7 +31,7 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
         className="relative z-50 pt-8.5 pb-4 px-6 xl:px-17.5"
       >
         <section className="flex items-center justify-between w-full">
-          <Link href="/#home">
+          <Link href="/#home" isPureLink={false}>
             <Logo
               className="fill-black max-w-28 max-h-6 md:max-w-33 md:max-h-7.5 xl:max-w-39 xl:max-h-8.5 w-full"
               width={156}
@@ -41,21 +40,25 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
           </Link>
           <div className="items-center gap-5 xl:gap-10 text-sm xl:text-base hidden md:flex">
             {links.map(({ href, id, label, title }) => (
-              <Link href={href} title={title} rel="nofollow" key={id}>
+              <Link
+                href={href}
+                title={title}
+                rel="nofollow"
+                key={id}
+                isPureLink={false}
+              >
                 <span>{label}</span>
               </Link>
             ))}
           </div>
           <div className="hidden md:inline-block">
-            <Button
-              as="link"
+            <Link
               href={button.href}
               variant={button.variant}
               className="py-3 px-4.5 xl:py-2.5 xl:px-10.5 rounded-lg md:!text-base/6"
               title={button.title}
-            >
-              {button.label}
-            </Button>
+              label={button.label}
+            />
           </div>
           {/* Hamburger */}
           <button
@@ -106,16 +109,14 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
               <span>{label}</span>
             </Link>
           ))}
-          <Button
-            as="link"
+          <Link
             href={button.href}
             variant={button.variant}
             className="py-3 px-6 rounded-lg !w-fit"
             title={button.title}
             onClick={() => setIsOpen(false)}
-          >
-            {button.label}
-          </Button>
+            label={button.label}
+          />
         </div>
       )}
     </nav>

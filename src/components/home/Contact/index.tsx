@@ -1,9 +1,9 @@
-import { Mail, Phone } from "@/component/icon";
+import { Mail, Phone } from "@/components/icon";
 import Link from "next/link";
 import ContactForm from "./ContactForm";
 import { FC } from "react";
 import { contactSection } from "@/types/home-page-types";
-import { Container, Title } from "@/component/common";
+import { Container, Title } from "@/components/common";
 
 interface ContactProps {
   data: contactSection;
