@@ -1,31 +1,12 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
-import "./globals.css";
+
+import { layoutData } from "@/types/layout";
+import data from "@/content/Layout-data.json";
 import Header from "@/component/layout/Header";
 import Footer from "@/component/layout/Footer";
-import data from "@/content/Layout-data.json";
-import { layoutData } from "@/types/layout";
+import { montserrat400, montserrat600, montserratRest } from "@/constant";
 
-export const montserrat400 = Montserrat({
-  variable: "--font-montserrat-400",
-  subsets: ["latin"],
-  weight: ["400"], 
-  preload: true,
-});
-
-export const montserrat600 = Montserrat({
-  variable: "--font-montserrat-600",
-  subsets: ["latin"],
-  weight: ["600"],
-  preload: true,
-});
-
-export const montserratRest = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["latin"],
-  weight: ["500", "700"], 
-  preload: false,
-});
+import "../styles/globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.gologistic.example"),
@@ -117,7 +98,9 @@ export default function RootLayout({
   const layoutData = data as layoutData;
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${montserrat400.variable} ${montserrat600.variable} ${montserratRest.variable} antialiased`}>
+      <body
+        className={`${montserrat400.variable} ${montserrat600.variable} ${montserratRest.variable} antialiased`}
+      >
         <Header data={layoutData.header} />
         <main>{children}</main>
         <Footer data={layoutData.footer} />
