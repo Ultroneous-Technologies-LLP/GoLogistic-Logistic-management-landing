@@ -1,5 +1,4 @@
-import Container from "./Container";
-import Button from "./Button";
-import SectionHeading from "./SectionHeading";
+export * from "./Button";
+export * from "./Container";
+export * from "./Title";
 
-export { Container, Button, SectionHeading };

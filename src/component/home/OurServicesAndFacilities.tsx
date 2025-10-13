@@ -1,7 +1,7 @@
 "use client";
 import { FC, useState } from "react";
 import Image from "next/image";
-import { Button, Container, SectionHeading } from "@/component/common";
+import { Button, Container, Title } from "@/component/common";
 import { ourServicesAndFacilitiesSection } from "@/types/home-page-types";
 import clsx from "clsx";
 
@@ -38,7 +38,7 @@ const OurServicesAndFacilities: FC<OurServicesAndFacilitiesProps> = ({
         <div className="px-4 md:px-6 xl:px-20 py-12.5 xl:py-42 z-10 relative">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 xl:grid-cols-3 xl:gap-y-38">
             <div className="md:col-span-2 xl:col-span-1">
-              <SectionHeading title={data.title} variant="white" />
+              <Title title={data.title} variant="white" />
               <p className="pb-8 xl:pb-0 text-xl/7.5 xl:text-4xl/12.5 font-bold text-white xl:max-w-[364px]">
                 <span>{data.longTitle}</span>
               </p>
