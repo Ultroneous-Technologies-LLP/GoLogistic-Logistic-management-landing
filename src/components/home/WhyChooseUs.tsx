@@ -4,7 +4,7 @@ import {
   GlobalReach,
   Innovation,
   Reliability,
-} from "@/components/icon";
+} from "@/components/icons";
 import { whyChooseUsSection } from "@/types/home-page-types";
 import { Container, Title } from "@/components/common";
 
