@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 "use client";
 import { useState, ChangeEvent, FormEvent, FC } from "react";
-import Button from "@/component/common/Button";
 import { CONTACT } from "@/utils/api-routes";
+import { Button } from "@/component/common";
 
 interface FormData {
   yourName: string;
