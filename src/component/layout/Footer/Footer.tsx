@@ -3,10 +3,10 @@ import { FC } from "react";
 import Link from "next/link";
 
 import { Logo } from "@/component/icon";
-import Container from "@/component/common/Container";
 
 import { footerProps } from "./types";
 import { iconMap } from "./constant";
+import { Container } from "@/component/common";
 
 export const Footer: FC<footerProps> = ({ contact, footerLegal, links }) => (
   <Container
