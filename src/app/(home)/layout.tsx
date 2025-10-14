@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import data from "@/content/Layout-data.json";
+import rawData from "@/content/Layout-data.json";
 
 import { montserrat400, montserrat600, montserratRest } from "@/constant";
 import { Footer, Header } from "@/components/layout";
@@ -95,7 +95,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { header, footer }: LayoutDataType = data;
+  const data = rawData as LayoutDataType;
+
+  const { header, footer } = data;
   return (
     <html lang="en" className="scroll-smooth">
       <body

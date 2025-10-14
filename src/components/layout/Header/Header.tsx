@@ -49,7 +49,7 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
               href={button.href}
               variant={button.variant}
               className="py-3 px-4.5 xl:py-2.5 xl:px-10.5 rounded-lg md:!text-base/6"
-              title={button.title}
+              title={button.label}
             >
               {button.label}
             </Button>
@@ -108,7 +108,7 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
             href={button.href}
             variant={button.variant}
             className="py-3 px-6 rounded-lg !w-fit"
-            title={button.title}
+            title={button.label}
             onClick={() => setIsOpen(false)}
           >
             {button.label}

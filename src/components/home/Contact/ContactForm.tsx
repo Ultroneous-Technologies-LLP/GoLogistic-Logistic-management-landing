@@ -1,55 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 "use client";
+
 import { useState, ChangeEvent, FormEvent, FC } from "react";
+
 import { CONTACT } from "@/utils/api-routes";
-import { Button } from "@/components/common";
 
-interface FormData {
-  yourName: string;
-  email: string;
-  phoneNumber: string;
-  city: string;
-  message: string;
-}
-
-interface FormErrors {
-  yourName?: string;
-  email?: string;
-  phoneNumber?: string;
-  city?: string;
-  message?: string;
-  [key: string]: string | undefined;
-}
-
-interface ContactFormProps {
-  formButton: {
-    variant: "contained" | "outlined";
-    label: string;
-    ariaLabel: string;
-  };
-}
-
-const formFields: {
-  id: keyof FormData;
-  label: string;
-  placeholder: string;
-  type: string;
-}[] = [
-  {
-    id: "yourName",
-    label: "Your Name*",
-    placeholder: "Your name*",
-    type: "text",
-  },
-  { id: "email", label: "Email*", placeholder: "Email*", type: "email" },
-  {
-    id: "phoneNumber",
-    label: "Phone Number*",
-    placeholder: "Phone Number*",
-    type: "tel",
-  },
-  { id: "city", label: "City*", placeholder: "City*", type: "text" },
-];
+import { Button } from "../../common";
+import { FORM_FIELDS } from "./constant";
+import { ContactFormProps, FormErrors, FormData } from "./types";
 
 const ContactForm: FC<ContactFormProps> = ({ formButton }) => {
   const [formData, setFormData] = useState<FormData>({
@@ -136,7 +94,7 @@ const ContactForm: FC<ContactFormProps> = ({ formButton }) => {
       onSubmit={handleSubmit}
       className="grid gap-y-4 xl:grid-cols-2 xl:gap-x-6 xl:gap-y-7"
     >
-      {formFields.map(({ id, label, placeholder, type }) => (
+      {FORM_FIELDS.map(({ id, label, placeholder, type }) => (
         <div key={id} className="relative">
           <label htmlFor={id} className="sr-only">
             {label}

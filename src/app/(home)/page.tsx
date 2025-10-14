@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 import {
   Contact,
   Hero,
@@ -7,12 +9,22 @@ import {
   Testimonial,
   WhyChooseUs,
 } from "@/components/home";
-import data from "@/content/home-page-data.json";
-import { HomePageData } from "@/types/home-page-types";
-import { FC } from "react";
+import rawData from "@/content/home-page-data.json";
+
+import { HomePageDataType } from "./types";
 
 const Home: FC = () => {
-  const pageData = data as HomePageData;
+  const data = rawData as HomePageDataType;
+
+  const {
+    heroSection,
+    shippingService,
+    whyChooseUsSection,
+    ourServicesAndFacilitiesSection,
+    testimonialSection,
+    contactSection,
+    blogSection,
+  } = data;
 
   return (
     <>
@@ -36,15 +48,13 @@ const Home: FC = () => {
         }}
       />
       <>
-        <Hero data={pageData.heroSection} />
-        <ShippingService data={pageData.shippingService} />
-        <WhyChooseUs data={pageData.whyChooseUsSection} />
-        <OurServicesAndFacilities
-          data={pageData.ourServicesAndFacilitiesSection}
-        />
-        <Testimonial data={pageData.testimonialSection} />
-        <Contact data={pageData.contactSection} />
-        <OurBlog data={pageData.blogSection} />
+        <Hero {...heroSection} />
+        <ShippingService {...shippingService} />
+        <WhyChooseUs {...whyChooseUsSection} />
+        <OurServicesAndFacilities {...ourServicesAndFacilitiesSection} />
+        <Testimonial {...testimonialSection} />
+        <Contact {...contactSection} />
+        <OurBlog {...blogSection} />
       </>
     </>
   );

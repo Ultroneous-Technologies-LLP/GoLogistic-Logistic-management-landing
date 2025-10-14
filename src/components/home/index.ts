@@ -1,17 +1,15 @@
-import Hero from "./Hero";
-import OurServicesAndFacilities from "./OurServicesAndFacilities";
-import ShippingService from "./ShippingService";
-import WhyChooseUs from "./WhyChooseUs";
-import Testimonial from "./Testimonial";
-import Contact from "./Contact";
-import OurBlog from "./OurBlog";
+export * from "./Hero";
+export * from "./Contact";
+export * from "./OurBlog";
+export * from "./WhyChooseUs";
+export * from "./Testimonial";
+export * from "./ShippingService";
+export * from "./OurServicesAndFacilities";
 
-export {
-  Hero,
-  OurServicesAndFacilities,
-  ShippingService,
-  WhyChooseUs,
-  Testimonial,
-  Contact,
-  OurBlog,
-};
+export type { HeroSectionProps } from "./Hero";
+export type { BlogSectionProps } from "./OurBlog";
+export type { ContactSectionProps } from "./Contact";
+export type { whyChooseUsSectionProps } from "./WhyChooseUs";
+export type { TestimonialSectionProps } from "./Testimonial";
+export type { ShippingServiceProps } from "./ShippingService";
+export type { ourServicesAndFacilitiesSectionProps } from "./OurServicesAndFacilities";

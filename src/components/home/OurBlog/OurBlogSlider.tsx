@@ -1,31 +1,25 @@
 "use client";
-import { Button } from "@/components/common";
-import { LeftArrow } from "@/components/icons";
-import { useIsMobile } from "@/hooks";
-import { blogSection } from "@/types/home-page-types";
+
 import Image from "next/image";
-import { FC, useRef, useState } from "react";
 import Slider from "react-slick";
+import { FC, useRef, useState } from "react";
 
-const sliderClass =
-  "[&_.slick-slider]:relative [&_.slick-slider]:block [&_.slick-slider]:box-border [&_.slick-slider]:select-none [&_.slick-slider]:touch-pan-y [&_.slick-slider]:[--webkit-tap-highlight-color:transparent] [&_.slick-list]:overflow-hidden [&_.slick-list]:m-0 [&_.slick-list]:p-0 [&_.slick-track]:flex [&_.slick-track]:gap-6 [&_.slick-track]:items-stretch [&_.slick-slide]:min-h-px [&_.slick-slide]:outline-none [&_.slick-slide]:duration-300 [&_.slick-slide]:ease-in-out";
+import { useIsMobile } from "@/hooks";
 
-interface OurBlogSliderProps {
-  data: blogSection;
-}
+import { Button } from "../../common";
+import { LeftArrow } from "../../icons";
+import { OurBlogSliderProps } from "./types";
+import { settings, sliderClass } from "./constant";
 
-const OurBlogSlider: FC<OurBlogSliderProps> = ({ data }) => {
-  const sliderRef = useRef<Slider>(null);
+export const OurBlogSlider: FC<OurBlogSliderProps> = ({
+  blogData,
+  longTitle,
+}) => {
   const [showAll, setShowAll] = useState(false);
-  const isMobile = useIsMobile();
 
-  const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    arrows: false,
-  };
+  const sliderRef = useRef<Slider>(null);
+
+  const isMobile = useIsMobile();
 
   const handlePrev = () => {
     sliderRef.current?.slickPrev();
@@ -37,15 +31,15 @@ const OurBlogSlider: FC<OurBlogSliderProps> = ({ data }) => {
 
   const visibleBlogs = isMobile
     ? showAll
-      ? data.blogData
-      : data.blogData.slice(0, 3)
-    : data.blogData;
+      ? blogData
+      : blogData.slice(0, 3)
+    : blogData;
 
   return (
     <>
       <div className="md:flex justify-between items-center px-4 pb-8 md:px-6 xl:pl-17.5 xl:pr-22.5 xl:pb-16.5">
         <h3 className="text-xl/7.5 xl:text-4xl/12.5 font-bold text-black">
-          <span>{data.longTitle}</span>
+          <span>{longTitle}</span>
         </h3>
         <div className="gap-2.5 hidden md:flex">
           <button
@@ -94,7 +88,7 @@ const OurBlogSlider: FC<OurBlogSliderProps> = ({ data }) => {
             ))}
 
             {/* Button only if there are more than 3 blogs */}
-            {data.blogData.length > 3 && !showAll && (
+            {blogData.length > 3 && !showAll && (
               <div className="flex justify-center">
                 <Button
                   variant="outlined"
@@ -143,5 +137,3 @@ const OurBlogSlider: FC<OurBlogSliderProps> = ({ data }) => {
     </>
   );
 };
-
-export default OurBlogSlider;
