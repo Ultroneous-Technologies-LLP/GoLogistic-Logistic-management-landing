@@ -35,8 +35,7 @@
     "button": {
       "href": "/#contact",
       "variant": "contained",
-      "label": "Get a Quote",
-      "title": "Get a personalized quote"
+      "label": "Get a Quote"
     }
   },
   "footer": {

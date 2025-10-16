@@ -1,4 +1,4 @@
-import { SVGProps } from "react";
+import React, { SVGProps } from "react";
 
 export const DoubleQuotes = ({
   width = 68,

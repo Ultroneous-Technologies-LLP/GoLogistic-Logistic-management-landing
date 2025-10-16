@@ -1,6 +1,25 @@
-import { FooterProps, HeaderProps } from "@/components/layout";
+import { footerProps, HeaderProps } from "@/components/layout";
+import {
+  BlogSectionProps,
+  ContactSectionProps,
+  HeroSectionProps,
+  ourServicesAndFacilitiesSectionProps,
+  ShippingServiceProps,
+  TestimonialSectionProps,
+  whyChooseUsSectionProps,
+} from "@/components/home";
 
-export interface LayoutDataType  {
+export interface LayoutDataType {
   header: HeaderProps;
-  footer: FooterProps;
+  footer: footerProps;
+}
+
+export interface HomePageDataType {
+  heroSection: HeroSectionProps;
+  shippingService: ShippingServiceProps;
+  whyChooseUsSection: whyChooseUsSectionProps;
+  ourServicesAndFacilitiesSection: ourServicesAndFacilitiesSectionProps;
+  testimonialSection: TestimonialSectionProps;
+  contactSection: ContactSectionProps;
+   blogSection: BlogSectionProps;
 }

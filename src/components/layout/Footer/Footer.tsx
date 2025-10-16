@@ -2,14 +2,13 @@ import clsx from "clsx";
 import { FC } from "react";
 import Link from "next/link";
 
-import { Container } from "@/components/common";
 import { Logo } from "@/components/icons";
 
+import { footerProps } from "./types";
 import { iconMap } from "./constant";
-import { FooterProps } from "./types";
-import { FooterTextEnum } from "./enum";
+import { Container } from "@/components/common";
 
-export const Footer: FC<FooterProps> = ({ contact, footerLegal, links }) => (
+export const Footer: FC<footerProps> = ({ contact, footerLegal, links }) => (
   <Container
     backgroundClassName="bg-black"
     className="pt-19 pb-12.5 px-4 md:pt-37 md:px-6 xl:pt-48.5 xl:pb-5 xl:pl-17.5 relative"
@@ -69,9 +68,7 @@ export const Footer: FC<FooterProps> = ({ contact, footerLegal, links }) => (
               {links.map(({ href, id, label }) => (
                 <li
                   key={id}
-                  className={clsx(
-                    title === FooterTextEnum.OUR_COMPANY ? "xl:pl-42.5" : ""
-                  )}
+                  className={clsx(title === "Our company" ? "xl:pl-42.5" : "")}
                 >
                   <Link href={href} className="font-medium" title={label}>
                     {label}

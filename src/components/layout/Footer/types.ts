@@ -8,16 +8,10 @@ interface Contact {
   Icon: string;
 }
 
-interface Link {
-  id: number;
-  href: string;
-  label: string;
-}
-
-interface MenuLinks {
+interface Links {
   id: number;
   title: string;
-  links: Link[];
+  links: { id: number; href: string; label: string }[];
 }
 
 interface SocialsMedia {
@@ -32,8 +26,8 @@ interface FooterLegal {
   socialsMedia: SocialsMedia[];
 }
 
-export interface FooterProps {
+export interface footerProps  {
   contact: Contact[];
-  links: MenuLinks[];
+  links: Links[];
   footerLegal: FooterLegal;
-}
+};
