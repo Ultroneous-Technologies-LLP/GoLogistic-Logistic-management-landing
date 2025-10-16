@@ -1,5 +1,6 @@
 import { FC } from "react";
 
+import rawData from "@/content/home-page-data.json";
 import {
   Contact,
   Hero,
@@ -8,8 +9,7 @@ import {
   ShippingService,
   Testimonial,
   WhyChooseUs,
-} from "@/components/home";
-import rawData from "@/content/home-page-data.json";
+} from "@/components";
 
 import { HomePageDataType } from "./types";
 

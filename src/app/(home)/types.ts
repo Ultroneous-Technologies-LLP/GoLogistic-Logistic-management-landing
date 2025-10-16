@@ -1,4 +1,4 @@
-import { footerProps, HeaderProps } from "@/components/layout";
+import { footerProps, HeaderProps } from "@/components";
 import {
   BlogSectionProps,
   ContactSectionProps,
@@ -7,7 +7,7 @@ import {
   ShippingServiceProps,
   TestimonialSectionProps,
   whyChooseUsSectionProps,
-} from "@/components/home";
+} from "@/components";
 
 export interface LayoutDataType {
   header: HeaderProps;

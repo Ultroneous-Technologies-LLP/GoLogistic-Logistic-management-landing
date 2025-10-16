@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import rawData from "@/content/Layout-data.json";
 
-import { Footer, Header } from "@/components/layout";
+import { Footer, Header } from "@/components";
 import { montserrat400, montserrat600, montserratRest } from "@/constant";
 
 import "../../styles/globals.css";
