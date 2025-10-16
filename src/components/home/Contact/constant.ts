@@ -1,6 +1,6 @@
-import { FormData, FormFields } from "./types";
+import { FormFields } from "./types";
 
-export const FORM_FIELDS:FormFields[] = [
+export const FORM_FIELDS: FormFields[] = [
   {
     id: "yourName",
     label: "Your Name*",
@@ -15,4 +15,4 @@ export const FORM_FIELDS:FormFields[] = [
     type: "tel",
   },
   { id: "city", label: "City*", placeholder: "City*", type: "text" },
-  ];
+];

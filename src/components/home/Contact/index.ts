@@ -1,2 +1,9 @@
 export * from "./Contact";
-export type { ContactSectionProps,FormData,FormErrors,ContactFormProps,FormFields,IconTitle } from "./types";
+export type {
+  ContactSectionProps,
+  FormData,
+  FormErrors,
+  ContactFormProps,
+  FormFields,
+  IconTitle,
+} from "./types";

@@ -1,4 +1,9 @@
-import { CustomerCentric, GlobalReach, Innovation, Reliability } from "@/components/icons";
+import {
+  CustomerCentric,
+  GlobalReach,
+  Innovation,
+  Reliability,
+} from "@/components/icons";
 
 export const ICONS = {
   Reliability,
