@@ -1,54 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 "use client";
+
 import { useState, ChangeEvent, FormEvent, FC } from "react";
+
 import { CONTACT } from "@/utils/api-routes";
 
-interface FormData {
-  yourName: string;
-  email: string;
-  phoneNumber: string;
-  city: string;
-  message: string;
-}
-
-interface FormErrors {
-  yourName?: string;
-  email?: string;
-  phoneNumber?: string;
-  city?: string;
-  message?: string;
-  [key: string]: string | undefined;
-}
-
-interface ContactFormProps {
-  formButton: {
-    variant: "contained" | "outlined";
-    label: string;
-    ariaLabel: string;
-  };
-}
-
-const formFields: {
-  id: keyof FormData;
-  label: string;
-  placeholder: string;
-  type: string;
-}[] = [
-  {
-    id: "yourName",
-    label: "Your Name*",
-    placeholder: "Your name*",
-    type: "text",
-  },
-  { id: "email", label: "Email*", placeholder: "Email*", type: "email" },
-  {
-    id: "phoneNumber",
-    label: "Phone Number*",
-    placeholder: "Phone Number*",
-    type: "tel",
-  },
-  { id: "city", label: "City*", placeholder: "City*", type: "text" },
-];
+import { FORM_FIELDS } from "./constant";
+import { ContactFormProps, FormErrors, FormData } from "./types";
+import { ContactFormEnumText } from "./enum";
 
 const ContactForm: FC<ContactFormProps> = ({ formButton }) => {
   const [formData, setFormData] = useState<FormData>({
@@ -135,7 +94,7 @@ const ContactForm: FC<ContactFormProps> = ({ formButton }) => {
       onSubmit={handleSubmit}
       className="grid gap-y-4 xl:grid-cols-2 xl:gap-x-6 xl:gap-y-7"
     >
-      {formFields.map(({ id, label, placeholder, type }) => (
+      {FORM_FIELDS.map(({ id, label, placeholder, type }) => (
         <div key={id} className="relative">
           <label htmlFor={id} className="sr-only">
             {label}
@@ -158,11 +117,11 @@ const ContactForm: FC<ContactFormProps> = ({ formButton }) => {
       ))}
       <div className="relative col-span-1 xl:col-span-2">
         <label htmlFor="message" className="sr-only">
-          Your Message
+          {ContactFormEnumText.YOUR_MESSAGE}
         </label>
         <textarea
           className="placeholder:text-black py-4.5 px-5 border border-spanish-gray text-lg text-spanish-gray focus:outline-0 w-full"
-          placeholder="Your Message"
+          placeholder={ContactFormEnumText.YOUR_MESSAGE}
           id="message"
           name="message"
           rows={3}
@@ -182,7 +141,7 @@ const ContactForm: FC<ContactFormProps> = ({ formButton }) => {
           className="max-w-47.5 w-full py-3 px-6 xl:py-4 xl:px-7.5 rounded-lg text-sm/snug font-semibold transition-all duration-500 ease-out hover:ease-in cursor-pointer bg-black text-white border border-transparent hover:bg-white hover:text-black hover:border-light-silver"
           aria-label={formButton.ariaLabel}
         >
-          {loading ? "Sending..." : formButton.label}
+          {loading ? ContactFormEnumText.SENDING : formButton.label}
         </button>
         {success && <p className="text-green-600 mt-2">{success}</p>}
       </div>

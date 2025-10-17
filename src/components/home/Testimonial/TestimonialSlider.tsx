@@ -1,31 +1,26 @@
 "use client";
 
-import { DoubleQuotes, LeftArrow } from "@/components/icons";
-import { FC, useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
+import { FC, useEffect, useRef, useState } from "react";
 
-interface TestimonialSliderData {
-  data: {
-    longTitle: string;
-    sliderData: {
-      id: number;
-      quote: string;
-      author: string;
-      subText: string;
-    }[];
-  };
-}
+import { BREAKPOINT_MD, BREAKPOINT_Xl } from "@/constant";
 
-const TestimonialSlider: FC<TestimonialSliderData> = ({ data }) => {
-  const [slidesToShow, setSlidesToShow] = useState(4.4); // default desktop
+import { TestimonialSliderProps } from "./types";
+import { DoubleQuotes, LeftArrow } from "../../icons";
+
+const TestimonialSlider: FC<TestimonialSliderProps> = ({
+  longTitle,
+  sliderData,
+}) => {
+  const [slidesToShow, setSlidesToShow] = useState(4.4);
   const [centerPadding, setCenterPadding] = useState("0px");
 
   useEffect(() => {
     const updateSlides = () => {
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < BREAKPOINT_MD) {
         setSlidesToShow(1);
-        setCenterPadding("50px"); // show left/right peeks
-      } else if (window.innerWidth < 1280) {
+        setCenterPadding("50px");
+      } else if (window.innerWidth < BREAKPOINT_Xl) {
         setSlidesToShow(2.9);
         setCenterPadding("-120px");
       } else {
@@ -34,7 +29,7 @@ const TestimonialSlider: FC<TestimonialSliderData> = ({ data }) => {
       }
     };
 
-    updateSlides(); // run on mount
+    updateSlides();
     window.addEventListener("resize", updateSlides);
     return () => window.removeEventListener("resize", updateSlides);
   }, []);
@@ -63,7 +58,7 @@ const TestimonialSlider: FC<TestimonialSliderData> = ({ data }) => {
     <>
       <div className="flex justify-between items-center max-w-360 mx-auto px-4 md:px-6 xl:pl-17.5 xl:pr-22.5 pb-8 md:pb-14 xl:pb-32.5">
         <h3 className="text-xl/7.5 xl:text-4xl/12.5 font-bold text-black">
-          <span>{data.longTitle}</span>
+          <span>{longTitle}</span>
         </h3>
         <div className="hidden md:flex gap-2.5">
           <button
@@ -84,18 +79,18 @@ const TestimonialSlider: FC<TestimonialSliderData> = ({ data }) => {
       </div>
       <div className="max-w-480 mx-auto w-full overflow-x-hidden [&_.slick-track]:flex [&_.slick-track]:gap-6 [&_.slick-slide]:w-84 [&_.slick-slide]:!inline-flex [&_.slick-slide]:h-auto [&_.slick-slide]:min-h-px [&_.slick-slide]:opacity-40 [&_.slick-slide]:transition-opacity [&_.slick-current]:!opacity-100">
         <Slider {...settings} ref={sliderRef}>
-          {data.sliderData.map((item) => (
+          {sliderData.map(({ author, id, quote, subText }) => (
             <div
-              key={item.id}
+              key={id}
               className="bg-[#f5f5f5] rounded-2xl transition-transform duration-500 p-6 border border-gray-300 max-w-84 w-full"
             >
               <div className="pb-10">
                 <DoubleQuotes className="text-spanish-gray" />
-                <p className="font-medium text-xl pt-8">{item.quote}</p>
+                <p className="font-medium text-xl pt-8">{quote}</p>
               </div>
               <div>
-                <h4 className="font-medium text-sm">{item.author}</h4>
-                <h5 className="font-medium text-10">{item.subText}</h5>
+                <h4 className="font-medium text-sm">{author}</h4>
+                <h5 className="font-medium text-10">{subText}</h5>
               </div>
             </div>
           ))}

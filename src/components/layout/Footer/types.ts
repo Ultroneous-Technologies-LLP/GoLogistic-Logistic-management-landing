@@ -14,7 +14,7 @@ interface Link {
   label: string;
 }
 
-interface MenuLinks {
+interface Links {
   id: number;
   title: string;
   links: Link[];
@@ -34,6 +34,6 @@ interface FooterLegal {
 
 export interface FooterProps {
   contact: Contact[];
-  links: MenuLinks[];
+  links: Links[];
   footerLegal: FooterLegal;
 }
