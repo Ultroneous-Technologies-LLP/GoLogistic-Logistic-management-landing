@@ -1,7 +1,6 @@
 {
   "heroSection": {
-    "id": 1,
-    "heading": "Elevate your business with reliable shipping services",
+    "title": "Elevate your business with reliable shipping services",
     "description": "Drive robust business development by expanding top-tier transport services to reach diverse market sectors",
     "heroButtons": [
       {
@@ -25,7 +24,6 @@
     }
   },
   "shippingService": {
-    "id": 2,
     "title": "Shiping Service",
     "description": "Effective warehousing options for a smooth supply chain and seamless operations.",
     "shippingServiceImage": [
@@ -53,10 +51,9 @@
     ]
   },
   "whyChooseUsSection": {
-    "id": 3,
     "title": "Why Choose Us",
     "longTitle": "We offer comprehensive worldwide logistics solutions.",
-    "description": [
+    "descriptions": [
       {
         "id": 1,
         "description": "With a presence in key strategic locations worldwide, we combine global reach with local expertise, ensuring a deep understanding of regional nuances and regulations."
@@ -66,7 +63,7 @@
         "description": "Embrace the future of logistics with us. We continuously invest in innovation to bring you cutting-edge solutions that keep your business agile and ready for the challenges of tomorrow."
       }
     ],
-    "whyChooseUsfeaturesData": [
+    "whyChooseUsFeaturesData": [
       {
         "id": 1,
         "icon": "Reliability",
@@ -210,7 +207,6 @@
     ]
   },
   "contactSection": {
-    "id": 5,
     "title": "Contact",
     "longTitle": "Reach out to us",
     "description": "Discover agile logistics solutions that redefine strategies and enhance overall value.",
@@ -296,7 +292,7 @@
         "variant": "contained",
         "label": "Submit Message",
         "ariaLabel": "Submit Message",
-        "link": "/#contact"
+        "href": "/#contact"
       }
     },
     "backgroundImage": {

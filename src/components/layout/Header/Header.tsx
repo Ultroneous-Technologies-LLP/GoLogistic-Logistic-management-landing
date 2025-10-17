@@ -6,7 +6,7 @@ import { FC, useEffect, useState } from "react";
 import { Logo } from "@/components/icons";
 import { BREAKPOINT_MD } from "@/constant";
 import { useIsMobile, useWindowResize } from "@/hooks";
-import { Container, Link } from "@/components/common";
+import { Link, Container } from "@/components/common";
 
 import { HeaderProps } from "./types";
 
@@ -17,8 +17,6 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
   const width = useWindowResize();
 
   useEffect(() => {
-    if (!width) return;
-
     if (width > BREAKPOINT_MD && isOpen) {
       setIsOpen(false);
     }
@@ -56,7 +54,8 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
               href={button.href}
               variant={button.variant}
               className="py-3 px-4.5 xl:py-2.5 xl:px-10.5 rounded-lg md:!text-base/6"
-              title={button.title}
+              title={button.label}
+              ariaLabel={button.label}
               label={button.label}
             />
           </div>
@@ -105,15 +104,14 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
               rel="nofollow"
               key={id}
               onClick={() => setIsOpen(false)}
-            >
-              <span>{label}</span>
-            </Link>
+              label={label}
+            />
           ))}
           <Link
             href={button.href}
             variant={button.variant}
             className="py-3 px-6 rounded-lg !w-fit"
-            title={button.title}
+            title={button.label}
             onClick={() => setIsOpen(false)}
             label={button.label}
           />

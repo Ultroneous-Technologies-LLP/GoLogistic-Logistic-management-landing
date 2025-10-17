@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import data from "@/content/Layout-data.json";
 
+import { ButtonVariant } from "@/types";
 import { Footer, Header } from "@/components/layout";
 import { montserrat400, montserrat600, montserratRest } from "@/constant";
 
@@ -95,7 +96,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { header, footer }: LayoutDataType = data;
+  const { header, footer }: LayoutDataType = {
+    ...data,
+    header: {
+      ...data.header,
+      button: {
+        ...data.header.button,
+        variant: data.header.button.variant as ButtonVariant,
+      },
+    },
+  };
+
   return (
     <html lang="en" className="scroll-smooth">
       <body
