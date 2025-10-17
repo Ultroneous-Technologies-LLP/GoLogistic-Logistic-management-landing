@@ -1,7 +1,8 @@
-import { FooterProps, HeaderProps } from "@/components";
 import {
   BlogSectionProps,
   ContactSectionProps,
+  FooterProps,
+  HeaderProps,
   HeroSectionProps,
   OurServicesAndFacilitiesSectionProps,
   ShippingServiceProps,
