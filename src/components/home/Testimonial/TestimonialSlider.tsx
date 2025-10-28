@@ -42,6 +42,7 @@ const TestimonialSlider: FC<TestimonialSliderProps> = ({
     centerMode: true,
     centerPadding,
     arrows: false,
+    autoplay: true,
   };
 
   const sliderRef = useRef<Slider>(null);
