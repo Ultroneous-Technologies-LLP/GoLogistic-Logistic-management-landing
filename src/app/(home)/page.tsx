@@ -8,7 +8,7 @@ import {
   ShippingService,
   Testimonial,
   WhyChooseUs,
-} from "@/components/home";
+} from "@/components";
 import rawData from "@/content/home-page-data.json";
 
 import { HomePageDataType } from "./types";

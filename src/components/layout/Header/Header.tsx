@@ -9,6 +9,7 @@ import { useIsMobile, useWindowResize } from "@/hooks";
 import { Link, Container } from "@/components/common";
 
 import { HeaderProps } from "./types";
+import { useActiveSection } from "./useActiveSection";
 
 export const Header: FC<HeaderProps> = ({ button, links }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,11 +17,26 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
   const isMobile = useIsMobile();
   const width = useWindowResize();
 
+  const activeSection = useActiveSection(links, 150);
+
   useEffect(() => {
     if (width > BREAKPOINT_MD && isOpen) {
       setIsOpen(false);
     }
   }, [width, isOpen]);
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
+    const id = href.replace("/#", "");
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+    setIsOpen(false);
+  };
 
   return (
     <nav className="w-full fixed top-0 left-0 z-50 bg-white">
@@ -37,17 +53,27 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
             />
           </Link>
           <div className="items-center gap-5 xl:gap-10 text-sm xl:text-base hidden md:flex">
-            {links.map(({ href, id, label, title }) => (
-              <Link
-                href={href}
-                title={title}
-                rel="nofollow"
-                key={id}
-                isPureLink={false}
-              >
-                <span>{label}</span>
-              </Link>
-            ))}
+            {links.map(({ href, id, label, title }) => {
+              const sectionId = href.replace("/#", "");
+              const isActive = activeSection === sectionId;
+
+              return (
+                <a
+                  href={href}
+                  title={title}
+                  key={id}
+                  onClick={(e) => handleNavClick(e, href)}
+                  className={clsx(
+                    "relative py-1 transition-all duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full",
+                    {
+                      "after:w-full font-semibold": isActive,
+                    }
+                  )}
+                >
+                  {label}
+                </a>
+              );
+            })}
           </div>
           <div className="hidden md:inline-block">
             <Link
@@ -103,7 +129,7 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
               title={title}
               rel="nofollow"
               key={id}
-              onClick={() => setIsOpen(false)}
+              onClick={(e) => handleNavClick(e, href)}
               label={label}
             />
           ))}

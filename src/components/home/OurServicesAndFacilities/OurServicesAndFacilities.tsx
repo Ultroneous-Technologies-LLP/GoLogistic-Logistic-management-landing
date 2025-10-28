@@ -24,7 +24,7 @@ export const OurServicesAndFacilities: FC<
   return (
     <>
       <Container
-        id="service"
+        id="services"
         backgroundClassName="bg-black relative"
         aria-label="services-heading"
       >

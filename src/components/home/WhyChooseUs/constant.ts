@@ -3,7 +3,7 @@ import {
   GlobalReach,
   Innovation,
   Reliability,
-} from "@/components/icons";
+} from "../../../components";
 
 export const ICONS = {
   Reliability,

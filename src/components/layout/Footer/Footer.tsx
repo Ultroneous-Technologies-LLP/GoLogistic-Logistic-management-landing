@@ -40,7 +40,7 @@ export const Footer: FC<FooterProps> = ({ contact, footerLegal, links }) => (
                   </p>
                   <Link
                     href={href}
-                    className="text-white"
+                    className="text-white hover:underline underline-offset-4"
                     rel="nofollow"
                     aria-label={ariaLabel}
                     title={title}
@@ -70,7 +70,11 @@ export const Footer: FC<FooterProps> = ({ contact, footerLegal, links }) => (
                   key={id}
                   className={clsx(title === "Our company" ? "xl:pl-42.5" : "")}
                 >
-                  <Link href={href} className="font-medium" title={label}>
+                  <Link
+                    href={href}
+                    className="font-medium hover:underline underline-offset-4"
+                    title={label}
+                  >
                     {label}
                   </Link>
                 </li>
