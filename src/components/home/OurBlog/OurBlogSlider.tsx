@@ -5,10 +5,10 @@ import Slider from "react-slick";
 import { FC, useRef, useState } from "react";
 
 import { useIsMobile } from "@/hooks";
+import { LeftArrow } from "@/components";
 
-import { LeftArrow } from "../../icons";
 import { OurBlogSliderProps } from "./types";
-import { settings, sliderClass } from "./constant";
+import { SETTINGS, SLIDER_CLASS } from "./constant";
 
 export const OurBlogSlider: FC<OurBlogSliderProps> = ({
   blogData,
@@ -57,12 +57,12 @@ export const OurBlogSlider: FC<OurBlogSliderProps> = ({
           </button>
         </div>
       </div>
-      <div className="pb-70 md:pb-55.5 xl:pb-0">
+      <div className="pb-45 md:pb-36 xl:pb-0">
         {isMobile ? (
           <div className="px-4 space-y-8">
             {visibleBlogs.map((value) => (
               <div key={value.id} className="flex gap-4">
-                <div className="max-w-[30%] w-full bg-black/40 hover:bg-transparent">
+                <div className="max-w-[30%] w-full rounded-sm">
                   <Image
                     src={value.src}
                     width={411}
@@ -102,21 +102,20 @@ export const OurBlogSlider: FC<OurBlogSliderProps> = ({
           </div>
         ) : (
           <div
-            className={`px-6 xl:px-17.5 rounded-4xl w-full overflow-x-hidden ${sliderClass}`}
+            className={`px-6 xl:px-17.5 rounded-4xl w-full overflow-x-hidden ${SLIDER_CLASS}`}
           >
-            <Slider {...settings} ref={sliderRef}>
+            <Slider {...SETTINGS} ref={sliderRef}>
               {visibleBlogs.map((value) => (
                 <div key={value.id}>
-                  <div className="relative group">
+                  <div className="group relative max-w-[411px] h-[447px] w-full rounded-20 overflow-hidden">
                     <Image
                       src={value.src}
-                      width={411}
-                      height={447}
                       alt={value.alt}
                       title={value.alt}
-                      className="relative -z-10"
+                      fill
+                      className="object-cover rounded-20"
                     />
-                    <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-opacity duration-300 z-10 rounded-20" />
+                    <div className="absolute inset-0 bg-black/40 opacity-100 group-hover:opacity-0 transition-opacity duration-500 z-10 rounded-20" />
                   </div>
                   <span className="text-10/3.5 xl:text-sm text-spanish-gray block py-4 xl:pt-10.5 xl:pb-5">
                     {value.date}

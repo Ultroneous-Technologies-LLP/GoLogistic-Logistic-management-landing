@@ -105,6 +105,16 @@ export default function RootLayout({
         variant: data.header.button.variant as ButtonVariant,
       },
     },
+    footer: {
+      ...data.footer,
+      blogCard: {
+        ...data.footer.blogCard,
+        button: {
+          ...data.footer.blogCard.button,
+          variant: data.footer.blogCard.button.variant as ButtonVariant,
+        },
+      },
+    },
   };
 
   return (

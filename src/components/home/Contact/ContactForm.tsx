@@ -7,7 +7,7 @@ import { CONTACT } from "@/utils/api-routes";
 
 import { FORM_FIELDS } from "./constant";
 import { ContactFormProps, FormErrors, FormData } from "./types";
-import { ContactFormEnumText } from "./enum";
+import { ContactFormeTypeEnum } from "./enum";
 
 const ContactForm: FC<ContactFormProps> = ({ formButton }) => {
   const [formData, setFormData] = useState<FormData>({
@@ -117,11 +117,11 @@ const ContactForm: FC<ContactFormProps> = ({ formButton }) => {
       ))}
       <div className="relative col-span-1 xl:col-span-2">
         <label htmlFor="message" className="sr-only">
-          {ContactFormEnumText.YOUR_MESSAGE}
+          {ContactFormeTypeEnum.YOUR_MESSAGE}
         </label>
         <textarea
           className="placeholder:text-black py-4.5 px-5 border border-spanish-gray text-lg text-spanish-gray focus:outline-0 w-full"
-          placeholder={ContactFormEnumText.YOUR_MESSAGE}
+          placeholder={ContactFormeTypeEnum.YOUR_MESSAGE}
           id="message"
           name="message"
           rows={3}
@@ -141,7 +141,7 @@ const ContactForm: FC<ContactFormProps> = ({ formButton }) => {
           className="max-w-47.5 w-full py-3 px-6 xl:py-4 xl:px-7.5 rounded-lg text-sm/snug font-semibold transition-all duration-500 ease-out hover:ease-in cursor-pointer bg-black text-white border border-transparent hover:bg-white hover:text-black hover:border-light-silver"
           aria-label={formButton.ariaLabel}
         >
-          {loading ? ContactFormEnumText.SENDING : formButton.label}
+          {loading ? ContactFormeTypeEnum.SENDING : formButton.label}
         </button>
         {success && <p className="text-green-600 mt-2">{success}</p>}
       </div>

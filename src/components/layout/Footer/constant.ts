@@ -1,4 +1,4 @@
-import { Facebook, LinkedIn, Mail, Phone, Twitter } from "@/components/icons";
+import { Facebook, LinkedIn, Mail, Phone, Twitter } from "@/components";
 
 export const iconMap: Record<string, React.ElementType> = {
   Mail,

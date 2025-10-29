@@ -1,3 +1,13 @@
+import {  Button, Image } from "@/types";
+
+interface BlogCard {
+  src: string;
+  alt: string;
+  title: string;
+  description: string;
+  button: Button;
+}
+
 interface Contact {
   id: number;
   href: string;
@@ -33,6 +43,8 @@ interface FooterLegal {
 }
 
 export interface FooterProps {
+  backgroundImage: Image;
+  blogCard: BlogCard;
   contact: Contact[];
   links: Links[];
   footerLegal: FooterLegal;

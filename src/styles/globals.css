@@ -1,25 +1,61 @@
 @import "tailwindcss";
 
 @theme inline {
+  
+  --font-montserrat: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
   --color-black: #000000;
   --color-white: #ffffff;
   --color-light-silver: #d9d9d9;
   --color-spanish-gray: #949494;
   --color-platinum: #e8e8e8;
+
   --text-22: 22px;
   --text-10: 10px;
-  --radius-20: 20px;
-  --font-montserrat: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
+  --radius-20: 20px;
+
+  --animate-slide-in-left:slideInLeft 1s ease-out forwards;
+  --animate-slide-in-right:slideInRight 1s ease-out forwards;
+  --animate-slide-up:slideUp 1s ease-out forwards;
+}
 
 body {
   font-family: "Montserrat", sans-serif;
 }
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+

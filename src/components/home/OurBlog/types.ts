@@ -1,5 +1,3 @@
-import { Button, Image } from "@/types";
-
 interface BlogData {
   id: number;
   src: string;
@@ -7,14 +5,6 @@ interface BlogData {
   date: string;
   title: string;
   description: string;
-}
-
-interface BlogCard {
-  src: string;
-  alt: string;
-  title: string;
-  description: string;
-  button: Button;
 }
 
 export interface OurBlogSliderProps {
@@ -26,6 +16,4 @@ export interface BlogSectionProps {
   title: string;
   longTitle: string;
   blogData: BlogData[];
-  blogCard: BlogCard;
-  backgroundImage: Image;
 }
