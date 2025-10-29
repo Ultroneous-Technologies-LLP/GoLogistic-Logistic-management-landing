@@ -3,10 +3,9 @@
 import clsx from "clsx";
 import { FC, useEffect, useState } from "react";
 
-import { Logo } from "@/components/icons";
 import { BREAKPOINT_MD } from "@/constant";
+import { Link, Container, Logo } from "@/components";
 import { useIsMobile, useWindowResize } from "@/hooks";
-import { Link, Container } from "@/components/common";
 
 import { HeaderProps } from "./types";
 import { useActiveSection } from "./useActiveSection";

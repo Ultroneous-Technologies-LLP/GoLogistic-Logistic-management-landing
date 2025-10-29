@@ -3,10 +3,10 @@
 import Slider from "react-slick";
 import { FC, useEffect, useRef, useState } from "react";
 
+import { DoubleQuotes, LeftArrow } from "@/components";
 import { BREAKPOINT_MD, BREAKPOINT_Xl } from "@/constant";
 
 import { TestimonialSliderProps } from "./types";
-import { DoubleQuotes, LeftArrow } from "../../icons";
 
 const TestimonialSlider: FC<TestimonialSliderProps> = ({
   longTitle,
