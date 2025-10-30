@@ -8,7 +8,7 @@ import { useIsMobile } from "@/hooks";
 import { LeftArrow } from "@/components";
 
 import { OurBlogSliderProps } from "./types";
-import { SETTINGS, SLIDER_CLASS } from "./constant";
+import { SETTING_PROPS, SLIDER_CLASS } from "./constant";
 
 export const OurBlogSlider: FC<OurBlogSliderProps> = ({
   blogData,
@@ -104,7 +104,7 @@ export const OurBlogSlider: FC<OurBlogSliderProps> = ({
           <div
             className={`px-6 xl:px-17.5 rounded-4xl w-full overflow-x-hidden ${SLIDER_CLASS}`}
           >
-            <Slider {...SETTINGS} ref={sliderRef}>
+            <Slider {...SETTING_PROPS} ref={sliderRef}>
               {visibleBlogs.map((value) => (
                 <div key={value.id}>
                   <div className="group relative max-w-[411px] h-[447px] w-full rounded-20 overflow-hidden">

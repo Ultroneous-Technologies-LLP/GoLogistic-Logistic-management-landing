@@ -4,11 +4,11 @@ import clsx from "clsx";
 import Slider from "react-slick";
 import React, { FC, useRef } from "react";
 
-import { useInView, UseInViewTypeEnum } from "@/hooks";
+import { useInView } from "@/hooks";
 import { Container } from "@/components";
 
 import { ShippingServiceProps } from "./types";
-import { SETTINGS, SLIDER_CLASS } from "./constant";
+import { SETTING_PROPS, SLIDER_CLASS } from "./constant";
 
 export const ShippingService: FC<ShippingServiceProps> = ({
   description,
@@ -25,13 +25,11 @@ export const ShippingService: FC<ShippingServiceProps> = ({
         className={clsx(
           "relative z-0 w-full rounded-20 overflow-x-hidden",
           SLIDER_CLASS,
-          getAnimation({
-            animationType: UseInViewTypeEnum.UP,
-          })
+          getAnimation()
         )}
       >
         <Slider
-          {...SETTINGS}
+          {...SETTING_PROPS}
           customPaging={() => (
             <div className="w-5 xl:w-7 h-2 rounded-full bg-white opacity-50 transition-all duration-300 cursor-pointer" />
           )}

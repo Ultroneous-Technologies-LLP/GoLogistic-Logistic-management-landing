@@ -1,9 +1,6 @@
-import clsx from "clsx";
-import { useEffect, useState, RefObject } from "react";
-
-import { ANIMATION } from "./constant";
-import { GetAnimationProps } from "./type";
+import { RefObject, useEffect, useState } from "react";
 import { UseInViewTypeEnum } from "./enum";
+import { getAnimationClass } from "../utils";
 
 export const useInView = (
   ref: RefObject<HTMLElement | null>,
@@ -32,26 +29,15 @@ export const useInView = (
   }, [ref, threshold, hasAnimated]);
 
   const getAnimation = ({
-    animationType = null,
+    animationType = UseInViewTypeEnum.UP,
     className = "",
-  }: GetAnimationProps) => {
-    if (!inView && !hasAnimated) return "opacity-0";
+  }: {
+    animationType?: UseInViewTypeEnum | null;
+    className?: string;
+  } = {}) => {
+    const safeAnimationType = animationType ?? UseInViewTypeEnum.UP;
 
-    if (hasAnimated && !inView) return "opacity-100";
-
-    if (animationType && !ANIMATION.includes(animationType))
-      return clsx(animationType, "opacity-100", className);
-
-    switch (animationType) {
-      case UseInViewTypeEnum.IN_LEFT:
-        return clsx("animate-slide-in-left opacity-100", className);
-      case UseInViewTypeEnum.IN_RIGHT:
-        return clsx("animate-slide-in-right opacity-100", className);
-      case UseInViewTypeEnum.UP:
-        return clsx("animate-slide-up opacity-100", className);
-      default:
-        return clsx("opacity-100", className);
-    }
+    return getAnimationClass(safeAnimationType, inView, hasAnimated, className);
   };
 
   return { inView, hasAnimated, getAnimation };

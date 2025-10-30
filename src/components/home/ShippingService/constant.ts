@@ -1,4 +1,4 @@
-export const SETTINGS = {
+export const SETTING_PROPS = {
   dots: true,
   arrows: false,
   infinite: true,
