@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import { FC, useRef } from "react";
 
-import { useInView, UseInViewTypeEnum } from "@/hooks";
+import { useInView } from "@/hooks";
 import { Container, Title } from "@/components";
 
 import { TestimonialSectionProps } from "./types";
@@ -25,9 +25,7 @@ export const Testimonial: FC<TestimonialSectionProps> = ({
       id="testimonial"
       className={clsx(
         "py-20 md:pb-35.5 xl:py-36.5 relative overflow-x-hidden transition-transform duration-700",
-        getAnimation({
-          animationType: UseInViewTypeEnum.UP,
-        })
+        getAnimation()
       )}
     >
       <Image

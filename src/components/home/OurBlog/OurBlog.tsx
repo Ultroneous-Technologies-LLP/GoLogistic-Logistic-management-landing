@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import { FC, useRef } from "react";
 
-import { useInView, UseInViewTypeEnum } from "@/hooks";
+import { useInView } from "@/hooks";
 import { Container, Title } from "@/components";
 
 import { BlogSectionProps } from "./types";
@@ -23,9 +23,7 @@ export const OurBlog: FC<BlogSectionProps> = ({
       ref={sectionRef}
       className={clsx(
         "relative pt-20 xl:pt-36.5 pb-20 xl:pb-15",
-        getAnimation({
-          animationType: UseInViewTypeEnum.UP,
-        })
+        getAnimation()
       )}
     >
       <div className="px-4 md:px-6 xl:pl-17.5 xl:pr-22.5">

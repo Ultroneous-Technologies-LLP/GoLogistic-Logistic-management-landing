@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import { FC, useRef } from "react";
 
-import { useInView, UseInViewTypeEnum } from "@/hooks";
+import { useInView } from "@/hooks";
 import { Logo, Container, Link } from "@/components";
 
 import { FooterProps } from "./types";
@@ -21,12 +21,7 @@ export const Footer: FC<FooterProps> = ({
   const { getAnimation } = useInView(sectionRef);
 
   return (
-    <footer
-      ref={sectionRef}
-      className={getAnimation({
-        animationType: UseInViewTypeEnum.UP,
-      })}
-    >
+    <footer ref={sectionRef} className={getAnimation()}>
       <Container className="relative">
         <Image
           width={1440}

@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { FC, ReactElement, useRef } from "react";
 
-import { useInView, UseInViewTypeEnum } from "@/hooks";
+import { useInView } from "@/hooks";
 import { Container, Title, Mail, Phone } from "@/components";
 
 import ContactForm from "./ContactForm";
@@ -38,7 +38,6 @@ export const Contact: FC<ContactSectionProps> = ({
       backgroundClassName={clsx(
         "bg-[#f5f5f5] md:mx-6 xl:mx-0 scroll-mt-20 overflow-x-hidden transition-transform",
         getAnimation({
-          animationType: UseInViewTypeEnum.UP,
           className: "xl:animate-none",
         })
       )}

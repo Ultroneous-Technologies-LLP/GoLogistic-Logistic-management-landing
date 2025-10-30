@@ -1,10 +1,10 @@
 "use client";
 
 import clsx from "clsx";
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useRef } from "react";
 
-import { useInView, UseInViewTypeEnum } from "@/hooks";
 import { Container, Title } from "@/components";
+import { useInView, useMultipleInView, UseInViewTypeEnum } from "@/hooks";
 
 import { ICONS } from "./constant";
 import { IconKey, WhyChooseUsSectionProps } from "./types";
@@ -15,27 +15,13 @@ export const WhyChooseUs: FC<WhyChooseUsSectionProps> = ({
   title,
   whyChooseUsFeaturesData,
 }) => {
-  const [visibleIndex, setVisibleIndex] = useState<number | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const { inView, getAnimation } = useInView(sectionRef);
+  const { getAnimation: getSectionAnimation } = useInView(sectionRef);
 
-  useEffect(() => {
-    if (!inView) {
-      const resetTimeout = setTimeout(() => setVisibleIndex(null), 300);
-      return () => clearTimeout(resetTimeout);
-    }
-
-    const timeouts: NodeJS.Timeout[] = [];
-
-    whyChooseUsFeaturesData.forEach((_, index) => {
-      const timeout = setTimeout(() => {
-        setVisibleIndex((prev) => (prev !== index ? index : prev));
-      }, index * 700);
-      timeouts.push(timeout);
-    });
-
-    return () => timeouts.forEach(clearTimeout);
-  }, [inView, whyChooseUsFeaturesData]);
+  const { refs, getAnimation } = useMultipleInView(
+    whyChooseUsFeaturesData.length,
+    0.3
+  );
 
   return (
     <Container
@@ -48,11 +34,11 @@ export const WhyChooseUs: FC<WhyChooseUsSectionProps> = ({
         <div
           className={clsx(
             "max-w-146 w-full transition-all duration-700",
-            getAnimation({ animationType: UseInViewTypeEnum.IN_LEFT })
+            getSectionAnimation({ animationType: UseInViewTypeEnum.IN_LEFT })
           )}
         >
           <Title title={title} />
-          <h3 className="pb-2.5 xl:pb-3.5 text-xl/7.5 xl:text-4xl/12.5 font-bold text-black transition-all duration-700">
+          <h3 className="pb-2.5 xl:pb-3.5 text-xl/7.5 xl:text-4xl/12.5 font-bold text-black">
             <span>{longTitle}</span>
           </h3>
           {descriptions.map(({ id, description }) => (
@@ -68,18 +54,20 @@ export const WhyChooseUs: FC<WhyChooseUsSectionProps> = ({
           {whyChooseUsFeaturesData.map(
             ({ id, icon, title, description }, index) => {
               const Icon = ICONS[icon as IconKey];
-              const isVisible = visibleIndex !== null && index <= visibleIndex;
 
               return (
                 <article
                   key={id}
+                  ref={(el) => {
+                    refs.current[index] = el;
+                  }}
                   className={clsx(
-                    "flex gap-4 xl:gap-10 pb-5 xl:pb-13.5 last:pb-0 transform transition-all duration-500",
-                    {
-                      "opacity-100 translate-x-0": isVisible,
-                      "opacity-0 translate-x-5": !isVisible,
-                    }
+                    "flex gap-4 xl:gap-10 pb-5 xl:pb-13.5 last:pb-0 transform transition-all duration-700 ease-out",
+                    getAnimation(index, UseInViewTypeEnum.IN_RIGHT)
                   )}
+                  style={{
+                    transitionDelay: `${index * 150}ms`,
+                  }}
                 >
                   <div aria-hidden="true">
                     <Icon className="fill-black" />

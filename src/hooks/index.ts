@@ -1,5 +1,4 @@
-export * from './useIsMobile'
-export * from './useWindowResize'
-export * from './useInView'
-export * from './useInView/enum'
-
+export * from "./useIsMobile";
+export * from "./useWindowResize";
+export * from "./useInView";
+export * from "./useMultipleInView";

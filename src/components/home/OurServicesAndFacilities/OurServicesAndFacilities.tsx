@@ -5,7 +5,7 @@ import Image from "next/image";
 import { FC, useRef, useState } from "react";
 
 import { BREAKPOINT_Xl } from "@/constant";
-import { useInView, UseInViewTypeEnum, useIsMobile } from "@/hooks";
+import { useInView, useIsMobile } from "@/hooks";
 import { Link, Container, Title } from "@/components";
 
 import { OurServicesAndFacilitiesSectionProps } from "./types";
@@ -37,9 +37,7 @@ export const OurServicesAndFacilities: FC<
       id="services"
       backgroundClassName={clsx(
         "bg-black relative overflow-x-hidden transition-transform z-0",
-        getAnimation({
-          animationType: UseInViewTypeEnum.UP,
-        })
+        getAnimation()
       )}
       aria-label="services-heading"
     >
