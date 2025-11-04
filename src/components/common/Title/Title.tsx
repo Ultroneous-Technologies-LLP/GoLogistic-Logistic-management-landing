@@ -3,18 +3,12 @@ import { FC } from "react";
 
 import { TitleProps } from "./types";
 
-export const Title: FC<TitleProps> = ({
-  title,
-  variant = "default",
-  className,
-}) => (
+export const Title: FC<TitleProps> = ({ title, variant = "default", className }) => (
   <h2
     className={clsx(
-      "inline-block py-1 pl-1 pr-2 mb-4 xl:mb-5 text-sm font-medium text-black border-l-4",
+      "mb-4 inline-block border-l-4 py-1 pr-2 pl-1 text-sm font-medium text-black xl:mb-5",
       className,
-      variant === "white"
-        ? "border-platinum/80 bg-white"
-        : "border-black bg-platinum/80"
+      variant === "white" ? "border-platinum/80 bg-white" : "bg-platinum/80 border-black"
     )}
   >
     <span>{title}</span>

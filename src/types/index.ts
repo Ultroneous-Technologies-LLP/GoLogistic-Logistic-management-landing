@@ -1,4 +1,3 @@
-
 export type ButtonVariant = "contained" | "outlined";
 
 export interface Image {
@@ -6,11 +5,11 @@ export interface Image {
   alt: string;
 }
 
-type Variant = ButtonVariant
+type Variant = ButtonVariant;
 
 export interface Button {
   variant: Variant;
   label: string;
   ariaLabel?: string;
-  href: string ;
+  href: string;
 }

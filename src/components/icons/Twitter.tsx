@@ -1,10 +1,6 @@
 import { SVGProps } from "react";
 
-export const Twitter = ({
-  width = 23,
-  height = 18,
-  ...svgProps
-}: SVGProps<SVGSVGElement>) => (
+export const Twitter = ({ width = 23, height = 18, ...svgProps }: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 23 18"
     fill="none"

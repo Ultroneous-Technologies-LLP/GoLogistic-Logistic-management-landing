@@ -22,9 +22,7 @@ const ContactForm: FC<ContactFormProps> = ({ formButton }) => {
   const [success, setSuccess] = useState("");
 
   // handle input change
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -35,12 +33,9 @@ const ContactForm: FC<ContactFormProps> = ({ formButton }) => {
     !formData.yourName.trim() && (tempErrors.yourName = "Name is required");
 
     !formData.email && (tempErrors.email = "Email is required");
-    formData.email &&
-      !/\S+@\S+\.\S+/.test(formData.email) &&
-      (tempErrors.email = "Invalid email");
+    formData.email && !/\S+@\S+\.\S+/.test(formData.email) && (tempErrors.email = "Invalid email");
 
-    !formData.phoneNumber &&
-      (tempErrors.phoneNumber = "Phone number is required");
+    !formData.phoneNumber && (tempErrors.phoneNumber = "Phone number is required");
     formData.phoneNumber &&
       !/^[0-9]{7,15}$/.test(formData.phoneNumber) &&
       (tempErrors.phoneNumber = "Enter a valid phone number");
@@ -90,17 +85,14 @@ const ContactForm: FC<ContactFormProps> = ({ formButton }) => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="grid gap-y-4 xl:grid-cols-2 xl:gap-x-6 xl:gap-y-7"
-    >
+    <form onSubmit={handleSubmit} className="grid gap-y-4 xl:grid-cols-2 xl:gap-x-6 xl:gap-y-7">
       {FORM_FIELDS.map(({ id, label, placeholder, type }) => (
         <div key={id} className="relative">
           <label htmlFor={id} className="sr-only">
             {label}
           </label>
           <input
-            className="placeholder:text-black w-full py-3 px-6 xl:py-4.5 xl:px-6.5 border border-spanish-gray text-lg text-spanish-gray focus:outline-0"
+            className="border-spanish-gray text-spanish-gray w-full border px-6 py-3 text-lg placeholder:text-black focus:outline-0 xl:px-6.5 xl:py-4.5"
             placeholder={placeholder}
             id={id}
             name={id}
@@ -109,9 +101,7 @@ const ContactForm: FC<ContactFormProps> = ({ formButton }) => {
             onChange={handleChange}
           />
           {errors[id] && (
-            <p className="absolute left-0 top-full mt-1 text-red-500 text-sm">
-              {errors[id]}
-            </p>
+            <p className="absolute top-full left-0 mt-1 text-sm text-red-500">{errors[id]}</p>
           )}
         </div>
       ))}
@@ -120,7 +110,7 @@ const ContactForm: FC<ContactFormProps> = ({ formButton }) => {
           {ContactFormeTypeEnum.YOUR_MESSAGE}
         </label>
         <textarea
-          className="placeholder:text-black py-4.5 px-5 border border-spanish-gray text-lg text-spanish-gray focus:outline-0 w-full"
+          className="border-spanish-gray text-spanish-gray w-full border px-5 py-4.5 text-lg placeholder:text-black focus:outline-0"
           placeholder={ContactFormeTypeEnum.YOUR_MESSAGE}
           id="message"
           name="message"
@@ -129,21 +119,19 @@ const ContactForm: FC<ContactFormProps> = ({ formButton }) => {
           onChange={handleChange}
         />
         {errors.message && (
-          <p className="absolute left-0 top-full mt-1 text-red-500 text-sm">
-            {errors.message}
-          </p>
+          <p className="absolute top-full left-0 mt-1 text-sm text-red-500">{errors.message}</p>
         )}
       </div>
       <div className="col-span-1 xl:col-span-2">
         <button
           type="submit"
           disabled={loading}
-          className="max-w-47.5 w-full py-3 px-6 xl:py-4 xl:px-7.5 rounded-lg text-sm/snug font-semibold transition-all duration-500 ease-out hover:ease-in cursor-pointer bg-black text-white border border-transparent hover:bg-white hover:text-black hover:border-light-silver"
+          className="hover:border-light-silver w-full max-w-47.5 cursor-pointer rounded-lg border border-transparent bg-black px-6 py-3 text-sm/snug font-semibold text-white transition-all duration-500 ease-out hover:bg-white hover:text-black hover:ease-in xl:px-7.5 xl:py-4"
           aria-label={formButton.ariaLabel}
         >
           {loading ? ContactFormeTypeEnum.SENDING : formButton.label}
         </button>
-        {success && <p className="text-green-600 mt-2">{success}</p>}
+        {success && <p className="mt-2 text-green-600">{success}</p>}
       </div>
     </form>
   );

@@ -12,8 +12,7 @@ import { LayoutDataType } from "./types";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.gologistic.example"),
   title: {
-    default:
-      "Logistics & Transport Website Landing Page – Shipping, Delivery & Supply Chain UI",
+    default: "Logistics & Transport Website Landing Page – Shipping, Delivery & Supply Chain UI",
     template: "%s | GoLogistic",
   },
   description:
@@ -33,20 +32,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "GoLogistic",
-    title:
-      "Logistics & Transport Website Landing Page – Shipping, Delivery & Supply Chain UI",
+    title: "Logistics & Transport Website Landing Page – Shipping, Delivery & Supply Chain UI",
     description:
       "Professional logistics and transport landing page UI design. Ideal for delivery companies, freight businesses, and supply chain platforms to showcase services online. #LogisticsUI #TransportDesign #DeliveryWebsite #UIDesign #WebDesign #SupplyChain #ShippingUI #CourierDesign",
     url: "/",
-    images: [
-      { url: "/favicon.png", width: 512, height: 512, alt: "GoLogistic logo" },
-    ],
+    images: [{ url: "/favicon.png", width: 512, height: 512, alt: "GoLogistic logo" }],
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "Logistics & Transport Website Landing Page – Shipping, Delivery & Supply Chain UI",
+    title: "Logistics & Transport Website Landing Page – Shipping, Delivery & Supply Chain UI",
     description:
       "Professional logistics and transport landing page UI design. Ideal for delivery companies, freight businesses, and supply chain platforms to showcase services online. #LogisticsUI #TransportDesign #DeliveryWebsite #UIDesign #WebDesign #SupplyChain #ShippingUI #CourierDesign",
     images: ["/favicon.png"],

@@ -24,7 +24,7 @@ export const Testimonial: FC<TestimonialSectionProps> = ({
       ref={sectionRef}
       id="testimonial"
       className={clsx(
-        "py-20 md:pb-35.5 xl:py-36.5 relative overflow-x-hidden transition-transform duration-700",
+        "relative overflow-x-hidden py-20 transition-transform duration-700 md:pb-35.5 xl:py-36.5",
         getAnimation()
       )}
     >
@@ -33,11 +33,11 @@ export const Testimonial: FC<TestimonialSectionProps> = ({
         alt={backgroundImage.alt}
         width={1440}
         height={470}
-        className="mx-auto absolute top-9.5 left-1/2 -translate-x-1/2 -z-10 object-cover w-full"
+        className="absolute top-9.5 left-1/2 -z-10 mx-auto w-full -translate-x-1/2 object-cover"
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1440px"
         title={backgroundImage.alt}
       />
-      <div className="max-w-360 w-full mx-auto px-4 md:px-6 xl:pl-17.5 xl:pr-22.5">
+      <div className="mx-auto w-full max-w-360 px-4 md:px-6 xl:pr-22.5 xl:pl-17.5">
         <Title title={title} />
       </div>
       <TestimonialSlider longTitle={longTitle} sliderData={sliderData} />

@@ -1,10 +1,6 @@
 import { SVGProps } from "react";
 
-export const GlobalReach = ({
-  width = 52,
-  height = 52,
-  ...svgProps
-}: SVGProps<SVGSVGElement>) => (
+export const GlobalReach = ({ width = 52, height = 52, ...svgProps }: SVGProps<SVGSVGElement>) => (
   <svg
     width={width}
     height={height}

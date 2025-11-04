@@ -24,10 +24,7 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
     }
   }, [width, isOpen]);
 
-  const handleNavClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const id = href.replace("/#", "");
     const section = document.getElementById(id);
@@ -38,20 +35,17 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
   };
 
   return (
-    <nav className="w-full fixed top-0 left-0 z-50 bg-white">
-      <Container
-        as="header"
-        className="relative z-50 pt-8.5 pb-4 px-6 xl:px-17.5"
-      >
-        <section className="flex items-center justify-between w-full">
+    <nav className="fixed top-0 left-0 z-50 w-full bg-white">
+      <Container as="header" className="relative z-50 px-6 pt-8.5 pb-4 xl:px-17.5">
+        <section className="flex w-full items-center justify-between">
           <Link href="/#home" isPureLink={false}>
             <Logo
-              className="fill-black max-w-28 max-h-6 md:max-w-33 md:max-h-7.5 xl:max-w-39 xl:max-h-8.5 w-full"
+              className="max-h-6 w-full max-w-28 fill-black md:max-h-7.5 md:max-w-33 xl:max-h-8.5 xl:max-w-39"
               width={156}
               height={34}
             />
           </Link>
-          <div className="items-center gap-5 xl:gap-10 text-sm xl:text-base hidden md:flex">
+          <div className="hidden items-center gap-5 text-sm md:flex xl:gap-10 xl:text-base">
             {links.map(({ href, id, label, title }) => {
               const sectionId = href.replace("/#", "");
               const isActive = activeSection === sectionId;
@@ -63,9 +57,9 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
                   key={id}
                   onClick={(e) => handleNavClick(e, href)}
                   className={clsx(
-                    "relative py-1 transition-all duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full",
+                    "relative py-1 transition-all duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-black after:transition-all after:duration-300 after:content-[''] hover:after:w-full",
                     {
-                      "after:w-full font-semibold": isActive,
+                      "font-semibold after:w-full": isActive,
                     }
                   )}
                 >
@@ -78,7 +72,7 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
             <Link
               href={button.href}
               variant={button.variant}
-              className="py-3 px-4.5 xl:py-2.5 xl:px-10.5 rounded-lg md:!text-base/6"
+              className="rounded-lg px-4.5 py-3 md:!text-base/6 xl:px-10.5 xl:py-2.5"
               title={button.label}
               ariaLabel={button.label}
               label={button.label}
@@ -93,7 +87,7 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
           >
             <span
               className={clsx(
-                "block h-0.5 w-full rounded-full bg-black transition-all duration-300 origin-center",
+                "block h-0.5 w-full origin-center rounded-full bg-black transition-all duration-300",
                 { "translate-y-[8.5px] rotate-45": isOpen }
               )}
             />
@@ -105,9 +99,9 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
             />
             <span
               className={clsx(
-                "block h-0.5 rounded-full bg-black transition-all duration-300 origin-center",
+                "block h-0.5 origin-center rounded-full bg-black transition-all duration-300",
                 {
-                  "-translate-y-[9px] -rotate-45 w-full": isOpen,
+                  "w-full -translate-y-[9px] -rotate-45": isOpen,
                   "ml-3.5 w-[calc(100%-14px)]": !isOpen,
                 }
               )}
@@ -118,7 +112,7 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
       {isMobile && (
         <div
           className={clsx(
-            "fixed top-18.5 inset-0 bg-white z-40 flex flex-col items-center justify-center gap-8 text-lg font-medium transform transition-transform duration-500",
+            "fixed inset-0 top-18.5 z-40 flex transform flex-col items-center justify-center gap-8 bg-white text-lg font-medium transition-transform duration-500",
             { "translate-x-0": isOpen, "translate-x-full": !isOpen }
           )}
         >
@@ -135,7 +129,7 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
           <Link
             href={button.href}
             variant={button.variant}
-            className="py-3 px-6 rounded-lg !w-fit"
+            className="!w-fit rounded-lg px-6 py-3"
             title={button.label}
             onClick={() => setIsOpen(false)}
             label={button.label}

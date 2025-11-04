@@ -1,10 +1,6 @@
 import { SVGProps } from "react";
 
-export const LeftArrow = ({
-  width = 14,
-  height = 12,
-  ...svgProps
-}: SVGProps<SVGSVGElement>) => (
+export const LeftArrow = ({ width = 14, height = 12, ...svgProps }: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 14 12"
     fill="none"

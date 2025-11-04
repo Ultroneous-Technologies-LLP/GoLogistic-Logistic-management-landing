@@ -1,10 +1,6 @@
 import { SVGProps } from "react";
 
-export const Reliability = ({
-  width = 46,
-  height = 46,
-  ...svgProps
-}: SVGProps<SVGSVGElement>) => (
+export const Reliability = ({ width = 46, height = 46, ...svgProps }: SVGProps<SVGSVGElement>) => (
   <svg
     width={width}
     height={height}

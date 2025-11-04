@@ -9,11 +9,7 @@ import { Container, Title } from "@/components";
 import { BlogSectionProps } from "./types";
 import { OurBlogSlider } from "./OurBlogSlider";
 
-export const OurBlog: FC<BlogSectionProps> = ({
-  blogData,
-  longTitle,
-  title,
-}) => {
+export const OurBlog: FC<BlogSectionProps> = ({ blogData, longTitle, title }) => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const { getAnimation } = useInView(sectionRef);
 
@@ -21,12 +17,9 @@ export const OurBlog: FC<BlogSectionProps> = ({
     <Container
       id="blog"
       ref={sectionRef}
-      className={clsx(
-        "relative pt-20 xl:pt-36.5 pb-20 xl:pb-15",
-        getAnimation()
-      )}
+      className={clsx("relative pt-20 pb-20 xl:pt-36.5 xl:pb-15", getAnimation())}
     >
-      <div className="px-4 md:px-6 xl:pl-17.5 xl:pr-22.5">
+      <div className="px-4 md:px-6 xl:pr-22.5 xl:pl-17.5">
         <Title title={title} />
       </div>
       <div>

@@ -18,19 +18,10 @@ export const Link: FC<LinKProps> = ({
   isPureLink = true,
   ...rest
 }) => {
-  const combinedClass = clsx(
-    isPureLink && baseClasses,
-    variant && VARIANTS[variant],
-    className
-  );
+  const combinedClass = clsx(isPureLink && baseClasses, variant && VARIANTS[variant], className);
 
   return (
-    <NextLink
-      {...rest}
-      href={href}
-      aria-label={ariaLabel || label}
-      className={combinedClass || ""}
-    >
+    <NextLink {...rest} href={href} aria-label={ariaLabel || label} className={combinedClass || ""}>
       {children ?? label}
     </NextLink>
   );

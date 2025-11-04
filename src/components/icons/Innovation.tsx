@@ -1,10 +1,6 @@
 import { SVGProps } from "react";
 
-export const Innovation = ({
-  width = 42,
-  height = 49,
-  ...svgProps
-}: SVGProps<SVGSVGElement>) => (
+export const Innovation = ({ width = 42, height = 49, ...svgProps }: SVGProps<SVGSVGElement>) => (
   <svg
     width={width}
     height={height}
@@ -27,9 +23,6 @@ export const Innovation = ({
       d="M20.9988 25.0324C21.1616 25.0325 21.3214 24.9896 21.4624 24.9082L41.5352 13.3191L40.608 11.7131L20.9988 23.0348L1.38941 11.7131L0.462284 13.3191L20.5352 24.9082C20.6762 24.9896 20.836 25.0324 20.9988 25.0324Z"
       fill="currentColor"
     />
-    <path
-      d="M21.9258 24.1053H20.0715V47.2836H21.9258V24.1053Z"
-      fill="currentColor"
-    />
+    <path d="M21.9258 24.1053H20.0715V47.2836H21.9258V24.1053Z" fill="currentColor" />
   </svg>
 );

@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @theme inline {
-  
   --font-montserrat: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
@@ -16,9 +15,9 @@
 
   --radius-20: 20px;
 
-  --animate-slide-in-left:slideInLeft 1s ease-out forwards;
-  --animate-slide-in-right:slideInRight 1s ease-out forwards;
-  --animate-slide-up:slideUp 1s ease-out forwards;
+  --animate-slide-in-left: slideInLeft 1s ease-out forwards;
+  --animate-slide-in-right: slideInRight 1s ease-out forwards;
+  --animate-slide-up: slideUp 1s ease-out forwards;
 }
 
 body {
@@ -57,5 +56,3 @@ body {
     transform: translateY(0);
   }
 }
-
-
