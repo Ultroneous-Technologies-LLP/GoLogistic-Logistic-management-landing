@@ -10,9 +10,13 @@ import { Link, Container, Title } from "@/components";
 
 import { OurServicesAndFacilitiesSectionProps } from "./types";
 
-export const OurServicesAndFacilities: FC<
-  OurServicesAndFacilitiesSectionProps
-> = ({ backgroundImage, button, longTitle, services, title }) => {
+export const OurServicesAndFacilities: FC<OurServicesAndFacilitiesSectionProps> = ({
+  backgroundImage,
+  button,
+  longTitle,
+  services,
+  title,
+}) => {
   const [activeIndex, setActiveIndex] = useState<null | number>(0);
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -47,13 +51,13 @@ export const OurServicesAndFacilities: FC<
         alt={backgroundImage.alt}
         src={backgroundImage.src}
         title={backgroundImage.alt}
-        className="absolute bottom-46 xl:bottom-[unset] xl:top-104 z-0 opacity-25"
+        className="absolute bottom-46 z-0 opacity-25 xl:top-104 xl:bottom-[unset]"
       />
-      <div className="px-4 md:px-6 xl:px-20 py-12.5 xl:py-42 z-10 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 xl:grid-cols-3 xl:gap-y-38">
+      <div className="relative z-10 px-4 py-12.5 md:px-6 xl:px-20 xl:py-42">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3 xl:gap-y-38">
           <div className="md:col-span-2 xl:col-span-1">
             <Title title={title} variant="white" />
-            <p className="pb-8 xl:pb-0 text-xl/7.5 xl:text-4xl/12.5 font-bold text-white xl:max-w-[364px]">
+            <p className="pb-8 text-xl/7.5 font-bold text-white xl:max-w-[364px] xl:pb-0 xl:text-4xl/12.5">
               <span>{longTitle}</span>
             </p>
           </div>
@@ -67,43 +71,36 @@ export const OurServicesAndFacilities: FC<
                 onMouseLeave={handleMouseLeave}
                 onClick={() => handleClick(index)}
                 className={clsx(
-                  "rounded-20 w-full flex gap-5 justify-between max-w-91 mx-auto xl:ml-0 xl:mr-auto overflow-hidden transition-all duration-700 ease-in-out",
-                  isActive
-                    ? "bg-white text-black h-85"
-                    : "bg-transparent text-white h-50"
+                  "rounded-20 mx-auto flex w-full max-w-91 justify-between gap-5 overflow-hidden transition-all duration-700 ease-in-out xl:mr-auto xl:ml-0",
+                  isActive ? "h-85 bg-white text-black" : "h-50 bg-transparent text-white"
                 )}
               >
                 {/* Text Content */}
-                <div className="max-w-55 w-full pl-8 py-8 xl:pt-10 xl:pl-9.5 xl:pb-7.5 flex flex-col justify-between break-words">
-                  <h3 className="text-2xl/9 font-semibold flex flex-col">
+                <div className="flex w-full max-w-55 flex-col justify-between py-8 pl-8 break-words xl:pt-10 xl:pb-7.5 xl:pl-9.5">
+                  <h3 className="flex flex-col text-2xl/9 font-semibold">
                     {index + 1} <br />
                     <span>{title}</span>
                   </h3>
                   <div
                     className={clsx("transition-all duration-700", {
-                      "opacity-100 translate-y-0 delay-200": isActive,
-                      "opacity-0 translate-y-2 delay-0 pointer-events-none":
-                        !isActive,
+                      "translate-y-0 opacity-100 delay-200": isActive,
+                      "pointer-events-none translate-y-2 opacity-0 delay-0": !isActive,
                     })}
                   >
                     <Link
                       variant={button.variant}
                       href={button.href}
-                      className="w-fit !font-medium hover:!font-medium rounded-md text-center inline-block py-2.5 px-10"
+                      className="inline-block w-fit rounded-md px-10 py-2.5 text-center !font-medium hover:!font-medium"
                       aria-label={button.ariaLabel}
                       label={button.label}
                     />
                   </div>
                 </div>
                 <div
-                  className={clsx(
-                    "max-w-27 -mr-2.5 transition-all duration-700",
-                    {
-                      "opacity-100 translate-x-0 delay-300": isActive,
-                      "opacity-0 translate-x-2 delay-0 pointer-events-none":
-                        !isActive,
-                    }
-                  )}
+                  className={clsx("-mr-2.5 max-w-27 transition-all duration-700", {
+                    "translate-x-0 opacity-100 delay-300": isActive,
+                    "pointer-events-none translate-x-2 opacity-0 delay-0": !isActive,
+                  })}
                 >
                   <Image
                     width={109}

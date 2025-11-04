@@ -1,10 +1,6 @@
 import { SVGProps } from "react";
 
-export const Phone = ({
-  width = 20,
-  height = 19,
-  ...svgProps
-}: SVGProps<SVGSVGElement>) => (
+export const Phone = ({ width = 20, height = 19, ...svgProps }: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 20 19"
     fill="none"

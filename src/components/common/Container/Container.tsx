@@ -7,13 +7,7 @@ import { ContainerProps, SupportedTags } from "./types";
 
 export const Container = forwardRef(
   <T extends SupportedTags = "div">(
-    {
-      as,
-      backgroundClassName = "",
-      className = "",
-      children,
-      ...rest
-    }: ContainerProps<T>,
+    { as, backgroundClassName = "", className = "", children, ...rest }: ContainerProps<T>,
     ref: React.Ref<T extends "div" ? HTMLDivElement : HTMLElement>
   ) => {
     const Component = (as || "section") as ElementType;
@@ -21,19 +15,13 @@ export const Container = forwardRef(
     if (backgroundClassName) {
       return (
         <Component className={clsx(backgroundClassName)} ref={ref} {...rest}>
-          <div className={clsx("mx-auto w-full max-w-360", className)}>
-            {children}
-          </div>
+          <div className={clsx("mx-auto w-full max-w-360", className)}>{children}</div>
         </Component>
       );
     }
 
     return (
-      <Component
-        className={clsx("mx-auto w-full max-w-360", className)}
-        ref={ref}
-        {...rest}
-      >
+      <Component className={clsx("mx-auto w-full max-w-360", className)} ref={ref} {...rest}>
         {children}
       </Component>
     );

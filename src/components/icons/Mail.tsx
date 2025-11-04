@@ -1,10 +1,6 @@
 import React, { SVGProps } from "react";
 
-export const Mail = ({
-  width = 22,
-  height = 27,
-  ...svgProps
-}: SVGProps<SVGSVGElement>) => (
+export const Mail = ({ width = 22, height = 27, ...svgProps }: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 22 17"
     fill="none"

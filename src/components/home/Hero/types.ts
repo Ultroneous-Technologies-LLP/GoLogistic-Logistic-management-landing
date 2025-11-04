@@ -4,7 +4,7 @@ export interface HeroButtons {
   id: number;
   label: string;
   href: string;
-  variant: ButtonVariant
+  variant: ButtonVariant;
   ariaLabel: string;
 }
 

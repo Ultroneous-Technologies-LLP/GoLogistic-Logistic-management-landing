@@ -41,27 +41,27 @@ export const Contact: FC<ContactSectionProps> = ({
           className: "xl:animate-none",
         })
       )}
-      className="py-12.5 px-4 xl:px-17.5 xl:py-29 grid grid-cols-1 xl:grid-rows-2 xl:grid-cols-2 gap-x-24"
+      className="grid grid-cols-1 gap-x-24 px-4 py-12.5 xl:grid-cols-2 xl:grid-rows-2 xl:px-17.5 xl:py-29"
     >
       <div
         className={clsx(
-          "w-full h-fit xl:max-w-132 xl:col-start-1 xl:col-end-2 row-start-1 row-end-2 xl:row-start-1 xl:row-end-2 transition-transform",
+          "row-start-1 row-end-2 h-fit w-full transition-transform xl:col-start-1 xl:col-end-2 xl:row-start-1 xl:row-end-2 xl:max-w-132",
           getAnimation({
             className: "xl:animate-slide-in-left",
           })
         )}
       >
         <Title title={title} />
-        <h3 className="pb-2.5 xl:pb-3.5 text-xl/7.5 xl:text-4xl/12.5 font-bold text-black">
+        <h3 className="pb-2.5 text-xl/7.5 font-bold text-black xl:pb-3.5 xl:text-4xl/12.5">
           <span>{longTitle}</span>
         </h3>
-        <p className="text-sm/4.5 xl:text-22/10 text-spanish-gray">
+        <p className="xl:text-22/10 text-spanish-gray text-sm/4.5">
           <span>{description}</span>
         </p>
       </div>
       <div
         className={clsx(
-          "xl:col-start-2 xl:col-end-3 row-start-2 row-end-3 xl:row-start-1 xl:row-end-3 pt-8 xl:pt-6.5 transition-transform",
+          "row-start-2 row-end-3 pt-8 transition-transform xl:col-start-2 xl:col-end-3 xl:row-start-1 xl:row-end-3 xl:pt-6.5",
           getAnimation({
             className: "xl:animate-slide-in-right",
           })
@@ -71,7 +71,7 @@ export const Contact: FC<ContactSectionProps> = ({
       </div>
       <div
         className={clsx(
-          "xl:col-start-1 xl:col-end-2 row-start-3 row-end-4 xl:row-start-2 xl:row-end-3 pt-8 xl:pt-6.5 flex xl:flex-col gap-12 xl:gap-0 transition-transform",
+          "row-start-3 row-end-4 flex gap-12 pt-8 transition-transform xl:col-start-1 xl:col-end-2 xl:row-start-2 xl:row-end-3 xl:flex-col xl:gap-0 xl:pt-6.5",
           getAnimation({
             className: "xl:animate-slide-in-left",
           })
@@ -80,21 +80,16 @@ export const Contact: FC<ContactSectionProps> = ({
         {contactDetails.map(({ id, title, link, ariaLabel }) => (
           <address
             key={id}
-            className="flex flex-col xl:flex-row xl:items-center gap-4 xl:gap-3.5 not-italic xl:pb-7.5 last:pb-0 md:w-1/2 xl:w-full"
+            className="flex flex-col gap-4 not-italic last:pb-0 md:w-1/2 xl:w-full xl:flex-row xl:items-center xl:gap-3.5 xl:pb-7.5"
           >
-            <div className="size-14 xl:size-16 bg-[#DEDEDE] rounded-full flex justify-center items-center">
+            <div className="flex size-14 items-center justify-center rounded-full bg-[#DEDEDE] xl:size-16">
               {title === "Email" || title === "Call Us" ? getIcon(title) : null}
             </div>
-            <div className="font-medium text-base/snug text-black">
+            <div className="text-base/snug font-medium text-black">
               <p>
                 <span>{title}</span>
               </p>
-              <Link
-                href={link}
-                rel="nofollow"
-                aria-label={ariaLabel}
-                title={ariaLabel}
-              >
+              <Link href={link} rel="nofollow" aria-label={ariaLabel} title={ariaLabel}>
                 {link.replace(/^mailto:|^tel:/, "")}
               </Link>
             </div>

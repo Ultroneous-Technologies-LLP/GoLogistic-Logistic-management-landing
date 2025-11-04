@@ -19,25 +19,20 @@ export const Hero: FC<HeroSectionProps> = ({
   const { getAnimation } = useInView(heroRef);
 
   return (
-    <Container
-      ref={heroRef}
-      id="home"
-      className="relative"
-      backgroundClassName="pt-20"
-    >
+    <Container ref={heroRef} id="home" className="relative" backgroundClassName="pt-20">
       <Image
         src={backgroundImage.src}
         alt={backgroundImage.alt}
         width={1440}
         height={470}
-        className="absolute -z-20 object-cover w-full h-full"
+        className="absolute -z-20 h-full w-full object-cover"
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1440px"
         title={backgroundImage.alt}
       />
-      <div className="flex flex-col md:flex-row md:items-center xl:items-start px-4 md:px-6 xl:px-17.5 gap-2 md:gap-4 xl:gap-11.5 xl:pt-37.5 pb-20 md:pb-19 xl:pb-31.5">
+      <div className="flex flex-col gap-2 px-4 pb-20 md:flex-row md:items-center md:gap-4 md:px-6 md:pb-19 xl:items-start xl:gap-11.5 xl:px-17.5 xl:pt-37.5 xl:pb-31.5">
         <h1
           className={clsx(
-            "text-2xl/9 md:text-4xl/13.5 xl:text-5xl xl:leading-16 font-semibold max-w-102.5 xl:max-w-143.5 w-full transition-all duration-700 ease-out",
+            "w-full max-w-102.5 text-2xl/9 font-semibold transition-all duration-700 ease-out md:text-4xl/13.5 xl:max-w-143.5 xl:text-5xl xl:leading-16",
             getAnimation({
               animationType: UseInViewTypeEnum.IN_LEFT,
             })
@@ -50,16 +45,16 @@ export const Hero: FC<HeroSectionProps> = ({
             animationType: UseInViewTypeEnum.IN_RIGHT,
           })}
         >
-          <p className="text-sm/4.5 md:text-sm/5 xl:text-lg/10 pb-4 md:pb-8 xl:pb-10.5">
+          <p className="pb-4 text-sm/4.5 md:pb-8 md:text-sm/5 xl:pb-10.5 xl:text-lg/10">
             <span>{description}</span>
           </p>
-          <div className="flex gap-2 xl:gap-6 w-full">
+          <div className="flex w-full gap-2 xl:gap-6">
             {heroButtons.map(({ ariaLabel, href, id, label, variant }) => (
               <div key={id}>
                 <Link
                   variant={variant}
                   href={href}
-                  className="!text-base/6 py-3 px-7.5 xl:py-1.5 xl:px-16 rounded-xl inline-block xl:!text-xl/9"
+                  className="inline-block rounded-xl px-7.5 py-3 !text-base/6 xl:px-16 xl:py-1.5 xl:!text-xl/9"
                   aria-label={ariaLabel}
                   label={label}
                 />

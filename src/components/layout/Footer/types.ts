@@ -1,4 +1,4 @@
-import {  Button, Image } from "@/types";
+import { Button, Image } from "@/types";
 
 interface BlogCard {
   src: string;

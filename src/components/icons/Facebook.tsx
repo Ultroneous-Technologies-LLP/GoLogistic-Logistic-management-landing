@@ -1,10 +1,6 @@
 import { SVGProps } from "react";
 
-export const Facebook = ({
-  width = 24,
-  height = 22,
-  ...svgProps
-}: SVGProps<SVGSVGElement>) => (
+export const Facebook = ({ width = 24, height = 22, ...svgProps }: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 24 22"
     fill="none"

@@ -7,7 +7,6 @@ interface Links {
   title: string;
 }
 
-
 export type HeaderProps = {
   links: Links[];
   button: Button;

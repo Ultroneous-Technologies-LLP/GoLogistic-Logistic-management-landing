@@ -1,5 +1,5 @@
 import { LinkProps } from "next/link";
-import  { AnchorHTMLAttributes, ReactNode } from "react";
+import { AnchorHTMLAttributes, ReactNode } from "react";
 
 import { VARIANTS } from "./constant";
 
@@ -11,8 +11,8 @@ export type LinKProps = {
   ariaLabel?: string;
   className?: string;
   variant?: Variant;
-  children?: ReactNode
-  isPureLink?:boolean
+  children?: ReactNode;
+  isPureLink?: boolean;
 } & Omit<
   AnchorHTMLAttributes<HTMLAnchorElement>,
   "className" | "href" | "children" | "aria-label"

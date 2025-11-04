@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { ANIMATION_TYPES,UseInViewTypeEnum } from "../useInView";
+import { ANIMATION_TYPES, UseInViewTypeEnum } from "../useInView";
 
 export const getAnimationClass = (
   animationType: UseInViewTypeEnum = UseInViewTypeEnum.UP,
@@ -24,14 +24,12 @@ export const getAnimationClass = (
   }
 };
 
-export const getAnimation = (
-  {
-    animationType = UseInViewTypeEnum.UP,
-    className = "",
-  }: {
-    animationType?: UseInViewTypeEnum | null;
-    className?: string;
-  } = {}
-) => {
+export const getAnimation = ({
+  animationType = UseInViewTypeEnum.UP,
+  className = "",
+}: {
+  animationType?: UseInViewTypeEnum | null;
+  className?: string;
+} = {}) => {
   return getAnimationClass(animationType ?? UseInViewTypeEnum.UP, true, false, className);
 };

@@ -13,9 +13,7 @@ export const useMultipleInView = (count: number, threshold: number = 0.3) => {
         entries.forEach((entry) => {
           const index = refs.current.findIndex((el) => el === entry.target);
           if (entry.isIntersecting && index !== -1) {
-            setVisibleIndexes((prev) =>
-              prev.includes(index) ? prev : [...prev, index]
-            );
+            setVisibleIndexes((prev) => (prev.includes(index) ? prev : [...prev, index]));
             observer.unobserve(entry.target);
           }
         });

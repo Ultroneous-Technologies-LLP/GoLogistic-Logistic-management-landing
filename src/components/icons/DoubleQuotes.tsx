@@ -1,10 +1,6 @@
 import { SVGProps } from "react";
 
-export const DoubleQuotes = ({
-  width = 68,
-  height = 47,
-  ...svgProps
-}: SVGProps<SVGSVGElement>) => (
+export const DoubleQuotes = ({ width = 68, height = 47, ...svgProps }: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 68 47"
     fill="none"

@@ -10,10 +10,7 @@ import { LeftArrow } from "@/components";
 import { OurBlogSliderProps } from "./types";
 import { SETTING_PROPS, SLIDER_CLASS } from "./constant";
 
-export const OurBlogSlider: FC<OurBlogSliderProps> = ({
-  blogData,
-  longTitle,
-}) => {
+export const OurBlogSlider: FC<OurBlogSliderProps> = ({ blogData, longTitle }) => {
   const [showAll, setShowAll] = useState(false);
 
   const sliderRef = useRef<Slider>(null);
@@ -28,60 +25,54 @@ export const OurBlogSlider: FC<OurBlogSliderProps> = ({
     sliderRef.current?.slickNext();
   };
 
-  const visibleBlogs = isMobile
-    ? showAll
-      ? blogData
-      : blogData.slice(0, 3)
-    : blogData;
+  const visibleBlogs = isMobile ? (showAll ? blogData : blogData.slice(0, 3)) : blogData;
 
   return (
     <>
-      <div className="md:flex justify-between items-center px-4 pb-8 md:px-6 xl:pl-17.5 xl:pr-22.5 xl:pb-16.5">
-        <h3 className="text-xl/7.5 xl:text-4xl/12.5 font-bold text-black">
+      <div className="items-center justify-between px-4 pb-8 md:flex md:px-6 xl:pr-22.5 xl:pb-16.5 xl:pl-17.5">
+        <h3 className="text-xl/7.5 font-bold text-black xl:text-4xl/12.5">
           <span>{longTitle}</span>
         </h3>
-        <div className="gap-2.5 hidden md:flex">
+        <div className="hidden gap-2.5 md:flex">
           <button
             type="button"
             onClick={handlePrev}
-            className="size-11 flex justify-center items-center border-transparent transition-colors duration-300 hover:ease-in bg-black rounded-full group hover:bg-white border hover:border-black"
+            className="group flex size-11 items-center justify-center rounded-full border border-transparent bg-black transition-colors duration-300 hover:border-black hover:bg-white hover:ease-in"
           >
             <LeftArrow className="cursor-pointer text-white group-hover:text-black" />
           </button>
           <button
             onClick={handleNext}
             type="button"
-            className="size-11 flex justify-center items-center border-transparent transition-colors duration-300 hover:ease-in bg-black rounded-full group hover:bg-white border hover:border-black"
+            className="group flex size-11 items-center justify-center rounded-full border border-transparent bg-black transition-colors duration-300 hover:border-black hover:bg-white hover:ease-in"
           >
-            <LeftArrow className="cursor-pointer text-white group-hover:text-black rotate-180" />
+            <LeftArrow className="rotate-180 cursor-pointer text-white group-hover:text-black" />
           </button>
         </div>
       </div>
       <div className="pb-45 md:pb-36 xl:pb-0">
         {isMobile ? (
-          <div className="px-4 space-y-8">
+          <div className="space-y-8 px-4">
             {visibleBlogs.map((value) => (
               <div key={value.id} className="flex gap-4">
-                <div className="max-w-[30%] w-full rounded-sm">
+                <div className="w-full max-w-[30%] rounded-sm">
                   <Image
                     src={value.src}
                     width={411}
                     height={447}
                     alt={value.alt}
                     title={value.alt}
-                    className="w-full h-full object-cover rounded-xl"
+                    className="h-full w-full rounded-xl object-cover"
                   />
                 </div>
-                <div className="max-w-[70%] w-full">
+                <div className="w-full max-w-[70%]">
                   <h4 className="text-base/6 font-semibold">
                     <span>{value.title}</span>
                   </h4>
-                  <p className="text-sm/4.5 text-spanish-gray pt-1 pb-4 font-medium">
+                  <p className="text-spanish-gray pt-1 pb-4 text-sm/4.5 font-medium">
                     <span>{value.description}</span>
                   </p>
-                  <span className="text-10/3.5 text-spanish-gray block">
-                    {value.date}
-                  </span>
+                  <span className="text-10/3.5 text-spanish-gray block">{value.date}</span>
                 </div>
               </div>
             ))}
@@ -90,7 +81,7 @@ export const OurBlogSlider: FC<OurBlogSliderProps> = ({
             {blogData.length > 3 && !showAll && (
               <div className="flex justify-center">
                 <button
-                  className="py-3 px-6 rounded-xl !w-fit border border-light-silver"
+                  className="border-light-silver !w-fit rounded-xl border px-6 py-3"
                   aria-label="View all blogs"
                   onClick={() => setShowAll(true)}
                   type="button"
@@ -101,29 +92,27 @@ export const OurBlogSlider: FC<OurBlogSliderProps> = ({
             )}
           </div>
         ) : (
-          <div
-            className={`px-6 xl:px-17.5 rounded-4xl w-full overflow-x-hidden ${SLIDER_CLASS}`}
-          >
+          <div className={`w-full overflow-x-hidden rounded-4xl px-6 xl:px-17.5 ${SLIDER_CLASS}`}>
             <Slider {...SETTING_PROPS} ref={sliderRef}>
               {visibleBlogs.map((value) => (
                 <div key={value.id}>
-                  <div className="group relative max-w-[411px] h-[447px] w-full rounded-20 overflow-hidden">
+                  <div className="group rounded-20 relative h-[447px] w-full max-w-[411px] overflow-hidden">
                     <Image
                       src={value.src}
                       alt={value.alt}
                       title={value.alt}
                       fill
-                      className="object-cover rounded-20"
+                      className="rounded-20 object-cover"
                     />
-                    <div className="absolute inset-0 bg-black/40 opacity-100 group-hover:opacity-0 transition-opacity duration-500 z-10 rounded-20" />
+                    <div className="rounded-20 absolute inset-0 z-10 bg-black/40 opacity-100 transition-opacity duration-500 group-hover:opacity-0" />
                   </div>
-                  <span className="text-10/3.5 xl:text-sm text-spanish-gray block py-4 xl:pt-10.5 xl:pb-5">
+                  <span className="text-10/3.5 text-spanish-gray block py-4 xl:pt-10.5 xl:pb-5 xl:text-sm">
                     {value.date}
                   </span>
-                  <h4 className="text-base/6 xl:text-2xl/8.5 font-semibold md:line-clamp-2 text-ellipsis xl:line-clamp-none">
+                  <h4 className="text-base/6 font-semibold text-ellipsis md:line-clamp-2 xl:line-clamp-none xl:text-2xl/8.5">
                     <span>{value.title}</span>
                   </h4>
-                  <p className="text-sm/4.5 xl:text-base/normal text-spanish-gray pt-4 xl:pt-2.5 font-medium md:line-clamp-2 text-ellipsis xl:line-clamp-none">
+                  <p className="text-spanish-gray pt-4 text-sm/4.5 font-medium text-ellipsis md:line-clamp-2 xl:line-clamp-none xl:pt-2.5 xl:text-base/normal">
                     <span>{value.description}</span>
                   </p>
                 </div>

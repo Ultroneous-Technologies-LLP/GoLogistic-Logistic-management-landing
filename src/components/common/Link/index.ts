@@ -1,2 +1,2 @@
 export * from "./Link";
-export type { LinKProps,Variant } from "./types";
+export type { LinKProps, Variant } from "./types";

@@ -2,10 +2,7 @@ import { RefObject, useEffect, useState } from "react";
 import { UseInViewTypeEnum } from "./enum";
 import { getAnimationClass } from "../utils";
 
-export const useInView = (
-  ref: RefObject<HTMLElement | null>,
-  threshold: number = 0.3
-) => {
+export const useInView = (ref: RefObject<HTMLElement | null>, threshold: number = 0.3) => {
   const [inView, setInView] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
 

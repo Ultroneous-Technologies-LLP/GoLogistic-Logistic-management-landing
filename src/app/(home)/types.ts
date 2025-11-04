@@ -22,5 +22,5 @@ export interface HomePageDataType {
   ourServicesAndFacilitiesSection: OurServicesAndFacilitiesSectionProps;
   testimonialSection: TestimonialSectionProps;
   contactSection: ContactSectionProps;
-   blogSection: BlogSectionProps;
+  blogSection: BlogSectionProps;
 }
