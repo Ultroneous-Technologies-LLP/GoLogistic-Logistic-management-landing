@@ -1,19 +1,235 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import js from "@eslint/js";
+import nextPlugin from "@next/eslint-plugin-next";
+import importPlugin from "eslint-plugin-import";
+import a11yPlugin from "eslint-plugin-jsx-a11y";
+import perfectionistPlugin from "eslint-plugin-perfectionist";
+import prettierPlugin from "eslint-plugin-prettier";
+import react from "eslint-plugin-react";
+import reactHooks from "eslint-plugin-react-hooks";
+import securityPlugin from "eslint-plugin-security";
+import globals from "globals";
+import tseslint from "typescript-eslint";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+export default tseslint.config(
   {
-    ignores: ["node_modules/**", ".next/**", "out/**", "build/**", "next-env.d.ts"],
+    ignores: [
+      ".next",
+      "dist",
+      "build",
+      "coverage",
+      "node_modules",
+      "out",
+      "**/*.config.{js,ts}",
+      "**/*.d.ts",
+      "next-env.d.ts",
+    ],
   },
-];
 
-export default eslintConfig;
+  {
+    files: ["**/*.{ts,tsx,js,jsx}"],
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+      ...tseslint.configs.recommendedTypeChecked,
+    ],
+    plugins: {
+      react,
+      "react-hooks": reactHooks,
+      import: importPlugin,
+      "jsx-a11y": a11yPlugin,
+      security: securityPlugin,
+      perfectionist: perfectionistPlugin,
+      prettier: prettierPlugin,
+      "@next/next": nextPlugin,
+    },
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+      parserOptions: {
+        project: ["./tsconfig.json"],
+        ecmaFeatures: { jsx: true },
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    settings: {
+      react: { version: "detect" },
+      "import/resolver": {
+        typescript: { project: "./tsconfig.json" },
+      },
+    },
+
+    rules: {
+      /* ---------------- Prettier ---------------- */
+      "prettier/prettier": "error",
+
+      /* ---------------- General ---------------- */
+      "no-console": ["warn", { allow: ["warn", "error"] }],
+      "prefer-const": "error",
+      eqeqeq: ["error", "always"],
+      curly: ["error", "all"],
+      "no-useless-concat": "error",
+      "no-param-reassign": "error",
+      "no-nested-ternary": "error",
+      "no-throw-literal": "error",
+      "object-shorthand": "error",
+      "array-callback-return": "error",
+      "no-duplicate-imports": "error",
+      "arrow-body-style": ["error", "as-needed"],
+      "@typescript-eslint/no-magic-numbers": "error",
+
+      /* ---------------- Import Rules ---------------- */
+      "import/default": "error",
+      "import/no-duplicates": "error",
+      "import/no-unresolved": "error",
+      "import/named": "error",
+      "import/namespace": ["error", { allowComputed: true }],
+      "import/no-absolute-path": "error",
+      "import/order": [
+        "error",
+        {
+          groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
+          "newlines-between": "always",
+          alphabetize: { order: "asc", caseInsensitive: true },
+        },
+      ],
+
+      /* ---------------- TypeScript Rules ---------------- */
+      "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/no-duplicate-enum-values": "error",
+      "@typescript-eslint/no-extra-non-null-assertion": "error",
+      "@typescript-eslint/no-unnecessary-condition": "error",
+      "@typescript-eslint/prefer-as-const": "warn",
+      "@typescript-eslint/no-unused-expressions": "error",
+      "@typescript-eslint/no-shadow": "error",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          caughtErrorsIgnorePattern: "^_",
+        },
+      ],
+
+      "@typescript-eslint/naming-convention": [
+        "error",
+        {
+          selector: "default",
+          format: ["camelCase"],
+          // ✅ Ignore Tailwind and class strings
+          filter: {
+            regex:
+              "^(bg-|text-|fixed|relative|absolute|inset-|top-|bottom-|left-|right-|shadow-|backdrop-|xl:|sm:|md:|lg:|hover:|focus:|\\[|\\]|#)",
+            match: false,
+          },
+        },
+        {
+          selector: "variable",
+          format: ["camelCase", "PascalCase"],
+        },
+        {
+          selector: "variable",
+          modifiers: ["const"],
+          format: ["camelCase", "PascalCase", "UPPER_CASE"],
+          leadingUnderscore: "allow",
+        },
+        {
+          selector: "parameter",
+          format: ["camelCase"],
+          leadingUnderscore: "allow",
+        },
+        {
+          selector: "function",
+          format: ["camelCase", "PascalCase"],
+        },
+        {
+          selector: "typeLike",
+          format: ["PascalCase"],
+        },
+        {
+          selector: "interface",
+          format: ["PascalCase"],
+          custom: { regex: "^I[A-Z]", match: false },
+        },
+        {
+          selector: "enumMember",
+          format: ["UPPER_CASE"],
+        },
+        {
+          selector: "variable",
+          types: ["boolean"],
+          format: ["PascalCase"],
+          prefix: ["is", "should", "has", "can", "did", "will", "show", "hide", "use", "does"],
+        },
+        {
+          selector: "import",
+          format: ["camelCase", "PascalCase"],
+        },
+      ],
+
+      "@typescript-eslint/member-ordering": [
+        "warn",
+        {
+          default: { optionalityOrder: "required-first", order: "alphabetically" },
+          classes: "never",
+        },
+      ],
+      "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
+      "@typescript-eslint/prefer-optional-chain": "error",
+      "@typescript-eslint/explicit-function-return-type": "error",
+
+      /* ---------------- React / Hooks ---------------- */
+      "react/jsx-no-useless-fragment": "error",
+      "react/self-closing-comp": ["error", { component: true, html: true }],
+      "react/function-component-definition": ["error", { namedComponents: "arrow-function" }],
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "react/jsx-fragments": "error",
+
+      /* ---------------- Next.js ---------------- */
+      "@next/next/no-img-element": "error",
+      "@next/next/no-page-custom-font": "error",
+      "@next/next/no-sync-scripts": "error",
+      "@next/next/no-title-in-document-head": "error",
+      "@next/next/no-html-link-for-pages": "error",
+
+      /* ---------------- Accessibility ---------------- */
+      "jsx-a11y/alt-text": "error",
+      "jsx-a11y/aria-role": "error",
+
+      /* ---------------- Security ---------------- */
+      "security/detect-object-injection": "warn",
+      "security/detect-non-literal-fs-filename": "error",
+
+      /* ---------------- Code Structure ---------------- */
+      complexity: ["error", 30],
+      "max-depth": ["error", 3],
+      "max-lines": ["error", { max: 300, skipComments: true }],
+      "max-params": ["error", 3],
+      "max-lines-per-function": ["error", { max: 200, skipBlankLines: true, skipComments: true }],
+
+      /* ---------------- Sorting (Perfectionist) ---------------- */
+      // TODO: remove the comment and re-enable the rule properly.
+      // "perfectionist/sort-interfaces": ["error", { type: "natural", order: "asc" }],
+      "perfectionist/sort-jsx-props": ["error", { type: "alphabetical", order: "asc" }],
+    },
+  },
+
+  {
+    files: ["pages/api/**/*.{ts,js}", "app/api/**/*.{ts,js}"],
+    rules: {
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "no-console": "off",
+    },
+  },
+
+  {
+    files: ["next.config.{js,ts}", "middleware.{js,ts}"],
+    rules: {
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "import/no-default-export": "off",
+    },
+  }
+);
