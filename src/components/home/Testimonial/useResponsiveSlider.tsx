@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-import { BREAKPOINT_MD, BREAKPOINT_Xl } from "@/constant";
+import { BREAKPOINT_MD, BREAKPOINT_XL } from "@/constant";
 
 import { ResponsiveSliderHook } from "./types";
 
@@ -23,7 +23,7 @@ export const useResponsiveSlider = (): ResponsiveSliderHook => {
           setCenterPadding("50px");
           break;
 
-        case window.innerWidth < BREAKPOINT_Xl:
+        case window.innerWidth < BREAKPOINT_XL:
           setSlidesToShow(SLIDES_TABLET);
           setCenterPadding("-120px");
           break;
