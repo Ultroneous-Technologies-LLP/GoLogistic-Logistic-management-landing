@@ -1,12 +1,18 @@
-import { SVGProps } from "react";
+import { JSX, SVGProps } from "react";
 
-export const Twitter = ({ width = 23, height = 18, ...svgProps }: SVGProps<SVGSVGElement>) => (
+import { ICON_SIZE_0, ICON_SIZE_18, ICON_SIZE_23 } from "./constant";
+
+export const Twitter = ({
+  width = ICON_SIZE_23,
+  height = ICON_SIZE_18,
+  ...svgProps
+}: SVGProps<SVGSVGElement>): JSX.Element => (
   <svg
-    viewBox="0 0 23 18"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    width={width}
     height={height}
+    viewBox={`${ICON_SIZE_0} ${ICON_SIZE_0} ${ICON_SIZE_23} ${ICON_SIZE_18}`}
+    width={width}
+    xmlns="http://www.w3.org/2000/svg"
     {...svgProps}
   >
     <path

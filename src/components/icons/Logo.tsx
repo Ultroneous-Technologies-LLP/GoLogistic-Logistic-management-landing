@@ -1,14 +1,20 @@
-import { SVGProps } from "react";
+import { JSX, SVGProps } from "react";
 
-export const Logo = ({ width = 154, height = 29, ...svgProps }: SVGProps<SVGSVGElement>) => (
+import { ICON_SIZE_0, ICON_SIZE_154, ICON_SIZE_29 } from "./constant";
+
+export const Logo = ({
+  width = ICON_SIZE_154,
+  height = ICON_SIZE_29,
+  ...svgProps
+}: SVGProps<SVGSVGElement>): JSX.Element => (
   <svg
-    width={width}
-    height={height}
-    viewBox="0 0 154 29"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    role="img"
     aria-label="Go to homepage"
+    fill="none"
+    height={height}
+    role="img"
+    viewBox={`${ICON_SIZE_0} ${ICON_SIZE_0} ${ICON_SIZE_154} ${ICON_SIZE_29}`}
+    width={width}
+    xmlns="http://www.w3.org/2000/svg"
     {...svgProps}
   >
     <path
