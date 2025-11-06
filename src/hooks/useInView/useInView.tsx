@@ -1,27 +1,44 @@
 import { RefObject, useEffect, useState } from "react";
-import { UseInViewTypeEnum } from "./enum";
+
 import { getAnimationClass } from "../utils";
 
-export const useInView = (ref: RefObject<HTMLElement | null>, threshold: number = 0.3) => {
-  const [inView, setInView] = useState(false);
-  const [hasAnimated, setHasAnimated] = useState(false);
+import { UseInViewTypeEnum } from "./enum";
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+const DEFAULT_THRESHOLD = 0.3;
+
+export const useInView = (
+  ref: RefObject<HTMLElement | null>,
+  threshold: number = DEFAULT_THRESHOLD
+): {
+  getAnimation: (options?: {
+    animationType?: UseInViewTypeEnum | null;
+    className?: string;
+  }) => string;
+  hasAnimated: boolean;
+  isInView: boolean;
+} => {
+  const [isInView, setIsInView] = useState<boolean>(false);
+  const [hasAnimated, setHasAnimated] = useState<boolean>(false);
+
+  useEffect((): (() => void) => {
+    const element = ref.current;
+    if (!element) {
+      return () => {};
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
-          setInView(true);
+          setIsInView(true);
           setHasAnimated(true);
-          observer.unobserve(el);
+          observer.unobserve(element);
         }
       },
       { threshold }
     );
 
-    observer.observe(el);
+    observer.observe(element);
+
     return () => observer.disconnect();
   }, [ref, threshold, hasAnimated]);
 
@@ -31,11 +48,10 @@ export const useInView = (ref: RefObject<HTMLElement | null>, threshold: number 
   }: {
     animationType?: UseInViewTypeEnum | null;
     className?: string;
-  } = {}) => {
+  } = {}): string => {
     const safeAnimationType = animationType ?? UseInViewTypeEnum.UP;
-
-    return getAnimationClass(safeAnimationType, inView, hasAnimated, className);
+    return getAnimationClass(safeAnimationType, isInView, hasAnimated, className);
   };
 
-  return { inView, hasAnimated, getAnimation };
+  return { isInView, getAnimation, hasAnimated };
 };
