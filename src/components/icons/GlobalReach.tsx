@@ -1,14 +1,20 @@
-import { SVGProps } from "react";
+import { JSX, SVGProps } from "react";
 
-export const GlobalReach = ({ width = 52, height = 52, ...svgProps }: SVGProps<SVGSVGElement>) => (
+import { ICON_SIZE_0, ICON_SIZE_52 } from "./constant";
+
+export const GlobalReach = ({
+  width = ICON_SIZE_52,
+  height = ICON_SIZE_52,
+  ...svgProps
+}: SVGProps<SVGSVGElement>): JSX.Element => (
   <svg
-    width={width}
-    height={height}
-    viewBox="0 0 52 52"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    role="img"
     aria-label="Global Reach"
+    fill="none"
+    height={height}
+    role="img"
+    viewBox={`${ICON_SIZE_0} ${ICON_SIZE_0} ${ICON_SIZE_52} ${ICON_SIZE_52}`}
+    width={width}
+    xmlns="http://www.w3.org/2000/svg"
     {...svgProps}
   >
     <path

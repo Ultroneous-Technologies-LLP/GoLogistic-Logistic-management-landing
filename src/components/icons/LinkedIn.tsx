@@ -1,12 +1,18 @@
-import { SVGProps } from "react";
+import { JSX, SVGProps } from "react";
 
-export const LinkedIn = ({ width = 22, height = 22, ...svgProps }: SVGProps<SVGSVGElement>) => (
+import { ICON_SIZE_0, ICON_SIZE_22 } from "./constant";
+
+export const LinkedIn = ({
+  width = ICON_SIZE_22,
+  height = ICON_SIZE_22,
+  ...svgProps
+}: SVGProps<SVGSVGElement>): JSX.Element => (
   <svg
-    viewBox="0 0 22 22"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    width={width}
     height={height}
+    viewBox={`${ICON_SIZE_0} ${ICON_SIZE_0} ${ICON_SIZE_22} ${ICON_SIZE_22}`}
+    width={width}
+    xmlns="http://www.w3.org/2000/svg"
     {...svgProps}
   >
     <path

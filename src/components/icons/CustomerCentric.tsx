@@ -1,18 +1,20 @@
-import { SVGProps } from "react";
+import { JSX, SVGProps } from "react";
+
+import { ICON_SIZE_0, ICON_SIZE_52 } from "./constant";
 
 export const CustomerCentric = ({
-  width = 52,
-  height = 52,
+  width = ICON_SIZE_52,
+  height = ICON_SIZE_52,
   ...svgProps
-}: SVGProps<SVGSVGElement>) => (
+}: SVGProps<SVGSVGElement>): JSX.Element => (
   <svg
-    width={width}
-    height={height}
-    viewBox="0 0 52 52"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    role="img"
     aria-label="Customer-Centric"
+    fill="none"
+    height={height}
+    role="img"
+    viewBox={`${ICON_SIZE_0} ${ICON_SIZE_0} ${ICON_SIZE_52} ${ICON_SIZE_52}`}
+    width={width}
+    xmlns="http://www.w3.org/2000/svg"
     {...svgProps}
   >
     <path

@@ -1,29 +1,35 @@
-import { SVGProps } from "react";
+import { JSX, SVGProps } from "react";
 
-export const LeftArrow = ({ width = 14, height = 12, ...svgProps }: SVGProps<SVGSVGElement>) => (
+import { ICON_SIZE_0, ICON_SIZE_12, ICON_SIZE_14 } from "./constant";
+
+export const LeftArrow = ({
+  width = ICON_SIZE_14,
+  height = ICON_SIZE_12,
+  ...svgProps
+}: SVGProps<SVGSVGElement>): JSX.Element => (
   <svg
-    viewBox="0 0 14 12"
+    aria-label="arrow"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    width={width}
     height={height}
     role="img"
-    aria-label="arrow"
+    viewBox={`${ICON_SIZE_0} ${ICON_SIZE_0} ${ICON_SIZE_14} ${ICON_SIZE_12}`}
+    width={width}
+    xmlns="http://www.w3.org/2000/svg"
     {...svgProps}
   >
     <path
       d="M13 6L1 6"
       stroke="currentColor"
-      strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
+      strokeWidth="1.5"
     />
     <path
       d="M6 11L1 6L6 1"
       stroke="currentColor"
-      strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
+      strokeWidth="1.5"
     />
   </svg>
 );
