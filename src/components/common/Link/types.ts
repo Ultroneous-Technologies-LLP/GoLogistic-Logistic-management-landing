@@ -7,12 +7,12 @@ export type Variant = keyof typeof VARIANTS;
 
 export type LinKProps = {
   href: string;
-  label?: string;
   ariaLabel?: string;
-  className?: string;
-  variant?: Variant;
   children?: ReactNode;
+  className?: string;
   isPureLink?: boolean;
+  label?: string;
+  variant?: Variant;
 } & Omit<
   AnchorHTMLAttributes<HTMLAnchorElement>,
   "className" | "href" | "children" | "aria-label"
