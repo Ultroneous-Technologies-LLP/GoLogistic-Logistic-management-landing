@@ -1,4 +1,5 @@
 export * from "./Contact";
+
 export type {
   ContactSectionProps,
   FormData,

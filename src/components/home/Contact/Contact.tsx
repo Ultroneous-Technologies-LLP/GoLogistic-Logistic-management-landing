@@ -4,18 +4,19 @@ import clsx from "clsx";
 import Link from "next/link";
 import { FC, ReactElement, useRef } from "react";
 
-import { useInView } from "@/hooks";
 import { Container, Title, Mail, Phone } from "@/components";
+import { useInView } from "@/hooks";
 
 import ContactForm from "./ContactForm";
+import { IconTitleEnum } from "./enum";
 import { ContactSectionProps, IconTitle } from "./types";
 
 const getIcon = (title: IconTitle): ReactElement | null => {
   switch (title) {
-    case "Email":
-      return <Mail className="text-black" aria-label="mail" />;
-    case "Call Us":
-      return <Phone className="text-black" aria-label="phone" />;
+    case IconTitleEnum.EMAIL:
+      return <Mail aria-label="mail" className="text-black" />;
+    case IconTitleEnum.CALL_US:
+      return <Phone aria-label="phone" className="text-black" />;
     default:
       return null;
   }
@@ -33,8 +34,6 @@ export const Contact: FC<ContactSectionProps> = ({
 
   return (
     <Container
-      ref={sectionRef}
-      id="contact"
       backgroundClassName={clsx(
         "bg-[#f5f5f5] md:mx-6 xl:mx-0 scroll-mt-20 overflow-x-hidden transition-transform",
         getAnimation({
@@ -42,6 +41,8 @@ export const Contact: FC<ContactSectionProps> = ({
         })
       )}
       className="grid grid-cols-1 gap-x-24 px-4 py-12.5 xl:grid-cols-2 xl:grid-rows-2 xl:px-17.5 xl:py-29"
+      id="contact"
+      ref={sectionRef}
     >
       <div
         className={clsx(
@@ -77,19 +78,19 @@ export const Contact: FC<ContactSectionProps> = ({
           })
         )}
       >
-        {contactDetails.map(({ id, title, link, ariaLabel }) => (
+        {contactDetails.map(({ id, title: iconTitle, link, ariaLabel }) => (
           <address
-            key={id}
             className="flex flex-col gap-4 not-italic last:pb-0 md:w-1/2 xl:w-full xl:flex-row xl:items-center xl:gap-3.5 xl:pb-7.5"
+            key={id}
           >
             <div className="flex size-14 items-center justify-center rounded-full bg-[#DEDEDE] xl:size-16">
-              {title === "Email" || title === "Call Us" ? getIcon(title) : null}
+              {getIcon(iconTitle)}
             </div>
             <div className="text-base/snug font-medium text-black">
               <p>
-                <span>{title}</span>
+                <span>{iconTitle}</span>
               </p>
-              <Link href={link} rel="nofollow" aria-label={ariaLabel} title={ariaLabel}>
+              <Link aria-label={ariaLabel} href={link} rel="nofollow" title={ariaLabel}>
                 {link.replace(/^mailto:|^tel:/, "")}
               </Link>
             </div>

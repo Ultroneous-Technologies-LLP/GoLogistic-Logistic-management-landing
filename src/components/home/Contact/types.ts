@@ -1,6 +1,16 @@
 import { ButtonVariant } from "@/types";
 
-export type IconTitle = "Email" | "Call Us";
+import { IconTitleEnum } from "./enum";
+
+export type IconTitle = IconTitleEnum.EMAIL | IconTitleEnum.CALL_US;
+
+export interface FormData {
+  city: string;
+  email: string;
+  message: string;
+  phoneNumber: string;
+  yourName: string;
+}
 
 export interface FormFields {
   id: keyof FormData;
@@ -9,26 +19,18 @@ export interface FormFields {
   type: string;
 }
 
-export interface FormData {
-  yourName: string;
-  email: string;
-  phoneNumber: string;
-  city: string;
-  message: string;
-}
-
 export interface FormErrors {
-  yourName?: string;
-  email?: string;
-  phoneNumber?: string;
   city?: string;
+  email?: string;
   message?: string;
+  phoneNumber?: string;
+  yourName?: string;
 }
 
 interface FormButton {
-  variant: ButtonVariant;
-  label: string;
   ariaLabel: string;
+  label: string;
+  variant: ButtonVariant;
 }
 
 export interface ContactFormProps {
@@ -36,22 +38,16 @@ export interface ContactFormProps {
 }
 
 interface ContactDetails {
+  ariaLabel: string;
   id: number;
-  title: string;
   link: string;
-  ariaLabel: string;
-}
-
-interface FormButton {
-  variant: ButtonVariant;
-  label: string;
-  ariaLabel: string;
+  title: IconTitleEnum;
 }
 
 export interface ContactSectionProps {
-  title: string;
-  longTitle: string;
-  description: string;
   contactDetails: ContactDetails[];
+  description: string;
   formButton: FormButton;
+  longTitle: string;
+  title: string;
 }

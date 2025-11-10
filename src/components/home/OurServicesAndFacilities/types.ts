@@ -1,16 +1,16 @@
 import { Button, Image } from "@/types";
 
 interface Services {
-  id: string;
-  title: string;
   alt: string;
+  id: string;
   src: string;
+  title: string;
 }
 
 export interface OurServicesAndFacilitiesSectionProps {
-  title: string;
-  longTitle: string;
-  button: Button;
-  services: Services[];
   backgroundImage: Image;
+  button: Button;
+  longTitle: string;
+  services: Services[];
+  title: string;
 }

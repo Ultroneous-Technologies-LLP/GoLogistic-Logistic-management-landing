@@ -1,19 +1,19 @@
 interface BlogData {
-  id: number;
-  src: string;
   alt: string;
   date: string;
-  title: string;
   description: string;
+  id: number;
+  src: string;
+  title: string;
 }
 
 export interface OurBlogSliderProps {
-  longTitle: string;
   blogData: BlogData[];
+  longTitle: string;
 }
 
 export interface BlogSectionProps {
-  title: string;
-  longTitle: string;
   blogData: BlogData[];
+  longTitle: string;
+  title: string;
 }

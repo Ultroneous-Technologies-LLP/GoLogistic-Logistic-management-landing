@@ -1,13 +1,13 @@
 interface ShippingServiceImage {
-  id: number;
   alt: string;
   desktopSrc: string;
-  tabletSrc: string;
+  id: number;
   mobileSrc: string;
+  tabletSrc: string;
 }
 
 export interface ShippingServiceProps {
-  title: string;
   description: string;
   shippingServiceImage: ShippingServiceImage[];
+  title: string;
 }

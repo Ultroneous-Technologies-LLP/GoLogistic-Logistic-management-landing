@@ -1,9 +1,14 @@
 import { Image } from "@/types";
 
+export interface ResponsiveSliderHook {
+  centerPadding: string;
+  slidesToShow: number;
+}
+
 interface SliderData {
+  author: string;
   id: number;
   quote: string;
-  author: string;
   subText: string;
 }
 
@@ -13,8 +18,8 @@ export interface TestimonialSliderProps {
 }
 
 export interface TestimonialSectionProps {
-  title: string;
-  longTitle: string;
   backgroundImage: Image;
+  longTitle: string;
   sliderData: SliderData[];
+  title: string;
 }
