@@ -4,6 +4,6 @@ export enum ContactEmailTextEnum {
 }
 
 export enum ContactEmailMessageEnum {
-  SUCCESS_MESSAGE = "Email sent successfully",
   ERROR_MESSAGE = "Error sending email",
+  SUCCESS_MESSAGE = "Email sent successfully",
 }

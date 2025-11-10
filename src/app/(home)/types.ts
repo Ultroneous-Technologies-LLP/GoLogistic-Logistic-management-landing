@@ -11,16 +11,16 @@ import {
 } from "@/components";
 
 export interface LayoutDataType {
-  header: HeaderProps;
   footer: FooterProps;
+  header: HeaderProps;
 }
 
 export interface HomePageDataType {
-  heroSection: HeroSectionProps;
-  shippingService: ShippingServiceProps;
-  whyChooseUsSection: WhyChooseUsSectionProps;
-  ourServicesAndFacilitiesSection: OurServicesAndFacilitiesSectionProps;
-  testimonialSection: TestimonialSectionProps;
-  contactSection: ContactSectionProps;
   blogSection: BlogSectionProps;
+  contactSection: ContactSectionProps;
+  heroSection: HeroSectionProps;
+  ourServicesAndFacilitiesSection: OurServicesAndFacilitiesSectionProps;
+  shippingService: ShippingServiceProps;
+  testimonialSection: TestimonialSectionProps;
+  whyChooseUsSection: WhyChooseUsSectionProps;
 }

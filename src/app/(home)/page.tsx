@@ -30,7 +30,6 @@ const Home: FC = () => {
   return (
     <>
       <script
-        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
@@ -43,6 +42,7 @@ const Home: FC = () => {
               "Reliable logistics management platform offering shipping, warehousing, and supply chain solutions.",
           }),
         }}
+        type="application/ld+json"
       />
       <>
         <Hero {...heroSection} />
