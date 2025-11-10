@@ -167,6 +167,14 @@ export default tseslint.config(
           selector: "import",
           format: ["camelCase", "PascalCase"],
         },
+        {
+          selector: "objectLiteralProperty",
+          format: null,
+          filter: {
+            regex: "^(@|__)html$|^@context$|^@type$",
+            match: true,
+          },
+        },
       ],
 
       "@typescript-eslint/member-ordering": [

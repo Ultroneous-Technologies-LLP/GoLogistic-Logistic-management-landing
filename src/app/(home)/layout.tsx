@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
+import { FC, PropsWithChildren } from "react";
 
-import data from "@/content/Layout-data.json";
-
-import { ButtonVariant } from "@/types";
 import { Footer, Header } from "@/components";
 import { montserrat400, montserrat600, montserratRest } from "@/constant";
+import data from "@/content/Layout-data.json";
+import { ButtonVariant } from "@/types";
 
 import "../../styles/globals.css";
 import { LayoutDataType } from "./types";
@@ -86,11 +86,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+const RootLayout: FC<PropsWithChildren> = ({ children }) => {
   const { header, footer }: LayoutDataType = {
     ...data,
     header: {
@@ -113,7 +109,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html className="scroll-smooth" lang="en">
       <body
         className={`${montserrat400.variable} ${montserrat600.variable} ${montserratRest.variable} antialiased`}
       >
@@ -123,4 +119,6 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
