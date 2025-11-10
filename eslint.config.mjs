@@ -121,7 +121,7 @@ export default tseslint.config(
           // ✅ Ignore Tailwind and class strings
           filter: {
             regex:
-              "^(bg-|text-|fixed|relative|absolute|inset-|top-|bottom-|left-|right-|shadow-|backdrop-|xl:|sm:|md:|lg:|hover:|focus:|\\[|\\]|#)",
+              "^(bg-|text-|border-|shadow-|rounded-|w-|h-|p-|m-|translate-|scale-|rotate-|flex|grid|gap|justify-|items-|content-|overflow-|z-|duration-|delay-|ease-|transition|sm:|md:|lg:|xl:|2xl:|hover:|focus:|active:|disabled:|dark:|data-|aria-|pointer-events-)",
             match: false,
           },
         },

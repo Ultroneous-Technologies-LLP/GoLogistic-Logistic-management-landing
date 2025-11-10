@@ -4,8 +4,8 @@ import clsx from "clsx";
 import Image from "next/image";
 import { FC, useRef } from "react";
 
-import { useInView, UseInViewTypeEnum } from "@/hooks";
 import { Container, Link } from "@/components";
+import { useInView, UseInViewTypeEnum } from "@/hooks";
 
 import { HeroSectionProps } from "./types";
 
@@ -19,15 +19,15 @@ export const Hero: FC<HeroSectionProps> = ({
   const { getAnimation } = useInView(heroRef);
 
   return (
-    <Container ref={heroRef} id="home" className="relative" backgroundClassName="pt-20">
+    <Container backgroundClassName="pt-20" className="relative" id="home" ref={heroRef}>
       <Image
-        src={backgroundImage.src}
         alt={backgroundImage.alt}
-        width={1440}
-        height={470}
         className="absolute -z-20 h-full w-full object-cover"
+        height={470}
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1440px"
+        src={backgroundImage.src}
         title={backgroundImage.alt}
+        width={1440}
       />
       <div className="flex flex-col gap-2 px-4 pb-20 md:flex-row md:items-center md:gap-4 md:px-6 md:pb-19 xl:items-start xl:gap-11.5 xl:px-17.5 xl:pt-37.5 xl:pb-31.5">
         <h1
@@ -52,11 +52,11 @@ export const Hero: FC<HeroSectionProps> = ({
             {heroButtons.map(({ ariaLabel, href, id, label, variant }) => (
               <div key={id}>
                 <Link
-                  variant={variant}
-                  href={href}
-                  className="inline-block rounded-xl px-7.5 py-3 !text-base/6 xl:px-16 xl:py-1.5 xl:!text-xl/9"
                   aria-label={ariaLabel}
+                  className="inline-block rounded-xl px-7.5 py-3 !text-base/6 xl:px-16 xl:py-1.5 xl:!text-xl/9"
+                  href={href}
                   label={label}
+                  variant={variant}
                 />
               </div>
             ))}

@@ -1,35 +1,17 @@
 "use client";
 
+import { FC, useRef } from "react";
 import Slider from "react-slick";
-import { FC, useEffect, useRef, useState } from "react";
 
 import { DoubleQuotes, LeftArrow } from "@/components";
-import { BREAKPOINT_MD, BREAKPOINT_Xl } from "@/constant";
 
 import { TestimonialSliderProps } from "./types";
+import { useResponsiveSlider } from "./useResponsiveSlider";
 
 const TestimonialSlider: FC<TestimonialSliderProps> = ({ longTitle, sliderData }) => {
-  const [slidesToShow, setSlidesToShow] = useState(4.4);
-  const [centerPadding, setCenterPadding] = useState("0px");
+  const { slidesToShow, centerPadding } = useResponsiveSlider();
 
-  useEffect(() => {
-    const updateSlides = () => {
-      if (window.innerWidth < BREAKPOINT_MD) {
-        setSlidesToShow(1);
-        setCenterPadding("50px");
-      } else if (window.innerWidth < BREAKPOINT_Xl) {
-        setSlidesToShow(2.9);
-        setCenterPadding("-120px");
-      } else {
-        setSlidesToShow(4.5);
-        setCenterPadding("-80px");
-      }
-    };
-
-    updateSlides();
-    window.addEventListener("resize", updateSlides);
-    return () => window.removeEventListener("resize", updateSlides);
-  }, []);
+  const sliderRef = useRef<Slider>(null);
 
   const settings = {
     infinite: true,
@@ -42,13 +24,11 @@ const TestimonialSlider: FC<TestimonialSliderProps> = ({ longTitle, sliderData }
     autoplay: true,
   };
 
-  const sliderRef = useRef<Slider>(null);
-
-  const handlePrev = () => {
+  const handlePrev = (): void => {
     sliderRef.current?.slickPrev();
   };
 
-  const handleNext = () => {
+  const handleNext = (): void => {
     sliderRef.current?.slickNext();
   };
 
@@ -60,16 +40,16 @@ const TestimonialSlider: FC<TestimonialSliderProps> = ({ longTitle, sliderData }
         </h3>
         <div className="hidden gap-2.5 md:flex">
           <button
-            type="button"
-            onClick={handlePrev}
             className="group flex size-11 items-center justify-center rounded-full border border-transparent bg-black transition-colors duration-300 hover:border-black hover:bg-white hover:ease-in"
+            onClick={handlePrev}
+            type="button"
           >
             <LeftArrow className="cursor-pointer text-white group-hover:text-black" />
           </button>
           <button
+            className="group flex size-11 items-center justify-center rounded-full border border-transparent bg-black transition-colors duration-300 hover:border-black hover:bg-white hover:ease-in"
             onClick={handleNext}
             type="button"
-            className="group flex size-11 items-center justify-center rounded-full border border-transparent bg-black transition-colors duration-300 hover:border-black hover:bg-white hover:ease-in"
           >
             <LeftArrow className="rotate-180 cursor-pointer text-white group-hover:text-black" />
           </button>
@@ -79,8 +59,8 @@ const TestimonialSlider: FC<TestimonialSliderProps> = ({ longTitle, sliderData }
         <Slider {...settings} ref={sliderRef}>
           {sliderData.map(({ author, id, quote, subText }) => (
             <div
-              key={id}
               className="w-full max-w-84 rounded-2xl border border-gray-300 bg-[#f5f5f5] p-6 transition-transform duration-500"
+              key={id}
             >
               <div className="pb-10">
                 <DoubleQuotes className="text-spanish-gray" />
@@ -96,16 +76,16 @@ const TestimonialSlider: FC<TestimonialSliderProps> = ({ longTitle, sliderData }
       </div>
       <div className="flex justify-center gap-2.5 pt-8 md:hidden">
         <button
-          type="button"
-          onClick={handlePrev}
           className="group flex size-11 items-center justify-center rounded-full border border-transparent bg-black transition-colors duration-300 hover:border-black hover:bg-white hover:ease-in"
+          onClick={handlePrev}
+          type="button"
         >
           <LeftArrow className="cursor-pointer text-white group-hover:text-black" />
         </button>
         <button
+          className="group flex size-11 items-center justify-center rounded-full border border-transparent bg-black transition-colors duration-300 hover:border-black hover:bg-white hover:ease-in"
           onClick={handleNext}
           type="button"
-          className="group flex size-11 items-center justify-center rounded-full border border-transparent bg-black transition-colors duration-300 hover:border-black hover:bg-white hover:ease-in"
         >
           <LeftArrow className="rotate-180 cursor-pointer text-white group-hover:text-black" />
         </button>

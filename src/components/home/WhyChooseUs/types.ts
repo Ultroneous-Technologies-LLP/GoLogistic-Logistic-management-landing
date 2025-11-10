@@ -1,24 +1,31 @@
-import { ICONS } from "./constant";
+import { ComponentType, SVGProps } from "react";
 
-type Icons = "Reliability" | "GlobalReach" | "CustomerCentric" | "Innovation";
+// Keys of your ICONS_ARRAY
+export type Icons = "Reliability" | "Innovation" | "GlobalReach" | "CustomerCentric";
 
-export type IconKey = keyof typeof ICONS;
+// Single key type if needed
+export type IconKey = Icons;
 
-interface Description {
-  id: number;
+export interface Description {
   description: string;
+  id: number;
 }
 
-interface WhyChooseUsFeaturesData {
-  id: number;
-  icon: Icons;
-  title: string;
+export interface WhyChooseUsFeaturesData {
   description: string;
+  icon: Icons;
+  id: number;
+  title: string;
+}
+
+export interface IconItem {
+  component: ComponentType<SVGProps<SVGSVGElement>>;
+  key: Icons;
 }
 
 export interface WhyChooseUsSectionProps {
-  title: string;
-  longTitle: string;
   descriptions: Description[];
+  longTitle: string;
+  title: string;
   whyChooseUsFeaturesData: WhyChooseUsFeaturesData[];
 }

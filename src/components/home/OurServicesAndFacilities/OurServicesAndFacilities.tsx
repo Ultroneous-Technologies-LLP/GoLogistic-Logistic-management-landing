@@ -4,11 +4,14 @@ import clsx from "clsx";
 import Image from "next/image";
 import { FC, useRef, useState } from "react";
 
+import { Link, Container, Title } from "@/components";
 import { BREAKPOINT_Xl } from "@/constant";
 import { useInView, useIsMobile } from "@/hooks";
-import { Link, Container, Title } from "@/components";
 
 import { OurServicesAndFacilitiesSectionProps } from "./types";
+
+const FIRST_INDEX = 0;
+const SECOND_INDEX = 1;
 
 export const OurServicesAndFacilities: FC<OurServicesAndFacilitiesSectionProps> = ({
   backgroundImage,
@@ -17,41 +20,50 @@ export const OurServicesAndFacilities: FC<OurServicesAndFacilitiesSectionProps> 
   services,
   title,
 }) => {
-  const [activeIndex, setActiveIndex] = useState<null | number>(0);
+  const [activeIndex, setActiveIndex] = useState<null | number>(FIRST_INDEX);
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const { getAnimation } = useInView(sectionRef);
   const isMobile = useIsMobile(BREAKPOINT_Xl);
 
-  const handleMouseEnter = (index: number) => {
-    if (!isMobile) setActiveIndex(index);
+  const handleMouseEnter = (index: number): void => {
+    if (isMobile) {
+      return;
+    }
+    setActiveIndex(index);
   };
 
-  const handleMouseLeave = () => {
-    if (!isMobile) setActiveIndex(null);
+  const handleMouseLeave = (): void => {
+    if (isMobile) {
+      return;
+    }
+    setActiveIndex(null);
   };
 
-  const handleClick = (index: number) => {
-    if (isMobile) setActiveIndex(index === activeIndex ? null : index);
+  const handleClick = (index: number): void => {
+    if (!isMobile) {
+      return;
+    }
+    setActiveIndex(index === activeIndex ? null : index);
   };
 
   return (
     <Container
-      ref={sectionRef}
-      id="services"
+      aria-label="services-heading"
       backgroundClassName={clsx(
         "bg-black relative overflow-x-hidden transition-transform z-0",
         getAnimation()
       )}
-      aria-label="services-heading"
+      id="services"
+      ref={sectionRef}
     >
       <Image
-        width={1440}
-        height={511}
         alt={backgroundImage.alt}
+        className="absolute bottom-46 z-0 opacity-25 xl:top-104 xl:bottom-[unset]"
+        height={511}
         src={backgroundImage.src}
         title={backgroundImage.alt}
-        className="absolute bottom-46 z-0 opacity-25 xl:top-104 xl:bottom-[unset]"
+        width={1440}
       />
       <div className="relative z-10 px-4 py-12.5 md:px-6 xl:px-20 xl:py-42">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3 xl:gap-y-38">
@@ -61,25 +73,25 @@ export const OurServicesAndFacilities: FC<OurServicesAndFacilitiesSectionProps> 
               <span>{longTitle}</span>
             </p>
           </div>
-          {services.map(({ alt, id, src, title }, index) => {
+          {services.map(({ alt, id, src, title: servicesTitle }, index) => {
             const isActive = activeIndex === index;
 
             return (
               <div
-                key={id}
-                onMouseEnter={() => handleMouseEnter(index)}
-                onMouseLeave={handleMouseLeave}
-                onClick={() => handleClick(index)}
                 className={clsx(
                   "rounded-20 mx-auto flex w-full max-w-91 justify-between gap-5 overflow-hidden transition-all duration-700 ease-in-out xl:mr-auto xl:ml-0",
                   isActive ? "h-85 bg-white text-black" : "h-50 bg-transparent text-white"
                 )}
+                key={id}
+                onClick={() => handleClick(index)}
+                onMouseEnter={() => handleMouseEnter(index)}
+                onMouseLeave={handleMouseLeave}
               >
                 {/* Text Content */}
                 <div className="flex w-full max-w-55 flex-col justify-between py-8 pl-8 break-words xl:pt-10 xl:pb-7.5 xl:pl-9.5">
                   <h3 className="flex flex-col text-2xl/9 font-semibold">
-                    {index + 1} <br />
-                    <span>{title}</span>
+                    {index + SECOND_INDEX} <br />
+                    <span>{servicesTitle}</span>
                   </h3>
                   <div
                     className={clsx("transition-all duration-700", {
@@ -88,11 +100,11 @@ export const OurServicesAndFacilities: FC<OurServicesAndFacilitiesSectionProps> 
                     })}
                   >
                     <Link
-                      variant={button.variant}
-                      href={button.href}
-                      className="inline-block w-fit rounded-md px-10 py-2.5 text-center !font-medium hover:!font-medium"
                       aria-label={button.ariaLabel}
+                      className="inline-block w-fit rounded-md px-10 py-2.5 text-center !font-medium hover:!font-medium"
+                      href={button.href}
                       label={button.label}
+                      variant={button.variant}
                     />
                   </div>
                 </div>
@@ -103,12 +115,12 @@ export const OurServicesAndFacilities: FC<OurServicesAndFacilitiesSectionProps> 
                   })}
                 >
                   <Image
-                    width={109}
-                    height={343}
                     alt={alt}
+                    className={index === FIRST_INDEX ? "h-full" : ""}
+                    height={343}
                     src={src}
                     title={alt}
-                    className={index === 0 ? "h-full" : ""}
+                    width={109}
                   />
                 </div>
               </div>

@@ -1,14 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import Slider from "react-slick";
 import { FC, useRef, useState } from "react";
+import Slider from "react-slick";
 
-import { useIsMobile } from "@/hooks";
 import { LeftArrow } from "@/components";
+import { useIsMobile } from "@/hooks";
 
+import { MAX_VISIBLE_BLOGS, SETTING_PROPS, SLIDER_CLASS, START_INDEX } from "./constant";
 import { OurBlogSliderProps } from "./types";
-import { SETTING_PROPS, SLIDER_CLASS } from "./constant";
 
 export const OurBlogSlider: FC<OurBlogSliderProps> = ({ blogData, longTitle }) => {
   const [showAll, setShowAll] = useState(false);
@@ -17,15 +17,27 @@ export const OurBlogSlider: FC<OurBlogSliderProps> = ({ blogData, longTitle }) =
 
   const isMobile = useIsMobile();
 
-  const handlePrev = () => {
+  const handlePrev = (): void => {
     sliderRef.current?.slickPrev();
   };
 
-  const handleNext = () => {
+  const handleNext = (): void => {
     sliderRef.current?.slickNext();
   };
 
-  const visibleBlogs = isMobile ? (showAll ? blogData : blogData.slice(0, 3)) : blogData;
+  const getVisibleBlogs = (): typeof blogData => {
+    if (!isMobile) {
+      return blogData;
+    }
+
+    if (showAll) {
+      return blogData;
+    }
+
+    return blogData.slice(START_INDEX, MAX_VISIBLE_BLOGS);
+  };
+
+  const visibleBlogs = getVisibleBlogs();
 
   return (
     <>
@@ -35,16 +47,16 @@ export const OurBlogSlider: FC<OurBlogSliderProps> = ({ blogData, longTitle }) =
         </h3>
         <div className="hidden gap-2.5 md:flex">
           <button
-            type="button"
-            onClick={handlePrev}
             className="group flex size-11 items-center justify-center rounded-full border border-transparent bg-black transition-colors duration-300 hover:border-black hover:bg-white hover:ease-in"
+            onClick={handlePrev}
+            type="button"
           >
             <LeftArrow className="cursor-pointer text-white group-hover:text-black" />
           </button>
           <button
+            className="group flex size-11 items-center justify-center rounded-full border border-transparent bg-black transition-colors duration-300 hover:border-black hover:bg-white hover:ease-in"
             onClick={handleNext}
             type="button"
-            className="group flex size-11 items-center justify-center rounded-full border border-transparent bg-black transition-colors duration-300 hover:border-black hover:bg-white hover:ease-in"
           >
             <LeftArrow className="rotate-180 cursor-pointer text-white group-hover:text-black" />
           </button>
@@ -54,15 +66,15 @@ export const OurBlogSlider: FC<OurBlogSliderProps> = ({ blogData, longTitle }) =
         {isMobile ? (
           <div className="space-y-8 px-4">
             {visibleBlogs.map((value) => (
-              <div key={value.id} className="flex gap-4">
+              <div className="flex gap-4" key={value.id}>
                 <div className="w-full max-w-[30%] rounded-sm">
                   <Image
-                    src={value.src}
-                    width={411}
-                    height={447}
                     alt={value.alt}
-                    title={value.alt}
                     className="h-full w-full rounded-xl object-cover"
+                    height={447}
+                    src={value.src}
+                    title={value.alt}
+                    width={411}
                   />
                 </div>
                 <div className="w-full max-w-[70%]">
@@ -78,11 +90,11 @@ export const OurBlogSlider: FC<OurBlogSliderProps> = ({ blogData, longTitle }) =
             ))}
 
             {/* Button only if there are more than 3 blogs */}
-            {blogData.length > 3 && !showAll && (
+            {blogData.length > MAX_VISIBLE_BLOGS && !showAll && (
               <div className="flex justify-center">
                 <button
-                  className="border-light-silver !w-fit rounded-xl border px-6 py-3"
                   aria-label="View all blogs"
+                  className="border-light-silver !w-fit rounded-xl border px-6 py-3"
                   onClick={() => setShowAll(true)}
                   type="button"
                 >
@@ -98,11 +110,11 @@ export const OurBlogSlider: FC<OurBlogSliderProps> = ({ blogData, longTitle }) =
                 <div key={value.id}>
                   <div className="group rounded-20 relative h-[447px] w-full max-w-[411px] overflow-hidden">
                     <Image
-                      src={value.src}
                       alt={value.alt}
-                      title={value.alt}
-                      fill
                       className="rounded-20 object-cover"
+                      fill
+                      src={value.src}
+                      title={value.alt}
                     />
                     <div className="rounded-20 absolute inset-0 z-10 bg-black/40 opacity-100 transition-opacity duration-500 group-hover:opacity-0" />
                   </div>

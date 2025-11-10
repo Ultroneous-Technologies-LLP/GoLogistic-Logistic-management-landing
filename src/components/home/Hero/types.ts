@@ -1,16 +1,16 @@
 import { ButtonVariant, Image } from "@/types";
 
 export interface HeroButtons {
+  ariaLabel: string;
+  href: string;
   id: number;
   label: string;
-  href: string;
   variant: ButtonVariant;
-  ariaLabel: string;
 }
 
 export interface HeroSectionProps {
-  title: string;
+  backgroundImage: Image;
   description: string;
   heroButtons: HeroButtons[];
-  backgroundImage: Image;
+  title: string;
 }

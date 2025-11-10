@@ -8,3 +8,6 @@ export const SETTING_PROPS = {
   slidesToScroll: 1,
   arrows: false,
 };
+
+export const START_INDEX = 0;
+export const MAX_VISIBLE_BLOGS = 3;
