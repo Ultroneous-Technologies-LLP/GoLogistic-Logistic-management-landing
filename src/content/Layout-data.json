@@ -45,7 +45,7 @@
         "label": "Email",
         "href": "mailto:contact@logistics.com",
         "text": "contact@logistics.com",
-        "Icon": "Mail",
+        "icon": "Mail",
         "ariaLabel": "Send email to contact@logistics.com",
         "title": "Send email to contact@logistics.com"
       },
@@ -54,7 +54,7 @@
         "label": "Call Us",
         "href": "tel:(00)112365489",
         "text": "(00) 112 365 489",
-        "Icon": "Phone",
+        "icon": "Phone",
         "ariaLabel": "Call us at (00) 112 365 489",
         "title": "Call us at (00) 112 365 489"
       }
@@ -99,19 +99,19 @@
         {
           "id": 1,
           "href": "https://linkedin.com",
-          "Icon": "LinkedIn",
+          "icon": "LinkedIn",
           "label": "Go to LinkedIn"
         },
         {
           "id": 2,
           "href": "https://twitter.com",
-          "Icon": "Twitter",
+          "icon": "Twitter",
           "label": "Go to Twitter"
         },
         {
           "id": 3,
           "href": "https://facebook.com",
-          "Icon": "Facebook",
+          "icon": "Facebook",
           "label": "Go to Facebook"
         }
       ]

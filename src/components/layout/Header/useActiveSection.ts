@@ -4,22 +4,32 @@ interface LinkItem {
   href: string;
 }
 
-export const useActiveSection = (links: LinkItem[], offset: number = 150) => {
+const DEFAULT_SCROLL_OFFSET = 150;
+const ZERO = 0;
+
+export const useActiveSection = (
+  links: LinkItem[],
+  offset: number = DEFAULT_SCROLL_OFFSET
+): string => {
   const [activeSection, setActiveSection] = useState<string>("");
 
-  useEffect(() => {
-    const isClientReady = typeof window !== "undefined" && links?.length > 0;
-    if (!isClientReady) return;
+  useEffect((): (() => void) => {
+    const isClientReady = typeof window !== "undefined" && links.length > ZERO;
 
-    const handleScroll = () => {
+    if (!isClientReady) {
+      return () => {};
+    }
+
+    const handleScroll = (): void => {
       let currentSection = "";
       const scrollY = window.scrollY + offset;
 
       for (const { href } of links) {
         const id = href.replace("/#", "");
         const section = document.getElementById(id);
+
         const isInView =
-          section &&
+          section !== null &&
           section.offsetTop <= scrollY &&
           scrollY < section.offsetTop + section.offsetHeight;
 
@@ -35,7 +45,9 @@ export const useActiveSection = (links: LinkItem[], offset: number = 150) => {
     window.addEventListener("scroll", handleScroll);
     handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return (): void => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [links, offset]);
 
   return activeSection;

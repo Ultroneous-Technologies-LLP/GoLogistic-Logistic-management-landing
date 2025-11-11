@@ -5,7 +5,7 @@ import Image from "next/image";
 import { FC, useRef, useState } from "react";
 
 import { Link, Container, Title } from "@/components";
-import { BREAKPOINT_Xl } from "@/constant";
+import { BREAKPOINT_XL } from "@/constant";
 import { useInView, useIsMobile } from "@/hooks";
 
 import { OurServicesAndFacilitiesSectionProps } from "./types";
@@ -24,7 +24,7 @@ export const OurServicesAndFacilities: FC<OurServicesAndFacilitiesSectionProps> 
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const { getAnimation } = useInView(sectionRef);
-  const isMobile = useIsMobile(BREAKPOINT_Xl);
+  const isMobile = useIsMobile(BREAKPOINT_XL);
 
   const handleMouseEnter = (index: number): void => {
     if (isMobile) {
