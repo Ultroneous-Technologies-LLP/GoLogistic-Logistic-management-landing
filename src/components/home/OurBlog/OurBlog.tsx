@@ -4,14 +4,14 @@ import clsx from "clsx";
 import { FC, useRef } from "react";
 
 import { Container, Title } from "@/components";
-import { useInView } from "@/hooks";
+import { useInViewObserver } from "@/hooks";
 
 import { OurBlogSlider } from "./OurBlogSlider";
 import { BlogSectionProps } from "./types";
 
 export const OurBlog: FC<BlogSectionProps> = ({ blogData, longTitle, title }) => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const { getAnimation } = useInView(sectionRef);
+  const { getAnimation } = useInViewObserver(sectionRef);
 
   return (
     <Container

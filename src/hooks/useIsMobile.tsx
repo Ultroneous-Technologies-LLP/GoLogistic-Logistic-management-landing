@@ -13,7 +13,7 @@ export const useIsMobile = (breakpoint: number = BREAKPOINT_MD): boolean => {
     checkScreen();
     window.addEventListener("resize", checkScreen);
 
-    return () => {
+    return (): void => {
       window.removeEventListener("resize", checkScreen);
     };
   }, [breakpoint]);

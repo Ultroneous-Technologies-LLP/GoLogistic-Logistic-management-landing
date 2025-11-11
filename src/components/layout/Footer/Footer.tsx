@@ -5,7 +5,7 @@ import Image from "next/image";
 import { FC, useRef } from "react";
 
 import { Logo, Container, Link } from "@/components";
-import { useInView } from "@/hooks";
+import { useInViewObserver } from "@/hooks";
 
 import { iconMap } from "./constant";
 import { FooterTextEnum } from "./enum";
@@ -21,7 +21,7 @@ export const Footer: FC<FooterProps> = ({
   blogCard,
 }) => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const { getAnimation } = useInView(sectionRef);
+  const { getAnimation } = useInViewObserver(sectionRef);
 
   return (
     <footer className={getAnimation()} ref={sectionRef}>
