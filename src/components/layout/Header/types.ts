@@ -1,13 +1,13 @@
 import { Button } from "@/types";
 
-interface Links {
-  id: number;
+interface Link {
   href: string;
+  id: number;
   label: string;
   title: string;
 }
 
-export type HeaderProps = {
-  links: Links[];
+export interface HeaderProps {
   button: Button;
-};
+  links: Link[];
+}

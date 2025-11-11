@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 "use client";
 
 import { useState, ChangeEvent, FormEvent, FC } from "react";
@@ -69,7 +70,6 @@ const ContactForm: FC<ContactFormProps> = ({ formButton }) => {
     try {
       const res = await fetch(CONTACT, {
         method: "POST",
-        // eslint-disable-next-line @typescript-eslint/naming-convention
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });

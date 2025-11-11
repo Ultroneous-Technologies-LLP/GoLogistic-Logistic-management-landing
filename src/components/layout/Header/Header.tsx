@@ -3,12 +3,14 @@
 import clsx from "clsx";
 import { FC, useEffect, useState } from "react";
 
-import { BREAKPOINT_MD } from "@/constant";
 import { Link, Container, Logo } from "@/components";
+import { BREAKPOINT_MD } from "@/constant";
 import { useIsMobile, useWindowResize } from "@/hooks";
 
 import { HeaderProps } from "./types";
 import { useActiveSection } from "./useActiveSection";
+
+const SCROLL_OFFSET = 150;
 
 export const Header: FC<HeaderProps> = ({ button, links }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +18,7 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
   const isMobile = useIsMobile();
   const width = useWindowResize();
 
-  const activeSection = useActiveSection(links, 150);
+  const activeSection = useActiveSection(links, SCROLL_OFFSET);
 
   useEffect(() => {
     if (width > BREAKPOINT_MD && isOpen) {
@@ -24,7 +26,7 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
     }
   }, [width, isOpen]);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string): void => {
     e.preventDefault();
     const id = href.replace("/#", "");
     const section = document.getElementById(id);
@@ -41,8 +43,8 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
           <Link href="/#home" isPureLink={false}>
             <Logo
               className="max-h-6 w-full max-w-28 fill-black md:max-h-7.5 md:max-w-33 xl:max-h-8.5 xl:max-w-39"
-              width={156}
               height={34}
+              width={156}
             />
           </Link>
           <div className="hidden items-center gap-5 text-sm md:flex xl:gap-10 xl:text-base">
@@ -52,16 +54,16 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
 
               return (
                 <a
-                  href={href}
-                  title={title}
-                  key={id}
-                  onClick={(e) => handleNavClick(e, href)}
                   className={clsx(
                     "relative py-1 transition-all duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-black after:transition-all after:duration-300 after:content-[''] hover:after:w-full",
                     {
                       "font-semibold after:w-full": isActive,
                     }
                   )}
+                  href={href}
+                  key={id}
+                  onClick={(e) => handleNavClick(e, href)}
+                  title={title}
                 >
                   {label}
                 </a>
@@ -70,20 +72,20 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
           </div>
           <div className="hidden md:inline-block">
             <Link
-              href={button.href}
-              variant={button.variant}
-              className="rounded-lg px-4.5 py-3 md:!text-base/6 xl:px-10.5 xl:py-2.5"
-              title={button.label}
               ariaLabel={button.label}
+              className="rounded-lg px-4.5 py-3 md:!text-base/6 xl:px-10.5 xl:py-2.5"
+              href={button.href}
               label={button.label}
+              title={button.label}
+              variant={button.variant}
             />
           </div>
           {/* Hamburger */}
           <button
-            onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
             aria-label="Toggle menu"
             className="relative flex h-5 w-6 flex-col justify-between md:hidden"
+            onClick={() => setIsOpen(!isOpen)}
           >
             <span
               className={clsx(
@@ -119,20 +121,20 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
           {links.map(({ href, id, label, title }) => (
             <Link
               href={href}
-              title={title}
-              rel="nofollow"
               key={id}
-              onClick={(e) => handleNavClick(e, href)}
               label={label}
+              onClick={(e) => handleNavClick(e, href)}
+              rel="nofollow"
+              title={title}
             />
           ))}
           <Link
-            href={button.href}
-            variant={button.variant}
             className="!w-fit rounded-lg px-6 py-3"
-            title={button.label}
-            onClick={() => setIsOpen(false)}
+            href={button.href}
             label={button.label}
+            onClick={() => setIsOpen(false)}
+            title={button.label}
+            variant={button.variant}
           />
         </div>
       )}
