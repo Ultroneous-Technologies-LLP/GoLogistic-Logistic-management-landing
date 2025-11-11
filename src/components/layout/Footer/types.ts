@@ -29,7 +29,7 @@ interface LinkItem {
 interface Links {
   id: number;
   links: LinkItem[];
-  title: FooterTextEnum;
+  title: FooterTextEnum | string;
 }
 
 interface SocialsMedia {
