@@ -4,11 +4,11 @@ import { FC } from "react";
 import {
   // Contact,
   Hero,
+  WhyChooseUs,
   // OurBlog,
   // OurServicesAndFacilities,
   // ShippingService,
   // Testimonial,
-  // WhyChooseUs,
 } from "@/components";
 // import rawData from "@/content/home-page-data.json";
 import { axiosInstance } from "@/utils/axios";
@@ -29,7 +29,7 @@ async function HomeData(): Promise<HomePageDataType> {
 const Home: FC = async () => {
   const strapiData = await HomeData();
 
-  const { hero }: HomePageDataType = strapiData;
+  const { hero, whyChooseUs }: HomePageDataType = strapiData;
 
   return (
     <>
@@ -50,8 +50,8 @@ const Home: FC = async () => {
       />
       <>
         <Hero {...hero} />
+        <WhyChooseUs {...whyChooseUs} />
         {/* <ShippingService {...shippingService} />
-        <WhyChooseUs {...whyChooseUsSection} />
         <OurServicesAndFacilities {...ourServicesAndFacilitiesSection} />
         <Testimonial {...testimonialSection} />
         <Contact {...contactSection} />

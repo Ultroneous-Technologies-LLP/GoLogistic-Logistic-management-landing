@@ -24,8 +24,8 @@ export interface IconItem {
 }
 
 export interface WhyChooseUsSectionProps {
-  descriptions: Description[];
   longTitle: string;
   title: string;
+  whyChooseUsDescriptions: Description[];
   whyChooseUsFeaturesData: WhyChooseUsFeaturesData[];
 }

@@ -23,7 +23,7 @@ export const getFeatureIcon = (icon: Icons, className?: string): ReactElement | 
 };
 
 export const WhyChooseUs: FC<WhyChooseUsSectionProps> = ({
-  descriptions,
+  whyChooseUsDescriptions,
   longTitle,
   title,
   whyChooseUsFeaturesData,
@@ -64,7 +64,7 @@ export const WhyChooseUs: FC<WhyChooseUsSectionProps> = ({
           <h3 className="pb-2.5 text-xl/7.5 font-bold text-black xl:pb-3.5 xl:text-4xl/12.5">
             <span>{longTitle}</span>
           </h3>
-          {descriptions.map(({ id, description }) => (
+          {whyChooseUsDescriptions.map(({ id, description }) => (
             <p
               className="xl:text-22/10 text-spanish-gray pb-6 text-sm/4.5 font-normal last:pb-0"
               key={id}
