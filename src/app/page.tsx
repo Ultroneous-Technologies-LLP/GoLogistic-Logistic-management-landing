@@ -5,10 +5,10 @@ import {
   // Contact,
   Hero,
   WhyChooseUs,
+  Testimonial,
   // OurBlog,
   // OurServicesAndFacilities,
   // ShippingService,
-  // Testimonial,
 } from "@/components";
 // import rawData from "@/content/home-page-data.json";
 import { axiosInstance } from "@/utils/axios";
@@ -29,7 +29,7 @@ async function HomeData(): Promise<HomePageDataType> {
 const Home: FC = async () => {
   const strapiData = await HomeData();
 
-  const { hero, whyChooseUs }: HomePageDataType = strapiData;
+  const { hero, whyChooseUs, testimonials }: HomePageDataType = strapiData;
 
   return (
     <>
@@ -51,9 +51,9 @@ const Home: FC = async () => {
       <>
         <Hero {...hero} />
         <WhyChooseUs {...whyChooseUs} />
+        <Testimonial {...testimonials} />
         {/* <ShippingService {...shippingService} />
         <OurServicesAndFacilities {...ourServicesAndFacilitiesSection} />
-        <Testimonial {...testimonialSection} />
         <Contact {...contactSection} />
         <OurBlog {...blogSection} /> */}
       </>

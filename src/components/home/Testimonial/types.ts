@@ -1,4 +1,9 @@
-import { Image } from "@/types";
+// import { Image } from "@/types";
+
+interface BackgroundImage {
+  alternativeText: string;
+  url: string;
+}
 
 export interface ResponsiveSliderHook {
   centerPadding: string;
@@ -18,8 +23,8 @@ export interface TestimonialSliderProps {
 }
 
 export interface TestimonialSectionProps {
-  backgroundImage: Image;
+  backgroundImage: BackgroundImage;
   longTitle: string;
-  sliderData: SliderData[];
+  testimonialItems: SliderData[];
   title: string;
 }

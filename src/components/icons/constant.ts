@@ -1,9 +1,11 @@
 export const ICON_SIZE_0 = 0;
 export const ICON_SIZE_12 = 12;
 export const ICON_SIZE_14 = 14;
+export const ICON_SIZE_16 = 16;
 export const ICON_SIZE_18 = 18;
 export const ICON_SIZE_19 = 19;
 export const ICON_SIZE_20 = 20;
+export const ICON_SIZE_21 = 21;
 export const ICON_SIZE_22 = 22;
 export const ICON_SIZE_23 = 23;
 export const ICON_SIZE_24 = 24;
