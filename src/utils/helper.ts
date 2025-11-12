@@ -1,0 +1,4 @@
+const AUTH_TOKEN = process.env.NEXT_PUBLIC_AUTH_TOKEN;
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+export { AUTH_TOKEN, BASE_URL };
