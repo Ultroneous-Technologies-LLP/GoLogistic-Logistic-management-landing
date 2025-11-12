@@ -1,31 +1,35 @@
+import { notFound } from "next/navigation";
 import { FC } from "react";
 
 import {
-  Contact,
+  // Contact,
   Hero,
-  OurBlog,
-  OurServicesAndFacilities,
-  ShippingService,
-  Testimonial,
-  WhyChooseUs,
+  // OurBlog,
+  // OurServicesAndFacilities,
+  // ShippingService,
+  // Testimonial,
+  // WhyChooseUs,
 } from "@/components";
-import rawData from "@/content/home-page-data.json";
+// import rawData from "@/content/home-page-data.json";
+import { axiosInstance } from "@/utils/axios";
 
 import { HomePageDataType } from "./types";
 
-const Home: FC = () => {
-  // TODO: remove as
-  const data = rawData as HomePageDataType;
+async function HomeData(): Promise<HomePageDataType> {
+  try {
+    const response = await axiosInstance.get<{ data: HomePageDataType }>(
+      "/logistics-ans-transport-website-landing-page?pLevel=7"
+    );
+    return response.data;
+  } catch {
+    notFound();
+  }
+}
 
-  const {
-    heroSection,
-    shippingService,
-    whyChooseUsSection,
-    ourServicesAndFacilitiesSection,
-    testimonialSection,
-    contactSection,
-    blogSection,
-  } = data;
+const Home: FC = async () => {
+  const strapiData = await HomeData();
+
+  const { hero }: HomePageDataType = strapiData;
 
   return (
     <>
@@ -45,13 +49,13 @@ const Home: FC = () => {
         type="application/ld+json"
       />
       <>
-        <Hero {...heroSection} />
-        <ShippingService {...shippingService} />
+        <Hero {...hero} />
+        {/* <ShippingService {...shippingService} />
         <WhyChooseUs {...whyChooseUsSection} />
         <OurServicesAndFacilities {...ourServicesAndFacilitiesSection} />
         <Testimonial {...testimonialSection} />
         <Contact {...contactSection} />
-        <OurBlog {...blogSection} />
+        <OurBlog {...blogSection} /> */}
       </>
     </>
   );

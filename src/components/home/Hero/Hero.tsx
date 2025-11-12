@@ -9,24 +9,19 @@ import { useInViewObserver, UseInViewTypeEnum } from "@/hooks";
 
 import { HeroSectionProps } from "./types";
 
-export const Hero: FC<HeroSectionProps> = ({
-  backgroundImage,
-  description,
-  title,
-  heroButtons,
-}) => {
+export const Hero: FC<HeroSectionProps> = ({ description, title, buttons }) => {
   const heroRef = useRef<HTMLDivElement | null>(null);
   const { getAnimation } = useInViewObserver(heroRef);
 
   return (
     <Container backgroundClassName="pt-20" className="relative" id="home" ref={heroRef}>
       <Image
-        alt={backgroundImage.alt}
+        alt={"Global logistics routes background map"}
         className="absolute -z-20 h-full w-full object-cover"
         height={470}
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1440px"
-        src={backgroundImage.src}
-        title={backgroundImage.alt}
+        src={"/assets/home/hero-background.avif"}
+        title={"Global logistics routes background map"}
         width={1440}
       />
       <div className="flex flex-col gap-2 px-4 pb-20 md:flex-row md:items-center md:gap-4 md:px-6 md:pb-19 xl:items-start xl:gap-11.5 xl:px-17.5 xl:pt-37.5 xl:pb-31.5">
@@ -49,7 +44,7 @@ export const Hero: FC<HeroSectionProps> = ({
             <span>{description}</span>
           </p>
           <div className="flex w-full gap-2 xl:gap-6">
-            {heroButtons.map(({ ariaLabel, href, id, label, variant }) => (
+            {buttons.map(({ ariaLabel, href, id, label, variant }) => (
               <div key={id}>
                 <Link
                   aria-label={ariaLabel}

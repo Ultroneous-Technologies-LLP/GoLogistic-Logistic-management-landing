@@ -1,13 +1,13 @@
 import {
-  BlogSectionProps,
-  ContactSectionProps,
+  // BlogSectionProps,
+  // ContactSectionProps,
   FooterProps,
   HeaderProps,
   HeroSectionProps,
-  OurServicesAndFacilitiesSectionProps,
-  ShippingServiceProps,
-  TestimonialSectionProps,
-  WhyChooseUsSectionProps,
+  // OurServicesAndFacilitiesSectionProps,
+  // ShippingServiceProps,
+  // TestimonialSectionProps,
+  // WhyChooseUsSectionProps,
 } from "@/components";
 
 export interface LayoutDataType {
@@ -16,11 +16,11 @@ export interface LayoutDataType {
 }
 
 export interface HomePageDataType {
-  blogSection: BlogSectionProps;
-  contactSection: ContactSectionProps;
-  heroSection: HeroSectionProps;
-  ourServicesAndFacilitiesSection: OurServicesAndFacilitiesSectionProps;
-  shippingService: ShippingServiceProps;
-  testimonialSection: TestimonialSectionProps;
-  whyChooseUsSection: WhyChooseUsSectionProps;
+  // blogSection: BlogSectionProps;
+  // contactSection: ContactSectionProps;
+  hero: HeroSectionProps;
+  // ourServicesAndFacilitiesSection: OurServicesAndFacilitiesSectionProps;
+  // shippingService: ShippingServiceProps;
+  // testimonialSection: TestimonialSectionProps;
+  // whyChooseUsSection: WhyChooseUsSectionProps;
 }

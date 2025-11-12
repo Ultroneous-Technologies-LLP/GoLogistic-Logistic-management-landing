@@ -10,7 +10,7 @@ export interface HeroButtons {
 
 export interface HeroSectionProps {
   backgroundImage: Image;
+  buttons: HeroButtons[];
   description: string;
-  heroButtons: HeroButtons[];
   title: string;
 }
