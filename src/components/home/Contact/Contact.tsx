@@ -2,30 +2,17 @@
 
 import clsx from "clsx";
 import Link from "next/link";
-import { FC, ReactElement, useRef } from "react";
+import { FC, useRef } from "react";
 
 import { Container, Title, Mail, Phone } from "@/components";
 import { useInViewObserver } from "@/hooks";
 
 import ContactForm from "./ContactForm";
-import { IconTitleEnum } from "./enum";
-import { ContactSectionProps, IconTitle } from "./types";
-
-const getIcon = (title: IconTitle): ReactElement | null => {
-  switch (title) {
-    case IconTitleEnum.EMAIL:
-      return <Mail aria-label="mail" className="text-black" />;
-    case IconTitleEnum.CALL_US:
-      return <Phone aria-label="phone" className="text-black" />;
-    default:
-      return null;
-  }
-};
+import { ContactSectionProps } from "./types";
 
 export const Contact: FC<ContactSectionProps> = ({
   contactDetails,
   description,
-  formButton,
   longTitle,
   title,
 }) => {
@@ -68,7 +55,7 @@ export const Contact: FC<ContactSectionProps> = ({
           })
         )}
       >
-        <ContactForm formButton={formButton} />
+        <ContactForm />
       </div>
       <div
         className={clsx(
@@ -78,20 +65,24 @@ export const Contact: FC<ContactSectionProps> = ({
           })
         )}
       >
-        {contactDetails.map(({ id, title: iconTitle, link, ariaLabel }) => (
+        {contactDetails.map(({ ariaLabel, display, id, link, linkTitle, type }) => (
           <address
             className="flex flex-col gap-4 not-italic last:pb-0 md:w-1/2 xl:w-full xl:flex-row xl:items-center xl:gap-3.5 xl:pb-7.5"
             key={id}
           >
             <div className="flex size-14 items-center justify-center rounded-full bg-[#DEDEDE] xl:size-16">
-              {getIcon(iconTitle)}
+              {type === "email" ? (
+                <Mail aria-label="mail" className="text-black" />
+              ) : (
+                <Phone aria-label="phone" className="text-black" />
+              )}
             </div>
             <div className="text-base/snug font-medium text-black">
               <p>
-                <span>{iconTitle}</span>
+                <span>{type}</span>
               </p>
-              <Link aria-label={ariaLabel} href={link} rel="nofollow" title={ariaLabel}>
-                {link.replace(/^mailto:|^tel:/, "")}
+              <Link aria-label={ariaLabel} href={link} rel="nofollow" title={linkTitle}>
+                {display.replace(/^mailto:|^tel:/, "")}
               </Link>
             </div>
           </address>

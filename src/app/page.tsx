@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { FC } from "react";
 
 import {
-  // Contact,
+  Contact,
   Hero,
   WhyChooseUs,
   Testimonial,
@@ -29,7 +29,7 @@ async function HomeData(): Promise<HomePageDataType> {
 const Home: FC = async () => {
   const strapiData = await HomeData();
 
-  const { hero, whyChooseUs, testimonials }: HomePageDataType = strapiData;
+  const { hero, whyChooseUs, testimonials, contactUs }: HomePageDataType = strapiData;
 
   return (
     <>
@@ -52,9 +52,9 @@ const Home: FC = async () => {
         <Hero {...hero} />
         <WhyChooseUs {...whyChooseUs} />
         <Testimonial {...testimonials} />
+        <Contact {...contactUs} />
         {/* <ShippingService {...shippingService} />
         <OurServicesAndFacilities {...ourServicesAndFacilitiesSection} />
-        <Contact {...contactSection} />
         <OurBlog {...blogSection} /> */}
       </>
     </>

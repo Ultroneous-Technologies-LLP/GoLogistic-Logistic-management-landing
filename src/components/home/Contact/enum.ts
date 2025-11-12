@@ -1,6 +1,8 @@
 export enum ContactFormeTypeEnum {
   SENDING = "Sending...",
   YOUR_MESSAGE = "Your Message",
+  SUBMIT_MESSAGE = "Submit Message",
+  SUBMIT_CONTACT_FORM = "Submit contact form",
 }
 
 export enum IconTitleEnum {

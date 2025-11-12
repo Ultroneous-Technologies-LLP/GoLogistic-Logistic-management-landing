@@ -1,6 +1,6 @@
 import {
   // BlogSectionProps,
-  // ContactSectionProps,
+  ContactSectionProps,
   FooterProps,
   HeaderProps,
   HeroSectionProps,
@@ -17,7 +17,7 @@ export interface LayoutDataType {
 
 export interface HomePageDataType {
   // blogSection: BlogSectionProps;
-  // contactUs: ContactSectionProps;
+  contactUs: ContactSectionProps;
   hero: HeroSectionProps;
   testimonials: TestimonialSectionProps;
   whyChooseUs: WhyChooseUsSectionProps;

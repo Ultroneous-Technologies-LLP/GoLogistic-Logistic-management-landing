@@ -7,11 +7,11 @@ import { CONTACT } from "@/utils/api-routes";
 
 import { FORM_FIELDS } from "./constant";
 import { ContactFormeTypeEnum, ErrorOrSuccessMessageEnum, TempErrorsEnum } from "./enum";
-import { ContactFormProps, FormErrors, FormData } from "./types";
+import { FormErrors, FormData } from "./types";
 
 const EMPTY_ERROR_COUNT = 0;
 
-const ContactForm: FC<ContactFormProps> = ({ formButton }) => {
+const ContactForm: FC = () => {
   const [formData, setFormData] = useState<FormData>({
     yourName: "",
     email: "",
@@ -138,12 +138,12 @@ const ContactForm: FC<ContactFormProps> = ({ formButton }) => {
       </div>
       <div className="col-span-1 xl:col-span-2">
         <button
-          aria-label={formButton.ariaLabel}
+          aria-label={ContactFormeTypeEnum.SUBMIT_CONTACT_FORM}
           className="hover:border-light-silver w-full max-w-47.5 cursor-pointer rounded-lg border border-transparent bg-black px-6 py-3 text-sm/snug font-semibold text-white transition-all duration-500 ease-out hover:bg-white hover:text-black hover:ease-in xl:px-7.5 xl:py-4"
           disabled={isLoading}
           type="submit"
         >
-          {isLoading ? ContactFormeTypeEnum.SENDING : formButton.label}
+          {isLoading ? ContactFormeTypeEnum.SENDING : ContactFormeTypeEnum.SUBMIT_MESSAGE}
         </button>
         {success && <p className="mt-2 text-green-600">{success}</p>}
       </div>
