@@ -8,7 +8,7 @@ import {
   Testimonial,
   // OurBlog,
   // OurServicesAndFacilities,
-  // ShippingService,
+  ShippingService,
 } from "@/components";
 // import rawData from "@/content/home-page-data.json";
 import { axiosInstance } from "@/utils/axios";
@@ -29,7 +29,8 @@ async function HomeData(): Promise<HomePageDataType> {
 const Home: FC = async () => {
   const strapiData = await HomeData();
 
-  const { hero, whyChooseUs, testimonials, contactUs }: HomePageDataType = strapiData;
+  const { hero, whyChooseUs, testimonials, contactUs, shippingService }: HomePageDataType =
+    strapiData;
 
   return (
     <>
@@ -50,10 +51,11 @@ const Home: FC = async () => {
       />
       <>
         <Hero {...hero} />
+        <ShippingService {...shippingService} />
         <WhyChooseUs {...whyChooseUs} />
         <Testimonial {...testimonials} />
         <Contact {...contactUs} />
-        {/* <ShippingService {...shippingService} />
+        {/* 
         <OurServicesAndFacilities {...ourServicesAndFacilitiesSection} />
         <OurBlog {...blogSection} /> */}
       </>

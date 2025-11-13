@@ -18,6 +18,25 @@ export const ShippingService: FC<ShippingServiceProps> = ({
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const { getAnimation } = useInViewObserver(sectionRef);
 
+  const images = shippingServiceImage.flatMap((group) =>
+    group.imagesss.map((img) => {
+      const [tabletImage] = img.tablet;
+      const [mobileImage] = img.mobile;
+
+      return {
+        id: img.id,
+        alt:
+          img.desktop.alternativeText ||
+          tabletImage.alternativeText ||
+          mobileImage.alternativeText ||
+          "",
+        desktopSrc: img.desktop.url,
+        tabletSrc: tabletImage.url || "",
+        mobileSrc: mobileImage.url || "",
+      };
+    })
+  );
+
   return (
     <Container className="px-4 md:px-6 xl:px-17.5">
       <div
@@ -37,7 +56,7 @@ export const ShippingService: FC<ShippingServiceProps> = ({
             <div className="h-2 w-5 cursor-pointer rounded-full bg-white opacity-50 transition-all duration-300 xl:w-7" />
           )}
         >
-          {shippingServiceImage.map(({ alt, desktopSrc, id, mobileSrc, tabletSrc }) => (
+          {images.map(({ id, alt, desktopSrc, tabletSrc, mobileSrc }) => (
             <div className="relative w-full" key={id}>
               <div className="relative z-10 -mb-5 md:-mb-10 xl:-mb-20">
                 <h2 className="pb-2 text-center text-xl font-semibold md:text-[32px] md:leading-12 xl:pb-3 xl:leading-none">
@@ -48,12 +67,17 @@ export const ShippingService: FC<ShippingServiceProps> = ({
                 </p>
               </div>
               <picture className="rounded-20 z-0 w-full overflow-hidden">
-                <source height={728} media="(min-width: 1280px)" srcSet={desktopSrc} width={1300} />
+                <source
+                  height={728}
+                  media="(min-width: 1280px)"
+                  srcSet={`http://localhost:1337${desktopSrc}`}
+                  width={1300}
+                />
                 <source
                   className="h-full w-full"
                   height="auto"
                   media="(min-width: 768px)"
-                  srcSet={tabletSrc}
+                  srcSet={`http://localhost:1337${tabletSrc}`}
                   width={1200}
                 />
                 <img
@@ -61,7 +85,7 @@ export const ShippingService: FC<ShippingServiceProps> = ({
                   className="rounded-20 overflow-hidden"
                   height="auto"
                   loading="lazy"
-                  src={mobileSrc}
+                  src={`http://localhost:1337${mobileSrc}`}
                   title={alt}
                   width={767}
                 />

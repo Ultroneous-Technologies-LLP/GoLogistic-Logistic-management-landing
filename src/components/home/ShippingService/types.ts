@@ -1,13 +1,23 @@
-interface ShippingServiceImage {
-  alt: string;
-  desktopSrc: string;
+export interface ImageFormat {
+  alternativeText: string;
   id: number;
-  mobileSrc: string;
-  tabletSrc: string;
+  url: string;
+}
+
+export interface ImageSet {
+  desktop: ImageFormat;
+  id: number;
+  mobile: ImageFormat[];
+  tablet: ImageFormat[];
+}
+
+export interface ShippingServiceImageGroup {
+  id: number;
+  imagesss: ImageSet[];
 }
 
 export interface ShippingServiceProps {
   description: string;
-  shippingServiceImage: ShippingServiceImage[];
+  shippingServiceImage: ShippingServiceImageGroup[];
   title: string;
 }

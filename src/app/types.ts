@@ -7,7 +7,7 @@ import {
   WhyChooseUsSectionProps,
   TestimonialSectionProps,
   // OurServicesAndFacilitiesSectionProps,
-  // ShippingServiceProps,
+  ShippingServiceProps,
 } from "@/components";
 
 export interface LayoutDataType {
@@ -19,8 +19,8 @@ export interface HomePageDataType {
   // blogSection: BlogSectionProps;
   contactUs: ContactSectionProps;
   hero: HeroSectionProps;
+  shippingService: ShippingServiceProps;
   testimonials: TestimonialSectionProps;
   whyChooseUs: WhyChooseUsSectionProps;
   // ourServicesAndFacilitiesSection: OurServicesAndFacilitiesSectionProps;
-  // shippingService: ShippingServiceProps;
 }
