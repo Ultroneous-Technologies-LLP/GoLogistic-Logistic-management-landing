@@ -69,11 +69,11 @@ export const OurBlogSlider: FC<OurBlogSliderProps> = ({ blogData, longTitle }) =
               <div className="flex gap-4" key={value.id}>
                 <div className="w-full max-w-[30%] rounded-sm">
                   <Image
-                    alt={value.alt}
+                    alt={value.image.alternativeText}
                     className="h-full w-full rounded-xl object-cover"
                     height={447}
-                    src={value.src}
-                    title={value.alt}
+                    src={`http://localhost:1337${value.image.url}`}
+                    title={value.image.alternativeText}
                     width={411}
                   />
                 </div>
@@ -110,11 +110,11 @@ export const OurBlogSlider: FC<OurBlogSliderProps> = ({ blogData, longTitle }) =
                 <div key={value.id}>
                   <div className="group rounded-20 relative h-[447px] w-full max-w-[411px] overflow-hidden">
                     <Image
-                      alt={value.alt}
+                      alt={value.image.alternativeText}
                       className="rounded-20 object-cover"
                       fill
-                      src={value.src}
-                      title={value.alt}
+                      src={`http://localhost:1337${value.image.url}`}
+                      title={value.image.alternativeText}
                     />
                     <div className="rounded-20 absolute inset-0 z-10 bg-black/40 opacity-100 transition-opacity duration-500 group-hover:opacity-0" />
                   </div>

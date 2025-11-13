@@ -1,5 +1,5 @@
 import {
-  // BlogSectionProps,
+  BlogSectionProps,
   ContactSectionProps,
   FooterProps,
   HeaderProps,
@@ -16,9 +16,9 @@ export interface LayoutDataType {
 }
 
 export interface HomePageDataType {
-  // blogSection: BlogSectionProps;
   contactUs: ContactSectionProps;
   hero: HeroSectionProps;
+  ourBlog: BlogSectionProps;
   ourServicesAndFacilities: OurServicesAndFacilitiesSectionProps;
   shippingService: ShippingServiceProps;
   testimonials: TestimonialSectionProps;

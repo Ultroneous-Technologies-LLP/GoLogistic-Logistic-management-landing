@@ -1,19 +1,23 @@
-interface BlogData {
-  alt: string;
+interface Image {
+  alternativeText: string;
+  url: string;
+}
+
+interface Blogs {
   date: string;
   description: string;
   id: number;
-  src: string;
+  image: Image;
   title: string;
 }
 
 export interface OurBlogSliderProps {
-  blogData: BlogData[];
+  blogData: Blogs[];
   longTitle: string;
 }
 
 export interface BlogSectionProps {
-  blogData: BlogData[];
+  blogs: Blogs[];
   longTitle: string;
   title: string;
 }

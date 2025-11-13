@@ -9,7 +9,7 @@ import { useInViewObserver } from "@/hooks";
 import { OurBlogSlider } from "./OurBlogSlider";
 import { BlogSectionProps } from "./types";
 
-export const OurBlog: FC<BlogSectionProps> = ({ blogData, longTitle, title }) => {
+export const OurBlog: FC<BlogSectionProps> = ({ blogs, longTitle, title }) => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const { getAnimation } = useInViewObserver(sectionRef);
 
@@ -23,7 +23,7 @@ export const OurBlog: FC<BlogSectionProps> = ({ blogData, longTitle, title }) =>
         <Title title={title} />
       </div>
       <div>
-        <OurBlogSlider blogData={blogData} longTitle={longTitle} />
+        <OurBlogSlider blogData={blogs} longTitle={longTitle} />
       </div>
     </Container>
   );

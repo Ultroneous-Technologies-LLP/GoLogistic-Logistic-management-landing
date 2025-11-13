@@ -6,11 +6,10 @@ import {
   Hero,
   WhyChooseUs,
   Testimonial,
-  // OurBlog,
+  OurBlog,
   OurServicesAndFacilities,
   ShippingService,
 } from "@/components";
-// import rawData from "@/content/home-page-data.json";
 import { axiosInstance } from "@/utils/axios";
 
 import { HomePageDataType } from "./types";
@@ -36,6 +35,7 @@ const Home: FC = async () => {
     contactUs,
     shippingService,
     ourServicesAndFacilities,
+    ourBlog,
   }: HomePageDataType = strapiData;
 
   return (
@@ -62,8 +62,7 @@ const Home: FC = async () => {
         <OurServicesAndFacilities {...ourServicesAndFacilities} />
         <Testimonial {...testimonials} />
         <Contact {...contactUs} />
-        {/* 
-        <OurBlog {...blogSection} /> */}
+        <OurBlog {...ourBlog} />
       </>
     </>
   );

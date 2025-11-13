@@ -283,18 +283,6 @@
         "description": "Your business's efficient and cost-effective solution for timely and seamless transportation. Choose reliability and flexibility."
       }
     ],
-    "blogCard": {
-      "src": "/assets/home/shipping-logistics-3d.avif",
-      "alt": "shipping-logistics-3d",
-      "title": "Ready to join the future?",
-      "description": "Leverage agile frameworks to support collaborative thinking and offer a strong strategy summary that advances the overall value proposition.",
-      "button": {
-        "variant": "contained",
-        "label": "Submit Message",
-        "ariaLabel": "Submit Message",
-        "href": "/#contact"
-      }
-    },
     "backgroundImage": {
       "alt": "Global logistics routes background map",
       "src": "/assets/home/hero-background.avif"
