@@ -4,13 +4,13 @@ import clsx from "clsx";
 import { FC, ReactElement, useRef } from "react";
 
 import { Container, Title } from "@/components";
-import { useInView, useMultipleInView, UseInViewTypeEnum } from "@/hooks";
+import { SCROLL_THRESHOLD } from "@/constant";
+import { useInViewObserver, UseInViewTypeEnum } from "@/hooks";
 
 import { ICONS_ARRAY } from "./constant";
 import { Icons, WhyChooseUsSectionProps } from "./types";
 
 const ANIMATION_DURATION_MS = 150;
-const SCROLL_THRESHOLD = 0.3;
 
 export const getFeatureIcon = (icon: Icons, className?: string): ReactElement | null => {
   const item = ICONS_ARRAY.find((i) => i.key === icon);
@@ -28,12 +28,23 @@ export const WhyChooseUs: FC<WhyChooseUsSectionProps> = ({
   title,
   whyChooseUsFeaturesData,
 }) => {
+  // Single section animation
   const sectionRef = useRef<HTMLDivElement>(null);
-  const { getAnimation: getSectionAnimation } = useInView(sectionRef);
-  const { refs, getAnimation } = useMultipleInView(
-    whyChooseUsFeaturesData.length,
-    SCROLL_THRESHOLD
-  );
+  const { getAnimation: getSectionAnimation } = useInViewObserver(sectionRef);
+
+  // Multiple feature cards animation
+  const multipleObserver = useInViewObserver({
+    isMultiple: true,
+    count: whyChooseUsFeaturesData.length,
+    threshold: SCROLL_THRESHOLD,
+  });
+
+  // ✅ Narrow type safely
+  if (!("refs" in multipleObserver)) {
+    return null;
+  }
+
+  const { refs, getAnimation } = multipleObserver;
 
   return (
     <Container
@@ -69,7 +80,7 @@ export const WhyChooseUs: FC<WhyChooseUsSectionProps> = ({
             <article
               className={clsx(
                 "flex transform gap-4 pb-5 transition-all duration-700 ease-out last:pb-0 xl:gap-10 xl:pb-13.5",
-                getAnimation(index, UseInViewTypeEnum.IN_RIGHT)
+                getAnimation(index)
               )}
               key={id}
               ref={(el) => {

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { FC, useRef } from "react";
 
 import { Logo, Container, Link } from "@/components";
-import { useInView } from "@/hooks";
+import { useInViewObserver } from "@/hooks";
 
 import { iconMap } from "./constant";
 import { FooterTextEnum } from "./enum";
@@ -21,7 +21,7 @@ export const Footer: FC<FooterProps> = ({
   blogCard,
 }) => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const { getAnimation } = useInView(sectionRef);
+  const { getAnimation } = useInViewObserver(sectionRef);
 
   return (
     <footer className={getAnimation()} ref={sectionRef}>
@@ -123,7 +123,9 @@ export const Footer: FC<FooterProps> = ({
                   <ul className="space-y-4 text-white">
                     {footerLinks.map(({ href, id: linksId, label }) => (
                       <li
-                        className={clsx(title === FooterTextEnum.OUR_COMPANY ? "xl:pl-42.5" : "")}
+                        className={clsx(
+                          (title as FooterTextEnum) === FooterTextEnum.OUR_COMPANY && "xl:pl-42.5"
+                        )}
                         key={linksId}
                       >
                         <Link
