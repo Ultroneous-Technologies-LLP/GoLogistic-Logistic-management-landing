@@ -15,13 +15,12 @@ const SECOND_INDEX = 1;
 
 export const OurServicesAndFacilities: FC<OurServicesAndFacilitiesSectionProps> = ({
   backgroundImage,
-  button,
   longTitle,
-  services,
   title,
+  button,
+  ourServicesAndFacilitiesItems,
 }) => {
   const [activeIndex, setActiveIndex] = useState<null | number>(FIRST_INDEX);
-
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const { getAnimation } = useInViewObserver(sectionRef);
   const isMobile = useIsMobile(BREAKPOINT_XL);
@@ -58,11 +57,11 @@ export const OurServicesAndFacilities: FC<OurServicesAndFacilitiesSectionProps> 
       ref={sectionRef}
     >
       <Image
-        alt={backgroundImage.alt}
+        alt={backgroundImage.alternativeText}
         className="absolute bottom-46 z-0 opacity-25 xl:top-104 xl:bottom-[unset]"
         height={511}
-        src={backgroundImage.src}
-        title={backgroundImage.alt}
+        src={`http://localhost:1337${backgroundImage.url}`}
+        title={backgroundImage.alternativeText}
         width={1440}
       />
       <div className="relative z-10 px-4 py-12.5 md:px-6 xl:px-20 xl:py-42">
@@ -73,59 +72,61 @@ export const OurServicesAndFacilities: FC<OurServicesAndFacilitiesSectionProps> 
               <span>{longTitle}</span>
             </p>
           </div>
-          {services.map(({ alt, id, src, title: servicesTitle }, index) => {
-            const isActive = activeIndex === index;
+          {ourServicesAndFacilitiesItems.map(
+            ({ id, title: ourServicesAndFacilitiesItemsTitle, image }, index) => {
+              const isActive = activeIndex === index;
 
-            return (
-              <div
-                className={clsx(
-                  "rounded-20 mx-auto flex w-full max-w-91 justify-between gap-5 overflow-hidden transition-all duration-700 ease-in-out xl:mr-auto xl:ml-0",
-                  isActive ? "h-85 bg-white text-black" : "h-50 bg-transparent text-white"
-                )}
-                key={id}
-                onClick={() => handleClick(index)}
-                onMouseEnter={() => handleMouseEnter(index)}
-                onMouseLeave={handleMouseLeave}
-              >
-                {/* Text Content */}
-                <div className="flex w-full max-w-55 flex-col justify-between py-8 pl-8 break-words xl:pt-10 xl:pb-7.5 xl:pl-9.5">
-                  <h3 className="flex flex-col text-2xl/9 font-semibold">
-                    {index + SECOND_INDEX} <br />
-                    <span>{servicesTitle}</span>
-                  </h3>
+              return (
+                <div
+                  className={clsx(
+                    "rounded-20 mx-auto flex w-full max-w-91 justify-between gap-5 overflow-hidden transition-all duration-700 ease-in-out xl:mr-auto xl:ml-0",
+                    isActive ? "h-85 bg-white text-black" : "h-50 bg-transparent text-white"
+                  )}
+                  key={id}
+                  onClick={() => handleClick(index)}
+                  onMouseEnter={() => handleMouseEnter(index)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  {/* Text Content */}
+                  <div className="flex w-full max-w-55 flex-col justify-between py-8 pl-8 break-words xl:pt-10 xl:pb-7.5 xl:pl-9.5">
+                    <h3 className="flex flex-col text-2xl/9 font-semibold">
+                      {index + SECOND_INDEX} <br />
+                      <span>{ourServicesAndFacilitiesItemsTitle}</span>
+                    </h3>
+                    <div
+                      className={clsx("transition-all duration-700", {
+                        "translate-y-0 opacity-100 delay-200": isActive,
+                        "pointer-events-none translate-y-2 opacity-0 delay-0": !isActive,
+                      })}
+                    >
+                      <Link
+                        aria-label={button.ariaLabel}
+                        className="inline-block w-fit rounded-md px-10 py-2.5 text-center !font-medium hover:!font-medium"
+                        href={button.href}
+                        label={button.label}
+                        variant={button.variant}
+                      />
+                    </div>
+                  </div>
                   <div
-                    className={clsx("transition-all duration-700", {
-                      "translate-y-0 opacity-100 delay-200": isActive,
-                      "pointer-events-none translate-y-2 opacity-0 delay-0": !isActive,
+                    className={clsx("-mr-2.5 max-w-27 transition-all duration-700", {
+                      "translate-x-0 opacity-100 delay-300": isActive,
+                      "pointer-events-none translate-x-2 opacity-0 delay-0": !isActive,
                     })}
                   >
-                    <Link
-                      aria-label={button.ariaLabel}
-                      className="inline-block w-fit rounded-md px-10 py-2.5 text-center !font-medium hover:!font-medium"
-                      href={button.href}
-                      label={button.label}
-                      variant={button.variant}
+                    <Image
+                      alt={image.alternativeText}
+                      className={index === FIRST_INDEX ? "h-full" : ""}
+                      height={343}
+                      src={`http://localhost:1337${image.url}`}
+                      title={image.alternativeText}
+                      width={109}
                     />
                   </div>
                 </div>
-                <div
-                  className={clsx("-mr-2.5 max-w-27 transition-all duration-700", {
-                    "translate-x-0 opacity-100 delay-300": isActive,
-                    "pointer-events-none translate-x-2 opacity-0 delay-0": !isActive,
-                  })}
-                >
-                  <Image
-                    alt={alt}
-                    className={index === FIRST_INDEX ? "h-full" : ""}
-                    height={343}
-                    src={src}
-                    title={alt}
-                    width={109}
-                  />
-                </div>
-              </div>
-            );
-          })}
+              );
+            }
+          )}
         </div>
       </div>
     </Container>
