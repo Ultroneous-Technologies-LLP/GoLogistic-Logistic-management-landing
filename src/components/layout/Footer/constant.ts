@@ -1,11 +1,9 @@
-/* eslint-disable @typescript-eslint/naming-convention */
+import { Facebook, LinkedIn, Mail, Phone, Twitter } from "@/components/icons";
 
-import { Facebook, LinkedIn, Mail, Phone, Twitter } from "@/components";
-
-export const iconMap: Record<string, React.ElementType> = {
-  Mail,
-  Phone,
-  LinkedIn,
-  Twitter,
-  Facebook,
-};
+export const iconMap = [
+  { name: "Mail", component: Mail },
+  { name: "Phone", component: Phone },
+  { name: "LinkedIn", component: LinkedIn },
+  { name: "Twitter", component: Twitter },
+  { name: "Facebook", component: Facebook },
+];

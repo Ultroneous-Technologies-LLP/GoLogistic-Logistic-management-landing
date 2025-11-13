@@ -1,13 +1,23 @@
-import type { Metadata } from "next";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { FC, PropsWithChildren } from "react";
 
 import { Footer, Header } from "@/components";
-import { montserrat400, montserrat600, montserratRest } from "@/constant";
-import data from "@/content/Layout-data.json";
-import { ButtonVariant } from "@/types";
+import { montserrat400, montserrat600, montserratRest, STRAPI_DATA_API } from "@/constant";
+import { axiosInstance } from "@/utils/axios";
 
-import "../../styles/globals.css";
-import { LayoutDataType } from "./types";
+import "../styles/globals.css";
+
+import { LayoutDataType, RootLayoutStrapiData } from "./types";
+
+const rootLayoutData = async (): Promise<LayoutDataType> => {
+  try {
+    const response = await axiosInstance.get<RootLayoutStrapiData>(STRAPI_DATA_API);
+    return response.data;
+  } catch {
+    notFound();
+  }
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.gologistic.example"),
@@ -86,27 +96,8 @@ export const metadata: Metadata = {
   },
 };
 
-const RootLayout: FC<PropsWithChildren> = ({ children }) => {
-  const { header, footer }: LayoutDataType = {
-    ...data,
-    header: {
-      ...data.header,
-      button: {
-        ...data.header.button,
-        variant: data.header.button.variant as ButtonVariant,
-      },
-    },
-    footer: {
-      ...data.footer,
-      blogCard: {
-        ...data.footer.blogCard,
-        button: {
-          ...data.footer.blogCard.button,
-          variant: data.footer.blogCard.button.variant as ButtonVariant,
-        },
-      },
-    },
-  };
+const RootLayout: FC<PropsWithChildren> = async ({ children }) => {
+  const { header, footer }: LayoutDataType = await rootLayoutData();
 
   return (
     <html className="scroll-smooth" lang="en">

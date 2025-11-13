@@ -1,53 +1,66 @@
-import { Button, Image } from "@/types";
+import { Button } from "@/types";
 
-import { FooterTextEnum } from "./enum";
-
-interface BlogCard {
-  alt: string;
+interface FooterCard {
   button: Button;
   description: string;
-  src: string;
+  id: number;
   title: string;
 }
 
-interface Contact {
+interface FooterContactDetail {
   ariaLabel: string;
-  href: string;
+  display: string;
   icon: string;
   id: number;
-  label: string;
-  text: string;
-  title: string;
+  link: string;
+  linkTitle: string;
+  type: string;
 }
 
-interface LinkItem {
+interface FooterContact {
+  footerContactDetails: FooterContactDetail[];
+  id: number;
+}
+
+interface FooterMenuLink {
   href: string;
   id: number;
   label: string;
+  linkTitle: string | null;
 }
 
-interface Links {
+interface FooterMenuItem {
   id: number;
-  links: LinkItem[];
-  title: FooterTextEnum | string;
+  links: FooterMenuLink[];
+  title: string;
+}
+
+interface FooterMenu {
+  footerMenuItems: FooterMenuItem[];
+  id: number;
+}
+
+interface SocialIconLink {
+  href: string;
+  id: number;
+  label: string;
+  linkTitle: string;
 }
 
 interface SocialsMedia {
-  href: string;
-  icon: string;
+  iconsLink: SocialIconLink[];
   id: number;
-  label: string;
 }
 
 interface FooterLegal {
-  socialsMedia: SocialsMedia[];
+  id: number;
+  socialsMedia: SocialsMedia;
   title: string;
 }
 
 export interface FooterProps {
-  backgroundImage: Image;
-  blogCard: BlogCard;
-  contact: Contact[];
+  footerCard: FooterCard;
+  footerContact: FooterContact;
   footerLegal: FooterLegal;
-  links: Links[];
+  footerMenu: FooterMenu;
 }

@@ -15,6 +15,10 @@ export interface LayoutDataType {
   header: HeaderProps;
 }
 
+export interface RootLayoutStrapiData {
+  data: LayoutDataType;
+}
+
 export interface HomePageDataType {
   blogSection: BlogSectionProps;
   contactSection: ContactSectionProps;
