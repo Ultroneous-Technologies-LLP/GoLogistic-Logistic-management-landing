@@ -16,7 +16,7 @@ export const Hero: FC<HeroSectionProps> = ({
   heroButtons,
 }) => {
   const heroRef = useRef<HTMLDivElement | null>(null);
-  const { getAnimation } = useInViewObserver(heroRef);
+  const { getAnimation } = useInViewObserver({ singleAnimationRef: heroRef });
 
   return (
     <Container backgroundClassName="pt-20" className="relative" id="home" ref={heroRef}>

@@ -21,7 +21,7 @@ export const Footer: FC<FooterProps> = ({
   blogCard,
 }) => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const { getAnimation } = useInViewObserver(sectionRef);
+  const { getAnimation } = useInViewObserver({ singleAnimationRef: sectionRef });
 
   return (
     <footer className={getAnimation()} ref={sectionRef}>

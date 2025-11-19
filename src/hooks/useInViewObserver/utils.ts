@@ -31,4 +31,3 @@ export const getAnimationClass = (
       return clsx("animate-slide-up opacity-100", className);
   }
 };
-/* eslint-enable max-params */

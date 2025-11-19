@@ -16,7 +16,7 @@ export const ShippingService: FC<ShippingServiceProps> = ({
   title,
 }) => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const { getAnimation } = useInViewObserver(sectionRef);
+  const { getAnimation } = useInViewObserver({ singleAnimationRef: sectionRef });
 
   return (
     <Container className="px-4 md:px-6 xl:px-17.5">

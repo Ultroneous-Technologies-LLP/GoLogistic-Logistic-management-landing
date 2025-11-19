@@ -23,7 +23,7 @@ export const OurServicesAndFacilities: FC<OurServicesAndFacilitiesSectionProps> 
   const [activeIndex, setActiveIndex] = useState<null | number>(FIRST_INDEX);
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const { getAnimation } = useInViewObserver(sectionRef);
+  const { getAnimation } = useInViewObserver({ singleAnimationRef: sectionRef });
   const isMobile = useIsMobile(BREAKPOINT_XL);
 
   const handleMouseEnter = (index: number): void => {

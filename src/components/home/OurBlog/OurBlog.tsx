@@ -11,7 +11,7 @@ import { BlogSectionProps } from "./types";
 
 export const OurBlog: FC<BlogSectionProps> = ({ blogData, longTitle, title }) => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const { getAnimation } = useInViewObserver(sectionRef);
+  const { getAnimation } = useInViewObserver({ singleAnimationRef: sectionRef });
 
   return (
     <Container

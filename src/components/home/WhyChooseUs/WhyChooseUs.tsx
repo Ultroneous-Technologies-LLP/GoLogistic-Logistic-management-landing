@@ -4,7 +4,6 @@ import clsx from "clsx";
 import { FC, ReactElement, useRef } from "react";
 
 import { Container, Title } from "@/components";
-import { SCROLL_THRESHOLD } from "@/constant";
 import { useInViewObserver, UseInViewTypeEnum } from "@/hooks";
 
 import { ICONS_ARRAY } from "./constant";
@@ -28,36 +27,26 @@ export const WhyChooseUs: FC<WhyChooseUsSectionProps> = ({
   title,
   whyChooseUsFeaturesData,
 }) => {
-  // Single section animation
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const { getAnimation: getSectionAnimation } = useInViewObserver(sectionRef);
+  const singleAnimationRef = useRef<HTMLElement>(null);
+  const multipleAnimationRef = useRef<(HTMLElement | null)[]>([]);
 
-  // Multiple feature cards animation
-  const multipleObserver = useInViewObserver({
-    isMultiple: true,
-    count: whyChooseUsFeaturesData.length,
-    threshold: SCROLL_THRESHOLD,
+  const { getAnimation } = useInViewObserver({
+    multipleAnimationRef,
+    singleAnimationRef,
   });
-
-  // ✅ Narrow type safely
-  if (!("refs" in multipleObserver)) {
-    return null;
-  }
-
-  const { refs, getAnimation } = multipleObserver;
 
   return (
     <Container
       className="overflow-hidden px-4 py-20 md:px-6 xl:px-17.5 xl:py-37"
       id="why-choose-us"
-      ref={sectionRef}
+      ref={singleAnimationRef}
     >
       <div className="flex flex-col justify-between gap-8 md:flex-row md:gap-6 xl:gap-12">
         {/* Left section */}
         <div
           className={clsx(
             "w-full max-w-146 transition-all duration-700",
-            getSectionAnimation({ animationType: UseInViewTypeEnum.IN_LEFT })
+            getAnimation({ animationType: UseInViewTypeEnum.IN_LEFT })
           )}
         >
           <Title title={title} />
@@ -84,7 +73,7 @@ export const WhyChooseUs: FC<WhyChooseUsSectionProps> = ({
               )}
               key={id}
               ref={(el) => {
-                refs.current[`${index}`] = el;
+                multipleAnimationRef.current[`${index}`] = el;
               }}
               style={{
                 transitionDelay: `${index * ANIMATION_DURATION_MS}ms`,
