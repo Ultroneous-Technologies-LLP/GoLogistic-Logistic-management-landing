@@ -5,7 +5,7 @@ import React, { FC, useRef } from "react";
 import Slider from "react-slick";
 
 import { Container } from "@/components";
-import { useInView } from "@/hooks";
+import { useInViewObserver } from "@/hooks";
 
 import { SETTING_PROPS, SLIDER_CLASS } from "./constant";
 import { ShippingServiceProps } from "./types";
@@ -16,7 +16,7 @@ export const ShippingService: FC<ShippingServiceProps> = ({
   title,
 }) => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const { getAnimation } = useInView(sectionRef);
+  const { getAnimation } = useInViewObserver({ singleAnimationRef: sectionRef });
 
   return (
     <Container className="px-4 md:px-6 xl:px-17.5">

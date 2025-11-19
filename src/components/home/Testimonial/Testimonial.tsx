@@ -5,7 +5,7 @@ import Image from "next/image";
 import { FC, useRef } from "react";
 
 import { Container, Title } from "@/components";
-import { useInView } from "@/hooks";
+import { useInViewObserver } from "@/hooks";
 
 import TestimonialSlider from "./TestimonialSlider";
 import { TestimonialSectionProps } from "./types";
@@ -17,7 +17,7 @@ export const Testimonial: FC<TestimonialSectionProps> = ({
   title,
 }) => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const { getAnimation } = useInView(sectionRef);
+  const { getAnimation } = useInViewObserver({ singleAnimationRef: sectionRef });
 
   return (
     <Container

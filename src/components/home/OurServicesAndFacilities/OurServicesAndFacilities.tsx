@@ -6,7 +6,7 @@ import { FC, useRef, useState } from "react";
 
 import { Link, Container, Title } from "@/components";
 import { BREAKPOINT_XL } from "@/constant";
-import { useInView, useIsMobile } from "@/hooks";
+import { useInViewObserver, useIsMobile } from "@/hooks";
 
 import { OurServicesAndFacilitiesSectionProps } from "./types";
 
@@ -23,7 +23,7 @@ export const OurServicesAndFacilities: FC<OurServicesAndFacilitiesSectionProps> 
   const [activeIndex, setActiveIndex] = useState<null | number>(FIRST_INDEX);
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const { getAnimation } = useInView(sectionRef);
+  const { getAnimation } = useInViewObserver({ singleAnimationRef: sectionRef });
   const isMobile = useIsMobile(BREAKPOINT_XL);
 
   const handleMouseEnter = (index: number): void => {

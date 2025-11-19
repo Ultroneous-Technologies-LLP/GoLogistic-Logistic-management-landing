@@ -4,13 +4,12 @@ import clsx from "clsx";
 import { FC, ReactElement, useRef } from "react";
 
 import { Container, Title } from "@/components";
-import { useInView, useMultipleInView, UseInViewTypeEnum } from "@/hooks";
+import { useInViewObserver, UseInViewTypeEnum } from "@/hooks";
 
 import { ICONS_ARRAY } from "./constant";
 import { Icons, WhyChooseUsSectionProps } from "./types";
 
 const ANIMATION_DURATION_MS = 150;
-const SCROLL_THRESHOLD = 0.3;
 
 export const getFeatureIcon = (icon: Icons, className?: string): ReactElement | null => {
   const item = ICONS_ARRAY.find((i) => i.key === icon);
@@ -28,25 +27,26 @@ export const WhyChooseUs: FC<WhyChooseUsSectionProps> = ({
   title,
   whyChooseUsFeaturesData,
 }) => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const { getAnimation: getSectionAnimation } = useInView(sectionRef);
-  const { refs, getAnimation } = useMultipleInView(
-    whyChooseUsFeaturesData.length,
-    SCROLL_THRESHOLD
-  );
+  const singleAnimationRef = useRef<HTMLElement>(null);
+  const multipleAnimationRef = useRef<(HTMLElement | null)[]>([]);
+
+  const { getAnimation } = useInViewObserver({
+    multipleAnimationRef,
+    singleAnimationRef,
+  });
 
   return (
     <Container
       className="overflow-hidden px-4 py-20 md:px-6 xl:px-17.5 xl:py-37"
       id="why-choose-us"
-      ref={sectionRef}
+      ref={singleAnimationRef}
     >
       <div className="flex flex-col justify-between gap-8 md:flex-row md:gap-6 xl:gap-12">
         {/* Left section */}
         <div
           className={clsx(
             "w-full max-w-146 transition-all duration-700",
-            getSectionAnimation({ animationType: UseInViewTypeEnum.IN_LEFT })
+            getAnimation({ animationType: UseInViewTypeEnum.IN_LEFT })
           )}
         >
           <Title title={title} />
@@ -69,11 +69,11 @@ export const WhyChooseUs: FC<WhyChooseUsSectionProps> = ({
             <article
               className={clsx(
                 "flex transform gap-4 pb-5 transition-all duration-700 ease-out last:pb-0 xl:gap-10 xl:pb-13.5",
-                getAnimation(index, UseInViewTypeEnum.IN_RIGHT)
+                getAnimation(index)
               )}
               key={id}
               ref={(el) => {
-                refs.current[`${index}`] = el;
+                multipleAnimationRef.current[`${index}`] = el;
               }}
               style={{
                 transitionDelay: `${index * ANIMATION_DURATION_MS}ms`,

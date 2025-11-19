@@ -1,15 +1,24 @@
+import { UseInViewTypeEnum } from "@/hooks";
+
 export type ButtonVariant = "contained" | "outlined";
 
 export interface Image {
-  src: string;
   alt: string;
+  src: string;
 }
 
 type Variant = ButtonVariant;
 
 export interface Button {
-  variant: Variant;
-  label: string;
-  ariaLabel?: string;
   href: string;
+  label: string;
+  variant: Variant;
+  ariaLabel?: string;
 }
+
+export interface GetAnimationOptions {
+  animationType?: UseInViewTypeEnum | null;
+  className?: string;
+}
+
+export type GetAnimationFn = (options?: GetAnimationOptions) => string;

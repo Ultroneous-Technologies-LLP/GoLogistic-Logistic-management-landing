@@ -5,7 +5,7 @@ import Image from "next/image";
 import { FC, useRef } from "react";
 
 import { Container, Link } from "@/components";
-import { useInView, UseInViewTypeEnum } from "@/hooks";
+import { useInViewObserver, UseInViewTypeEnum } from "@/hooks";
 
 import { HeroSectionProps } from "./types";
 
@@ -16,7 +16,7 @@ export const Hero: FC<HeroSectionProps> = ({
   heroButtons,
 }) => {
   const heroRef = useRef<HTMLDivElement | null>(null);
-  const { getAnimation } = useInView(heroRef);
+  const { getAnimation } = useInViewObserver({ singleAnimationRef: heroRef });
 
   return (
     <Container backgroundClassName="pt-20" className="relative" id="home" ref={heroRef}>

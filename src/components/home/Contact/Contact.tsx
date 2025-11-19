@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FC, ReactElement, useRef } from "react";
 
 import { Container, Title, Mail, Phone } from "@/components";
-import { useInView } from "@/hooks";
+import { useInViewObserver } from "@/hooks";
 
 import ContactForm from "./ContactForm";
 import { IconTitleEnum } from "./enum";
@@ -30,7 +30,7 @@ export const Contact: FC<ContactSectionProps> = ({
   title,
 }) => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const { getAnimation } = useInView(sectionRef);
+  const { getAnimation } = useInViewObserver({ singleAnimationRef: sectionRef });
 
   return (
     <Container
