@@ -2,6 +2,11 @@ import { Button, Image } from "@/types";
 
 import { FooterTextEnum } from "./enum";
 
+export type FooterText =
+  | FooterTextEnum.BY_INDUSTRY
+  | FooterTextEnum.OUR_COMPANY
+  | FooterTextEnum.RESOURCE;
+
 interface BlogCard {
   alt: string;
   button: Button;
@@ -29,7 +34,7 @@ interface LinkItem {
 interface Links {
   id: number;
   links: LinkItem[];
-  title: FooterTextEnum;
+  title: FooterTextEnum | string;
 }
 
 interface SocialsMedia {

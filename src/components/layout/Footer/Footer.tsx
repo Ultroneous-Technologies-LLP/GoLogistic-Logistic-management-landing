@@ -123,7 +123,9 @@ export const Footer: FC<FooterProps> = ({
                   <ul className="space-y-4 text-white">
                     {footerLinks.map(({ href, id: linksId, label }) => (
                       <li
-                        className={clsx(title === FooterTextEnum.OUR_COMPANY ? "xl:pl-42.5" : "")}
+                        className={clsx(
+                          title === (FooterTextEnum.OUR_COMPANY as string) ? "xl:pl-42.5" : ""
+                        )}
                         key={linksId}
                       >
                         <Link

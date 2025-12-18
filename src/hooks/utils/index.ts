@@ -1,17 +1,30 @@
 import clsx from "clsx";
+
 import { ANIMATION_TYPES, UseInViewTypeEnum } from "../useInView";
 
-export const getAnimationClass = (
-  animationType: UseInViewTypeEnum = UseInViewTypeEnum.UP,
+interface AnimationParams {
+  animationType?: UseInViewTypeEnum;
+  className?: string;
+  hasAnimated?: boolean;
+  isVisible?: boolean;
+}
+
+export const getAnimationClass = ({
+  animationType = UseInViewTypeEnum.UP,
   isVisible = true,
   hasAnimated = false,
-  className = ""
-) => {
-  if (!isVisible && !hasAnimated) return "opacity-0";
-  if (hasAnimated && !isVisible) return "opacity-100";
+  className = "",
+}: AnimationParams): string => {
+  if (!isVisible && !hasAnimated) {
+    return "opacity-0";
+  }
+  if (hasAnimated && !isVisible) {
+    return "opacity-100";
+  }
 
-  if (animationType && !ANIMATION_TYPES.includes(animationType))
+  if (!ANIMATION_TYPES.includes(animationType)) {
     return clsx(animationType, "opacity-100", className);
+  }
 
   switch (animationType) {
     case UseInViewTypeEnum.IN_LEFT:
@@ -30,6 +43,10 @@ export const getAnimation = ({
 }: {
   animationType?: UseInViewTypeEnum | null;
   className?: string;
-} = {}) => {
-  return getAnimationClass(animationType ?? UseInViewTypeEnum.UP, true, false, className);
-};
+} = {}): string =>
+  getAnimationClass({
+    animationType: animationType ?? UseInViewTypeEnum.UP,
+    isVisible: true,
+    hasAnimated: false,
+    className,
+  });
