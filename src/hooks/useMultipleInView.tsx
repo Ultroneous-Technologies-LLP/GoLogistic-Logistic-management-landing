@@ -7,8 +7,8 @@ const DEFAULT_HAS_VIEW = 0.3;
 const DEFAULT_IDX_VALUE = -1;
 
 interface IuseMultiple {
-  refs: RefObject<(HTMLElement | null)[]>;
   getAnimation: (index: number, animationType?: UseInViewTypeEnum, className?: string) => string;
+  refs: RefObject<(HTMLElement | null)[]>;
 }
 
 export const useMultipleInView = (
