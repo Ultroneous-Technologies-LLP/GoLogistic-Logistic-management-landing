@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import Image from "next/image";
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useRef, useState } from "react";
 
 import { Container, Title } from "@/components";
 import { useInView } from "@/hooks";
@@ -20,10 +20,6 @@ export const Testimonial: FC<TestimonialSectionProps> = ({
   const { getAnimation } = useInView(sectionRef);
   const [isImageError, setIsImageError] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsImageLoaded(true);
-  }, []);
 
   return (
     <Container
