@@ -4,7 +4,7 @@ import Image from "next/image";
 import { FC, useRef, useState } from "react";
 import Slider from "react-slick";
 
-import { LeftArrow } from "@/components";
+import { FallBackImage, LeftArrow } from "@/components";
 import { useIsMobile } from "@/hooks";
 
 import { MAX_VISIBLE_BLOGS, SETTING_PROPS, SLIDER_CLASS, START_INDEX } from "./constant";
@@ -109,10 +109,11 @@ export const OurBlogSlider: FC<OurBlogSliderProps> = ({ blogData, longTitle }) =
               {visibleBlogs.map((value) => (
                 <div key={value.id}>
                   <div className="group rounded-20 relative h-[447px] w-full max-w-[411px] overflow-hidden">
-                    <Image
+                    <FallBackImage
                       alt={value.alt}
                       className="rounded-20 object-cover"
                       fill
+                      size="small"
                       src={value.src}
                       title={value.alt}
                     />

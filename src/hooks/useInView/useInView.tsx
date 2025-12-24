@@ -8,10 +8,10 @@ const DEFAULT_VIEW_VALUE = 0.3;
 
 interface UseInViewReturn {
   getAnimation: (params?: {
-    hasAnimated?: boolean;
-    isView?: boolean;
     animationType?: UseInViewTypeEnum | null;
     className?: string;
+    hasAnimated?: boolean;
+    isView?: boolean;
   }) => string;
 }
 
