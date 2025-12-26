@@ -1,14 +1,17 @@
 "use client";
 
 import clsx from "clsx";
-import React, { FC, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { FC, useLayoutEffect, useRef } from "react";
 import Slider from "react-slick";
 
 import { Container } from "@/components";
-import { useInView } from "@/hooks";
 
 import { SETTING_PROPS, SLIDER_CLASS } from "./constant";
 import { ShippingServiceProps } from "./types";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const ShippingService: FC<ShippingServiceProps> = ({
   description,
@@ -16,16 +19,38 @@ export const ShippingService: FC<ShippingServiceProps> = ({
   title,
 }) => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const { getAnimation } = useInView(sectionRef);
+
+  useLayoutEffect(() => {
+    if (!sectionRef.current) {
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      gsap.set(sectionRef.current, {
+        autoAlpha: 0,
+        y: 60,
+      });
+
+      gsap.to(sectionRef.current, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          once: true,
+        },
+      });
+    }, sectionRef);
+
+    return (): void => ctx.revert();
+  }, []);
 
   return (
     <Container className="px-4 md:px-6 xl:px-17.5">
       <div
-        className={clsx(
-          "rounded-20 relative z-0 w-full overflow-x-hidden",
-          SLIDER_CLASS,
-          getAnimation()
-        )}
+        className={clsx("rounded-20 relative z-0 w-full overflow-x-hidden opacity-0", SLIDER_CLASS)}
         ref={sectionRef}
       >
         <Slider

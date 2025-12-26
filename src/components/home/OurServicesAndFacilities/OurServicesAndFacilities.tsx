@@ -1,14 +1,18 @@
 "use client";
 
 import clsx from "clsx";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import { FC, useRef, useState } from "react";
+import { FC, useLayoutEffect, useRef, useState } from "react";
 
 import { Link, Container, Title } from "@/components";
 import { BREAKPOINT_XL } from "@/constant";
-import { useInView, useIsMobile } from "@/hooks";
+import { useIsMobile } from "@/hooks";
 
 import { OurServicesAndFacilitiesSectionProps } from "./types";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const FIRST_INDEX = 0;
 const SECOND_INDEX = 1;
@@ -25,37 +29,57 @@ export const OurServicesAndFacilities: FC<OurServicesAndFacilitiesSectionProps> 
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const { getAnimation } = useInView(sectionRef);
   const isMobile = useIsMobile(BREAKPOINT_XL);
 
-  const handleMouseEnter = (index: number): void => {
-    if (isMobile) {
+  useLayoutEffect(() => {
+    if (!sectionRef.current) {
       return;
     }
-    setActiveIndex(index);
+
+    const ctx = gsap.context(() => {
+      gsap.set(sectionRef.current, {
+        autoAlpha: 0,
+        y: 80,
+      });
+
+      gsap.to(sectionRef.current, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 1.4,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          once: true,
+        },
+      });
+    }, sectionRef);
+
+    return (): void => ctx.revert();
+  }, []);
+
+  const handleMouseEnter = (index: number): void => {
+    if (!isMobile) {
+      setActiveIndex(index);
+    }
   };
 
   const handleMouseLeave = (): void => {
-    if (isMobile) {
-      return;
+    if (!isMobile) {
+      setActiveIndex(null);
     }
-    setActiveIndex(null);
   };
 
   const handleClick = (index: number): void => {
-    if (!isMobile) {
-      return;
+    if (isMobile) {
+      setActiveIndex(index === activeIndex ? null : index);
     }
-    setActiveIndex(index === activeIndex ? null : index);
   };
 
   return (
     <Container
       aria-label="services-heading"
-      backgroundClassName={clsx(
-        "bg-black relative overflow-x-hidden transition-transform z-0",
-        getAnimation()
-      )}
+      backgroundClassName="bg-black relative overflow-x-hidden z-0 opacity-0"
       id="services"
       ref={sectionRef}
     >
@@ -97,20 +121,20 @@ export const OurServicesAndFacilities: FC<OurServicesAndFacilitiesSectionProps> 
                 onMouseLeave={handleMouseLeave}
               >
                 {/* Text Content */}
-                <div className="flex w-full max-w-55 flex-col justify-between py-8 pl-8 break-words xl:pt-10 xl:pb-7.5 xl:pl-9.5">
+                <div className="flex w-full max-w-55 flex-col justify-between py-8 pl-8 xl:pt-10 xl:pb-7.5 xl:pl-9.5">
                   <h3 className="flex flex-col text-2xl/9 font-semibold">
-                    {index + SECOND_INDEX} <br />
+                    {index + SECOND_INDEX}
                     <span>{servicesTitle}</span>
                   </h3>
                   <div
                     className={clsx("transition-all duration-700", {
                       "translate-y-0 opacity-100 delay-200": isActive,
-                      "pointer-events-none translate-y-2 opacity-0 delay-0": !isActive,
+                      "pointer-events-none translate-y-2 opacity-0": !isActive,
                     })}
                   >
                     <Link
                       aria-label={button.ariaLabel}
-                      className="inline-block w-fit rounded-md px-10 py-2.5 text-center !font-medium hover:!font-medium"
+                      className="inline-block w-fit rounded-md px-10 py-2.5 text-center !font-medium"
                       href={button.href}
                       label={button.label}
                       variant={button.variant}
@@ -120,7 +144,7 @@ export const OurServicesAndFacilities: FC<OurServicesAndFacilitiesSectionProps> 
                 <div
                   className={clsx("-mr-2.5 max-w-27 transition-all duration-700", {
                     "translate-x-0 opacity-100 delay-300": isActive,
-                    "pointer-events-none translate-x-2 opacity-0 delay-0": !isActive,
+                    "pointer-events-none translate-x-2 opacity-0": !isActive,
                   })}
                 >
                   <Image

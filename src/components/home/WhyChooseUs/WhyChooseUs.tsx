@@ -1,23 +1,24 @@
 "use client";
 
-import clsx from "clsx";
-import { FC, ReactElement, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FC, ReactElement, useLayoutEffect, useRef } from "react";
 
 import { Container, Title } from "@/components";
-import { useInView, useMultipleInView, UseInViewTypeEnum } from "@/hooks";
 
 import { ICONS_ARRAY } from "./constant";
 import { Icons, WhyChooseUsSectionProps } from "./types";
 
 const ANIMATION_DURATION_MS = 150;
-const SCROLL_THRESHOLD = 0.3;
+const MAX_DELAY_MS = 1000;
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const getFeatureIcon = (icon: Icons, className?: string): ReactElement | null => {
   const item = ICONS_ARRAY.find((i) => i.key === icon);
   if (!item) {
     return null;
   }
-
   const IconComponent = item.component;
   return <IconComponent className={className} />;
 };
@@ -29,11 +30,48 @@ export const WhyChooseUs: FC<WhyChooseUsSectionProps> = ({
   whyChooseUsFeaturesData,
 }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const { getAnimation: getSectionAnimation } = useInView(sectionRef);
-  const { refs, getAnimation } = useMultipleInView(
-    whyChooseUsFeaturesData.length,
-    SCROLL_THRESHOLD
-  );
+  const featuresRefs = useRef<HTMLDivElement[]>([]);
+
+  useLayoutEffect(() => {
+    if (!sectionRef.current) {
+      return;
+    }
+
+    gsap.fromTo(
+      sectionRef.current,
+      { autoAlpha: 0, x: -40 },
+      {
+        autoAlpha: 1,
+        x: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 70%",
+          once: true,
+        },
+      }
+    );
+
+    featuresRefs.current.forEach((el, index) => {
+      gsap.fromTo(
+        el,
+        { autoAlpha: 0, x: 40 },
+        {
+          autoAlpha: 1,
+          x: 0,
+          duration: 0.8,
+          delay: index * (ANIMATION_DURATION_MS / MAX_DELAY_MS),
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+            once: true,
+          },
+        }
+      );
+    });
+  }, []);
 
   return (
     <Container
@@ -43,12 +81,7 @@ export const WhyChooseUs: FC<WhyChooseUsSectionProps> = ({
     >
       <div className="flex flex-col justify-between gap-8 md:flex-row md:gap-6 xl:gap-12">
         {/* Left section */}
-        <div
-          className={clsx(
-            "w-full max-w-146 transition-all duration-700",
-            getSectionAnimation({ animationType: UseInViewTypeEnum.IN_LEFT })
-          )}
-        >
+        <div className="w-full max-w-146">
           <Title title={title} />
           <h3 className="pb-2.5 text-xl/7.5 font-bold text-black xl:pb-3.5 xl:text-4xl/12.5">
             <span>{longTitle}</span>
@@ -65,18 +98,14 @@ export const WhyChooseUs: FC<WhyChooseUsSectionProps> = ({
 
         {/* Right section */}
         <div className="flex w-full max-w-128.5 flex-col xl:mt-14.5">
-          {whyChooseUsFeaturesData.map(({ id, icon, title: featureTitle, description }, index) => (
+          {whyChooseUsFeaturesData.map(({ id, icon, title: featureTitle, description }) => (
             <article
-              className={clsx(
-                "flex transform gap-4 pb-5 transition-all duration-700 ease-out last:pb-0 xl:gap-10 xl:pb-13.5",
-                getAnimation(index, UseInViewTypeEnum.IN_RIGHT)
-              )}
+              className="flex transform gap-4 pb-5 last:pb-0 xl:gap-10 xl:pb-13.5"
               key={id}
               ref={(el) => {
-                refs.current[`${index}`] = el;
-              }}
-              style={{
-                transitionDelay: `${index * ANIMATION_DURATION_MS}ms`,
+                if (el && !featuresRefs.current.includes(el as HTMLDivElement)) {
+                  featuresRefs.current.push(el as HTMLDivElement);
+                }
               }}
             >
               <div aria-hidden="true">{getFeatureIcon(icon, "fill-black")}</div>

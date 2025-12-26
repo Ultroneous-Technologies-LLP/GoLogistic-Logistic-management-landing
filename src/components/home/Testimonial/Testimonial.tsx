@@ -1,14 +1,17 @@
 "use client";
 
 import clsx from "clsx";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import { FC, useRef, useState } from "react";
+import { FC, useLayoutEffect, useRef, useState } from "react";
 
 import { Container, Title } from "@/components";
-import { useInView } from "@/hooks";
 
 import TestimonialSlider from "./TestimonialSlider";
 import { TestimonialSectionProps } from "./types";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const Testimonial: FC<TestimonialSectionProps> = ({
   backgroundImage,
@@ -17,16 +20,39 @@ export const Testimonial: FC<TestimonialSectionProps> = ({
   title,
 }) => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const { getAnimation } = useInView(sectionRef);
   const [isImageError, setIsImageError] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
+  useLayoutEffect(() => {
+    if (!sectionRef.current) {
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      gsap.set(sectionRef.current, {
+        autoAlpha: 0,
+        y: 60,
+      });
+
+      gsap.to(sectionRef.current, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 1.3,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 60%",
+          once: true,
+        },
+      });
+    }, sectionRef);
+
+    return (): void => ctx.revert();
+  }, []);
+
   return (
     <Container
-      className={clsx(
-        "relative overflow-x-hidden py-20 transition-transform duration-700 md:pb-35.5 xl:py-36.5",
-        getAnimation()
-      )}
+      className="relative overflow-x-hidden py-20 opacity-0 md:pb-35.5 xl:py-36.5"
       id="testimonial"
       ref={sectionRef}
     >
