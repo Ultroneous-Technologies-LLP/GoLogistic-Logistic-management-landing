@@ -1,17 +1,20 @@
 "use client";
 
 import clsx from "clsx";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import { FC, useRef } from "react";
+import { FC, useLayoutEffect, useRef } from "react";
 
-import { Logo, Container, Link } from "@/components";
-import { useInView } from "@/hooks";
+import { Logo, Container, Link, FallBackImage } from "@/components";
 
 import { iconMap } from "./constant";
 import { FooterTextEnum } from "./enum";
 import { FooterProps } from "./types";
 
 const INDEX_START = 0;
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const Footer: FC<FooterProps> = ({
   contact,
@@ -21,10 +24,37 @@ export const Footer: FC<FooterProps> = ({
   blogCard,
 }) => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const { getAnimation } = useInView(sectionRef);
+
+  useLayoutEffect(() => {
+    if (!sectionRef.current) {
+      return;
+    }
+
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 768px)", () => {
+      gsap.fromTo(
+        sectionRef.current,
+        { autoAlpha: 0, y: 40 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 70%",
+            once: true,
+          },
+        }
+      );
+    });
+
+    return (): void => mm.revert();
+  }, []);
 
   return (
-    <footer className={getAnimation()} ref={sectionRef}>
+    <footer ref={sectionRef}>
       <Container className="relative">
         <Image
           alt={backgroundImage.alt}
@@ -40,10 +70,11 @@ export const Footer: FC<FooterProps> = ({
       xl:max-w-287 xl:gap-17.5"
         >
           <div className="hidden w-full max-w-57.5 md:block xl:max-w-127.5">
-            <Image
+            <FallBackImage
               alt={blogCard.alt}
               className="h-full w-full object-cover"
               height={484}
+              size="medium"
               src={blogCard.src}
               title={blogCard.alt}
               width={510}

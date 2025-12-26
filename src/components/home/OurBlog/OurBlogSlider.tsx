@@ -1,21 +1,63 @@
 "use client";
 
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import { FC, useRef, useState } from "react";
+import { FC, useLayoutEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 
-import { LeftArrow } from "@/components";
+import { FallBackImage, LeftArrow } from "@/components";
 import { useIsMobile } from "@/hooks";
 
 import { MAX_VISIBLE_BLOGS, SETTING_PROPS, SLIDER_CLASS, START_INDEX } from "./constant";
 import { OurBlogSliderProps } from "./types";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export const OurBlogSlider: FC<OurBlogSliderProps> = ({ blogData, longTitle }) => {
   const [showAll, setShowAll] = useState(false);
 
   const sliderRef = useRef<Slider>(null);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const itemsRef = useRef<HTMLDivElement[]>([]);
 
   const isMobile = useIsMobile();
+
+  const setItemRef = (el: HTMLDivElement | null): void => {
+    if (el && !itemsRef.current.includes(el)) {
+      itemsRef.current.push(el);
+    }
+  };
+
+  useLayoutEffect(() => {
+    if (!sectionRef.current) {
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      gsap.set(itemsRef.current, {
+        autoAlpha: 0,
+        y: 40,
+      });
+
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top 70%",
+        once: true,
+        onEnter: () => {
+          gsap.to(itemsRef.current, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power3.out",
+            stagger: 0.15,
+          });
+        },
+      });
+    }, sectionRef);
+
+    return (): void => ctx.revert();
+  }, []);
 
   const handlePrev = (): void => {
     sliderRef.current?.slickPrev();
@@ -29,25 +71,23 @@ export const OurBlogSlider: FC<OurBlogSliderProps> = ({ blogData, longTitle }) =
     if (!isMobile) {
       return blogData;
     }
-
     if (showAll) {
       return blogData;
     }
-
     return blogData.slice(START_INDEX, MAX_VISIBLE_BLOGS);
   };
 
   const visibleBlogs = getVisibleBlogs();
 
   return (
-    <>
+    <div ref={sectionRef}>
       <div className="items-center justify-between px-4 pb-8 md:flex md:px-6 xl:pr-22.5 xl:pb-16.5 xl:pl-17.5">
         <h3 className="text-xl/7.5 font-bold text-black xl:text-4xl/12.5">
           <span>{longTitle}</span>
         </h3>
         <div className="hidden gap-2.5 md:flex">
           <button
-            className="group flex size-11 items-center justify-center rounded-full border border-transparent bg-black transition-colors duration-300 hover:border-black hover:bg-white hover:ease-in"
+            className="group flex size-11 items-center justify-center rounded-full bg-black transition"
             onClick={handlePrev}
             type="button"
           >
@@ -66,7 +106,7 @@ export const OurBlogSlider: FC<OurBlogSliderProps> = ({ blogData, longTitle }) =
         {isMobile ? (
           <div className="space-y-8 px-4">
             {visibleBlogs.map((value) => (
-              <div className="flex gap-4" key={value.id}>
+              <div className="flex gap-4" key={value.id} ref={setItemRef}>
                 <div className="w-full max-w-[30%] rounded-sm">
                   <Image
                     alt={value.alt}
@@ -88,7 +128,6 @@ export const OurBlogSlider: FC<OurBlogSliderProps> = ({ blogData, longTitle }) =
                 </div>
               </div>
             ))}
-
             {/* Button only if there are more than 3 blogs */}
             {blogData.length > MAX_VISIBLE_BLOGS && !showAll && (
               <div className="flex justify-center">
@@ -108,31 +147,28 @@ export const OurBlogSlider: FC<OurBlogSliderProps> = ({ blogData, longTitle }) =
             <Slider {...SETTING_PROPS} ref={sliderRef}>
               {visibleBlogs.map((value) => (
                 <div key={value.id}>
-                  <div className="group rounded-20 relative h-[447px] w-full max-w-[411px] overflow-hidden">
-                    <Image
-                      alt={value.alt}
-                      className="rounded-20 object-cover"
-                      fill
-                      src={value.src}
-                      title={value.alt}
-                    />
-                    <div className="rounded-20 absolute inset-0 z-10 bg-black/40 opacity-100 transition-opacity duration-500 group-hover:opacity-0" />
+                  <div ref={setItemRef}>
+                    <div className="rounded-20 relative h-[447px] w-full max-w-[411px] overflow-hidden">
+                      <FallBackImage
+                        alt={value.alt}
+                        className="object-cover"
+                        fill
+                        size="small"
+                        src={value.src}
+                      />
+                      <div className="absolute inset-0 bg-black/40 transition-opacity hover:opacity-0" />
+                    </div>
+
+                    <span className="text-spanish-gray block py-4 text-xs">{value.date}</span>
+                    <h4 className="text-base font-semibold xl:text-2xl">{value.title}</h4>
+                    <p className="text-spanish-gray pt-2 text-sm">{value.description}</p>
                   </div>
-                  <span className="text-10/3.5 text-spanish-gray block py-4 xl:pt-10.5 xl:pb-5 xl:text-sm">
-                    {value.date}
-                  </span>
-                  <h4 className="text-base/6 font-semibold text-ellipsis md:line-clamp-2 xl:line-clamp-none xl:text-2xl/8.5">
-                    <span>{value.title}</span>
-                  </h4>
-                  <p className="text-spanish-gray pt-4 text-sm/4.5 font-medium text-ellipsis md:line-clamp-2 xl:line-clamp-none xl:pt-2.5 xl:text-base/normal">
-                    <span>{value.description}</span>
-                  </p>
                 </div>
               ))}
             </Slider>
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
