@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+Sitemap: https://www.gologistic.example/sitemap.xml
+Host: https://www.gologistic.example

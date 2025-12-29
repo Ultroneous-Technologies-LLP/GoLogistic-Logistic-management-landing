@@ -1,0 +1,11 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+  functions = "netlify/functions"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# You can add branch-specific settings or environment variables below
+#[context.production.environment]
+#  NODE_ENV = "production"
