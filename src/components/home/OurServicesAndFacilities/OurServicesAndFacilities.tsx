@@ -21,6 +21,8 @@ export const OurServicesAndFacilities: FC<OurServicesAndFacilitiesSectionProps> 
   title,
 }) => {
   const [activeIndex, setActiveIndex] = useState<null | number>(FIRST_INDEX);
+  const [isImageError, setIsImageError] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const { getAnimation } = useInView(sectionRef);
@@ -57,14 +59,21 @@ export const OurServicesAndFacilities: FC<OurServicesAndFacilitiesSectionProps> 
       id="services"
       ref={sectionRef}
     >
-      <Image
-        alt={backgroundImage.alt}
-        className="absolute bottom-46 z-0 opacity-25 xl:top-104 xl:bottom-[unset]"
-        height={511}
-        src={backgroundImage.src}
-        title={backgroundImage.alt}
-        width={1440}
-      />
+      {backgroundImage.src && !isImageError && (
+        <Image
+          alt={backgroundImage.alt || ""}
+          className={clsx(
+            "absolute bottom-46 z-0 opacity-25 xl:top-104 xl:bottom-[unset]",
+            isImageLoaded ? "opacity-100" : "opacity-0"
+          )}
+          height={511}
+          onError={() => setIsImageError(true)}
+          onLoad={() => setIsImageLoaded(true)}
+          src={backgroundImage.src}
+          title={backgroundImage.alt}
+          width={1440}
+        />
+      )}
       <div className="relative z-10 px-4 py-12.5 md:px-6 xl:px-20 xl:py-42">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3 xl:gap-y-38">
           <div className="md:col-span-2 xl:col-span-1">

@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import Image from "next/image";
-import { FC, useRef } from "react";
+import { FC, useRef, useState } from "react";
 
 import { Container, Link } from "@/components";
 import { useInView, UseInViewTypeEnum } from "@/hooks";
@@ -17,18 +17,27 @@ export const Hero: FC<HeroSectionProps> = ({
 }) => {
   const heroRef = useRef<HTMLDivElement | null>(null);
   const { getAnimation } = useInView(heroRef);
+  const [isImageError, setIsImageError] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   return (
     <Container backgroundClassName="pt-20" className="relative" id="home" ref={heroRef}>
-      <Image
-        alt={backgroundImage.alt}
-        className="absolute -z-20 h-full w-full object-cover"
-        height={470}
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1440px"
-        src={backgroundImage.src}
-        title={backgroundImage.alt}
-        width={1440}
-      />
+      {backgroundImage.src && !isImageError && (
+        <Image
+          alt={backgroundImage.alt || ""}
+          className={clsx(
+            "absolute -z-20 h-full w-full object-cover transition-opacity duration-500",
+            isImageLoaded ? "opacity-100" : "opacity-0"
+          )}
+          height={470}
+          onError={() => setIsImageError(true)}
+          onLoad={() => setIsImageLoaded(true)}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1440px"
+          src={backgroundImage.src}
+          title={backgroundImage.alt || ""}
+          width={1440}
+        />
+      )}
       <div className="flex flex-col gap-2 px-4 pb-20 md:flex-row md:items-center md:gap-4 md:px-6 md:pb-19 xl:items-start xl:gap-11.5 xl:px-17.5 xl:pt-37.5 xl:pb-31.5">
         <h1
           className={clsx(

@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import { FC, useRef } from "react";
 
-import { Logo, Container, Link } from "@/components";
+import { Logo, Container, Link, FallBackImage } from "@/components";
 import { useInView } from "@/hooks";
 
 import { iconMap } from "./constant";
@@ -40,10 +40,11 @@ export const Footer: FC<FooterProps> = ({
       xl:max-w-287 xl:gap-17.5"
         >
           <div className="hidden w-full max-w-57.5 md:block xl:max-w-127.5">
-            <Image
+            <FallBackImage
               alt={blogCard.alt}
               className="h-full w-full object-cover"
               height={484}
+              size="medium"
               src={blogCard.src}
               title={blogCard.alt}
               width={510}
