@@ -1,13 +1,21 @@
 import type { Metadata } from "next";
+import { Montserrat } from "next/font/google";
 import { FC, PropsWithChildren } from "react";
 
 import { Footer, Header } from "@/components";
-import { montserrat400, montserrat600, montserratRest } from "@/constant";
 import data from "@/content/Layout-data.json";
 import { ButtonVariant } from "@/types";
 
 import "../../styles/globals.css";
 import { LayoutDataType } from "./types";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-montserrat",
+  preload: true,
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.gologistic.example"),
@@ -110,9 +118,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <html className="scroll-smooth" lang="en">
-      <body
-        className={`${montserrat400.variable} ${montserrat600.variable} ${montserratRest.variable} antialiased`}
-      >
+      <body className={`${montserrat.variable} font-normal antialiased`}>
         <Header {...header} />
         <main>{children}</main>
         <Footer {...footer} />

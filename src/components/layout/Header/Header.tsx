@@ -51,13 +51,12 @@ export const Header: FC<HeaderProps> = ({ button, links }) => {
             {links.map(({ href, id, label, title }) => {
               const sectionId = href.replace("/#", "");
               const isActive = activeSection === sectionId;
-
               return (
                 <a
                   className={clsx(
                     "relative py-1 transition-all duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-black after:transition-all after:duration-300 after:content-[''] hover:after:w-full",
                     {
-                      "font-semibold after:w-full": isActive,
+                      "after:w-full": isActive,
                     }
                   )}
                   href={href}
