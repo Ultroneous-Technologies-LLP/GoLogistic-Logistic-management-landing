@@ -20,16 +20,18 @@ export const Hero: FC<HeroSectionProps> = ({
 
   return (
     <Container backgroundClassName="pt-20" className="relative" id="home" ref={heroRef}>
-      <Image
-        alt={backgroundImage.alt}
-        className="absolute -z-20 w-full object-cover"
-        fetchPriority="high"
-        fill
-        priority
-        sizes="100vw"
-        src={backgroundImage.src}
-        title={backgroundImage.alt}
-      />
+      <div className="absolute -z-20 h-77.5 w-full lg:h-59.5 xl:h-117.5">
+        <Image
+          alt={backgroundImage.alt}
+          className="object-cover"
+          fetchPriority="high"
+          fill
+          priority
+          sizes="(max-width: 1024px) 100vw, 1000px"
+          src={backgroundImage.src}
+          title={backgroundImage.alt}
+        />
+      </div>
       <div className="flex flex-col gap-2 px-4 pb-20 md:flex-row md:items-center md:gap-4 md:px-6 md:pb-19 xl:items-start xl:gap-11.5 xl:px-17.5 xl:pt-37.5 xl:pb-31.5">
         <h1
           className={clsx(
