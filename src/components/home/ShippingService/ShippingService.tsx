@@ -5,7 +5,7 @@ import React, { FC, useRef } from "react";
 import Slider from "react-slick";
 
 import { Container } from "@/components";
-import { useInView } from "@/hooks";
+import { useInView, UseInViewTypeEnum } from "@/hooks";
 
 import { SETTING_PROPS, SLIDER_CLASS } from "./constant";
 import { ShippingServiceProps } from "./types";
@@ -18,9 +18,13 @@ export const ShippingService: FC<ShippingServiceProps> = ({
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const { getAnimation } = useInView(sectionRef);
 
+  const animationClass = getAnimation({
+    animationType: UseInViewTypeEnum.UP,
+  });
+
   return (
-    <Container className="px-4 md:px-6 xl:px-17.5">
-      <div className="relative w-full">
+    <Container className="px-4 md:px-6 xl:px-17.5" ref={sectionRef}>
+      <div className={clsx("relative w-full", animationClass)}>
         <div className="relative z-10 -mb-5 md:-mb-10 xl:-mb-20">
           <h2 className="pb-2 text-center text-xl font-semibold md:text-[32px] md:leading-12 xl:pb-3 xl:leading-none">
             <span>{title}</span>
@@ -29,14 +33,8 @@ export const ShippingService: FC<ShippingServiceProps> = ({
             <span>{description}</span>
           </p>
         </div>
-        <div
-          className={clsx(
-            "rounded-20 relative z-0 w-full overflow-x-hidden",
-            SLIDER_CLASS,
-            getAnimation()
-          )}
-          ref={sectionRef}
-        >
+
+        <div className={clsx("rounded-20 relative z-0 w-full overflow-x-hidden", SLIDER_CLASS)}>
           <Slider
             {...SETTING_PROPS}
             appendDots={(dots: React.ReactNode) => (
