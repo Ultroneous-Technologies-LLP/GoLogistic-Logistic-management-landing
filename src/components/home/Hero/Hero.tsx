@@ -24,6 +24,7 @@ export const Hero: FC<HeroSectionProps> = ({
         alt={backgroundImage.alt}
         className="absolute -z-20 h-full w-full object-cover"
         height={470}
+        priority
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1440px"
         src={backgroundImage.src}
         title={backgroundImage.alt}
